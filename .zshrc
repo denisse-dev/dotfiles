@@ -74,10 +74,11 @@ fi
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
+export LC_CTYPE=es_MX.UTF-8
 autoload -Uz compinit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export LC_CTYPE=es_MX.UTF-8
-screenfetch -w -c 31,3
+alias screenfetch="screenfetch -w -c 31,3"
+./.pacman.sh
 
 man() {
     env \
