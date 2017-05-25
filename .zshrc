@@ -52,16 +52,17 @@ POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
 POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
 
 # Thumbs icons
-POWERLEVEL9K_OK_ICON=$'\uf087'
-POWERLEVEL9K_FAIL_ICON=$'\uf088'
+POWERLEVEL9K_OK_ICON=$'\uf164'
+POWERLEVEL9K_FAIL_ICON=$'\uf165'
 
 # Time
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M} \uf252"
 
 # Prompt settings
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%K{black}%F{blue}\ue0ce"
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%K{black}%F{blue}\ue0ce%F{yellow}  \Uf155 %f%k%F{black}\ue0ce%f "
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%K{black}%F{green}\ue0ce"
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%K{black}%F{green}\ue0ce%F{yellow}  \Uf155 %f%k%F{black}\ue0ce%f "
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time battery)
 
@@ -78,6 +79,7 @@ export LC_CTYPE=es_MX.UTF-8
 autoload -Uz compinit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias screenfetch="screenfetch -w -c 31,3"
+alias yaourt="yaourt --pager --color "
 ./.pacman.sh
 
 man() {
