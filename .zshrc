@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/andrea/.oh-my-zsh
+export ZSH=/home/andrea/.oh-my-zsh
 
 # Set name of the theme to load.
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -76,11 +76,17 @@ fi
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export LC_CTYPE=es_MX.UTF-8
+export TERMINAL=gnome-terminal
+export PAGER=less
+export EDITOR=emacs
+export VISUAL=emacs
+
 autoload -Uz compinit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 alias screenfetch="screenfetch -w -c 31,3"
 alias yaourt="yaourt --pager --color "
-./.pacman.sh
+~/.pacman.sh
 
 man() {
     env \
