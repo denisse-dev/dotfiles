@@ -1,0 +1,11 @@
+! ------------------------------------------------------------------------------
+! Rofi color theme by Andrea
+! ------------------------------------------------------------------------------
+
+!                 'background', 'border',  'separator'
+rofi.color-window: #EF2f343f, 	 #EF2f343f, #EF2f343f
+
+! State:           'bg',          'fg',     'bgalt',	  'hlbg',   'hlfg'
+rofi.color-normal: argb:2000000,  #f3f4f5,  argb:2000000, argb:2000000,  #9575cd
+rofi.color-active: #2f343f, 	  #268bd2,  #eee8d5, 	  #268bd2,  #fdf6e3
+rofi.color-urgent: #fdf6e3, 	  #dc322f,  #eee8d5, 	  #dc322f,  #fdf6e3
