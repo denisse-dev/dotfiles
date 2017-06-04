@@ -2,13 +2,13 @@
 set $mod Mod4
 
 # Hide titlebar
-new_window none
+new_window pixel
 
 # i3-gaps
-gaps inner 6
+gaps inner 10 
 
 # Font for window titles.
-font pango: Roboto Mono Nerd Font Bold, 11
+font pango: Source Code Pro Black 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -21,6 +21,7 @@ bindsym $mod+Shift+q kill
 
 # Start rofi
 bindsym $mod+d exec rofi -show drun -lines 3 -width 100 -padding 800 -font "Source Code Pro Bold 20"
+
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
@@ -120,16 +121,15 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 mode "resize"
 {
         # Resize with the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 4 px or 4 ppt
+        bindsym Down resize grow height 4 px or 4 ppt
+        bindsym Up resize shrink height 4 px or 4 ppt
+        bindsym Right resize grow width 4 px or 4 ppt
 
         # Back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 # Defining colors
@@ -142,19 +142,18 @@ set $silver 	#e4e4e4
 set $elegant	#1b1d1e
 
 # Set some nice colors      border	background  text	indicator
-client.focused              $magenta	$magenta    $magenta   	$magenta
-client.unfocused            $magenta 	$magenta    $magenta    $magenta
+client.focused              $magenta	$magenta    $silver   	$white
+client.unfocused            $elegant 	$elegant    $magenta    $white
 client.focused_inactive     $magenta 	$magenta    $silver     $magenta
 client.urgent               $cyan 	$cyan	    $silver     $magenta
-client.placeholder          $magenta 	$magenta    $silver     $magenta
+client.placeholder          $magenta 	$magenta    $silver     $white
 
 # Start i3blocks to display a workspace bar
 bar
 {
 	position top
 	status_command i3blocks
-	font pango: Roboto Mono Nerd Font Bold 10
-	
+	font pango: SauceCodePro Nerd Font Black 10	
 	colors
 	{
 				    # Border	# Background	# Text
@@ -167,5 +166,24 @@ bar
 }
 
 # Wallpaper
-exec --no-startup-id feh --bg-scale ~/.bg.jpg
+exec_always --no-startup-id feh --bg-scale ~/.bg.jpg
+# Compositor for window transparency
 exec compton -f
+# Others
+exec xfce4-power-manager
+exec notify-send "Welcome back, Andrea"
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
