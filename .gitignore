@@ -1,7 +1,7 @@
 # Ignore files not tracked by Git
 *
 
-# Files currently being tracked by Git
+# Files currently being tracked by Git and contained in this repo
 !.config/rofi/config
 !.i3/*
 !.bg.jpg
