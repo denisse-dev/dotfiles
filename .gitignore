@@ -1,0 +1,14 @@
+# Ignore files not tracked by Git
+*
+
+# Files currently being tracked by Git
+!.config/rofi/config
+!.i3/*
+!.bg.jpg
+!.emacs
+!.gitignore
+!.i3blocks.conf
+!.pacman.sh
+!.zshrc
+!.zshrc
+!README.md
