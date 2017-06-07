@@ -4,7 +4,8 @@
 # Files currently being tracked by Git and contained in this repo
 !.config/rofi/config
 !.i3/*
-!.bg.jpg
+!.bragging.jpg
+!.desktop.png
 !.emacs
 !.gitignore
 !.i3blocks.conf
