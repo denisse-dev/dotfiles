@@ -5,7 +5,7 @@ set $mod Mod4
 new_window pixel
 
 # i3-gaps
-gaps inner 10 
+gaps inner 5
 
 # Font for window titles.
 font pango: Source Code Pro Black 11
@@ -22,6 +22,7 @@ bindsym $mod+Shift+q kill
 # Start rofi
 bindsym $mod+d exec rofi -show drun -lines 3 -width 100 -padding 800 -font "Source Code Pro Bold 20"
 
+# Move between windows
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
@@ -121,10 +122,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 mode "resize"
 {
         # Resize with the arrow keys
-        bindsym Left resize shrink width 4 px or 4 ppt
-        bindsym Down resize grow height 4 px or 4 ppt
-        bindsym Up resize shrink height 4 px or 4 ppt
-        bindsym Right resize grow width 4 px or 4 ppt
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Down resize grow height 2 px or 2 ppt
+        bindsym Up resize shrink height 2 px or 2 ppt
+        bindsym Right resize grow width 2 px or 2 ppt
 
         # Back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -142,10 +143,10 @@ set $silver 	#e4e4e4
 set $elegant	#1b1d1e
 
 # Set some nice colors      border	background  text	indicator
-client.focused              $magenta	$magenta    $silver   	$white
+client.focused              $cyan	$cyan    $silver   	$white
 client.unfocused            $elegant 	$elegant    $magenta    $white
-client.focused_inactive     $magenta 	$magenta    $silver     $magenta
-client.urgent               $cyan 	$cyan	    $silver     $magenta
+client.focused_inactive     $magenta    	$magenta       $silver     $magenta
+client.urgent               $acqua	$acqua	    $silver     $magenta
 client.placeholder          $magenta 	$magenta    $silver     $white
 
 # Start i3blocks to display a workspace bar
@@ -168,22 +169,10 @@ bar
 # Wallpaper
 exec_always --no-startup-id feh --bg-scale ~/.bg.jpg
 # Compositor for window transparency
-exec compton -f
+exec --no-startup-id compton -f
 # Others
-exec xfce4-power-manager
-exec notify-send "Welcome back, Andrea"
-
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
-
-# Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id notify-send "Welcome back, Andrea"
+exec --no-startup-id g213-led -fx hwave keys 15
+exec --no-startup-id xbindkeys
+exec slack
