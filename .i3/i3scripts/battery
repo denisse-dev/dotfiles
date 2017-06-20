@@ -23,52 +23,64 @@ my $full_text;
 my $short_text;
 my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
 
-# read the first line of the "acpi" command output
+# Read the first line of the "acpi" command output
 open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
 $acpi = <ACPI>;
 close(ACPI);
 
-# fail on unexpected output
+# Fail on unexpected output
 if ($acpi !~ /: (\w+), (\d+)%/) {
-	die "$acpi\n";
+    die "$acpi\n";
 }
 
 $status = $1;
 $percent = $2;
-#$full_text = "$percent%";
 
+# Display different icons for battery status
 if ($status eq 'Discharging') {
-	$full_text .= "\x{f242}";
+    if ($percent < 20) {
+	$full_text .= "\x{f244}";   
+    } elsif ($percent < 40) {
+	$full_text .= "\x{f243}";   
+    } elsif ($percent < 60) {
+	$full_text .= "\x{f242}";   
+    } elsif ($percent < 85) {
+	$full_text .= "\x{f241}";   
+    } elsif ($percent <= 100) {
+	$full_text .= "\x{f240}";   
+    }
 } elsif ($status eq 'Charging') {
-	$full_text .= "\x{f241}";
+    $full_text .= "\x{f1e6}";
 }
 
 $short_text = $full_text;
 
 if ($acpi =~ /(\d\d:\d\d):/) {
-    	$full_text .= " $percent%";
+    $full_text .= " $percent%";
 }
 
-# print text
+# Print text
 print "$full_text\n";
 print "$short_text\n";
 
-# consider color and urgent flag only on discharge
+# Use a different colour for battery status
 if ($status eq 'Discharging') {
-
-	if ($percent < 20) {
-		print "#FF0000\n";
-	} elsif ($percent < 40) {
-		print "#ff8700\n";
-	} elsif ($percent < 60) {
-		print "#8700ff\n";
-	} elsif ($percent < 85) {
-		print "#00afd7\n";
-	}
-
-	if ($percent < 5) {
-		exit(33);
-	}
+    if ($percent < 20) {
+	print "#f77b71\n";
+    } elsif ($percent < 40) {
+	print "#ef6191\n";
+    } elsif ($percent < 60) {
+	print "#b967c7\n";
+    } elsif ($percent < 85) {
+	print "#7884cb\n";
+    } elsif ($percent <= 100) {
+	print "#4ec2f7\n";
+    }
+    if ($percent < 5) {
+	exit(33);
+    }
+} else {
+    print "#ffb64c\n";
 }
 
 exit(0);
