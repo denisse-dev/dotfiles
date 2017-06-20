@@ -10,7 +10,7 @@
 
 #### For the window manager:
 1. i3-gaps
-2. i3blocks (This is a replacement for the default i3bar)
+2. i3blocks (This is a replacement for the default i3status)
 3. Nerd Fonts patched fonts (I use Source Code Pro and Roboto Mono)
 4. Rofi (Replacement for dmenu)
 6. Compton (Compositor to get window transparency)
@@ -20,11 +20,10 @@
 1. xfce4-power-manager (Simple way to monitor battery status)
 2. xfce4-notifyd (Helpful to get GTK notifications like current song or battery status)
 
-### Some cool things:
-![Bragging](https://github.com/da-edra/dotfiles/blob/master/.bragging.jpg)
-
-### This is how it looks like when using a dual monitor setup:
-I'm receiving Spotify and battery status gtk notifications.
+### This is how it looks like:
 ![Desktop](https://github.com/da-edra/dotfiles/blob/master/.desktop.png)
+
+### Watch an old recording of my desktop with some cool things:
+[![Bragging](https://github.com/da-edra/dotfiles/blob/master/.bragging.jpg)](https://www.youtube.com/watch?v=vIjWFfd9Ch0)
 
 Feel free to clone or fork my repo, if you make any interesting modifications, please share them with us! :)
