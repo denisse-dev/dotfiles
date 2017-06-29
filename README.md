@@ -23,6 +23,9 @@
 ### This is how it looks like:
 ![Desktop](https://github.com/da-edra/dotfiles/blob/master/.desktop.png)
 
+### I ❤ i3 tiling capabilities:
+![Terminals](https://github.com/da-edra/dotfiles/blob/master/.terminals.png)
+
 ### Watch an old recording of my desktop with some cool things:
 [![Bragging](https://github.com/da-edra/dotfiles/blob/master/.bragging.jpg)](https://www.youtube.com/watch?v=vIjWFfd9Ch0)
 
