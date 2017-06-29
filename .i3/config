@@ -5,7 +5,7 @@ set $mod Mod4
 new_window pixel
 
 # i3-gaps
-gaps inner 5
+gaps inner 6
 
 # Font for window titles.
 font pango: Source Code Pro Black 11
@@ -140,7 +140,7 @@ set $wine 	#72003e
 set $magenta 	#af005f
 set $orange 	#ff8700
 set $silver 	#e4e4e4
-set $elegant	#1b1d1e
+set $elegant	#1C2331
 
 # Set some nice colors      border	background  text	indicator
 client.focused              $cyan	$cyan    $silver   	$white
@@ -158,9 +158,9 @@ bar
 	colors
 	{
 				    # Border	# Background	# Text
-		focused_workspace   $magenta	$magenta	$silver
+		focused_workspace   $silver	$silver		$elegant
 		active_workspace    $elegant    $elegant        $orange
-		inactive_workspace  $elegant    $elegant       	$magenta
+		inactive_workspace  $elegant    $elegant       	$cyan
 		urgent_workspace    $wine    	$wine       	$silver
 		background          $elegant
     	}
@@ -173,6 +173,6 @@ exec --no-startup-id compton -f
 # Others
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id notify-send "Welcome back, Andrea"
-exec --no-startup-id g213-led -fx hwave keys 15
+exec --no-startup-id g213-led -fx hwave keys 10
 exec --no-startup-id xbindkeys
 exec slack
