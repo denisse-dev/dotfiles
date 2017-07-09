@@ -98,6 +98,5 @@
 (add-hook 'css-mode-hook 'skewer-css-mode)
 (add-hook 'html-mode-hook 'skewer-html-mode)
 
-(require 'simple-httpd)
-;; set root folder for httpd server
-(setq httpd-root "/media/storage/Documentos/Fixera/Web/")
+(autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
+(add-to-list 'auto-mode-alist '("\.ino$" . arduino-mode))
