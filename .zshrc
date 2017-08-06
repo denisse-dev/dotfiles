@@ -32,7 +32,7 @@ man() {
 }
 
 # Aliases for a few useful commands
-alias mirrorUpdate="reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirrorUpdate="sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 alias screenfetch="screenfetch -w -c 31,3"
 alias yaourt="yaourt --pager --color"
 alias pacmanGhost="~/.pacman.sh"
