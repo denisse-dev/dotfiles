@@ -157,11 +157,11 @@ bar
 	font pango: SauceCodePro Nerd Font Black 10	
 	colors
 	{
-				    # Border	# Background	# Text
-		focused_workspace   $silver	$silver		$elegant
-		active_workspace    $elegant    $elegant        $orange
-		inactive_workspace  $elegant    $elegant       	$cyan
-		urgent_workspace    $wine    	$wine       	$silver
+                        # Border	# Background	# Text
+		focused_workspace   $silver	  $silver		$elegant
+		active_workspace    $elegant  $elegant  $orange
+		inactive_workspace  $elegant  $elegant 	$cyan
+		urgent_workspace    $wine     $wine     $silver
 		background          $elegant
     	}
 }
@@ -173,6 +173,5 @@ exec --no-startup-id compton -f
 # Others
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id notify-send "Welcome back, Andrea"
-exec --no-startup-id g213-led -fx hwave keys 10
+exec --no-startup-id g213-led -fx hwave keys 25
 exec --no-startup-id xbindkeys
-exec slack
