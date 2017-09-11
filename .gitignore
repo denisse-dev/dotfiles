@@ -3,6 +3,7 @@
 
 # Files currently being tracked by Git and contained in this repo
 !.config/rofi/config
+!.config/terminator/config
 !.i3/*
 !.bragging.jpg
 !.desktop.png
