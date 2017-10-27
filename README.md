@@ -2,7 +2,7 @@
 
 ### In order to use my config you have to install:
 
-#### For the Terminal:
+#### For the Shell:
 1. Arch Linux (Just kidding any distro is fine)
 2. Zsh
 3. Powerlevel9k (You can get it using Oh my Zsh)
