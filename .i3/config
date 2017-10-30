@@ -104,7 +104,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # Always open some programs on specified workspace
-assign [class="google-chrome"]  $workspace1
+assign [class="firefox"]  $workspace1
 assign [class="emacs"]	   	$workspace2
 assign [class="VirtualBox"]	$workspace5
 assign [class="cmus"]		$workspace7
@@ -134,20 +134,20 @@ mode "resize"
 bindsym $mod+r mode "resize"
 
 # Defining colors
-set $cyan	#00afd7
-set $acqua	#00d787 
-set $wine 	#72003e
-set $magenta 	#af005f
-set $orange 	#ff8700
-set $silver 	#e4e4e4
-set $elegant	#1C2331
+set $cyan	   #00afd7
+set $acqua	 #007089 
+set $wine 	 #72003e
+set $magenta #af005f
+set $orange  #ff8700
+set $silver  #e4e4e4
+set $elegant #1C2331
 
-# Set some nice colors      border	background  text	indicator
-client.focused              $cyan	$cyan    $silver   	$white
-client.unfocused            $elegant 	$elegant    $magenta    $white
-client.focused_inactive     $magenta    	$magenta       $silver     $magenta
-client.urgent               $acqua	$acqua	    $silver     $magenta
-client.placeholder          $magenta 	$magenta    $silver     $white
+# Set some nice colors      border	 background text	   indicator
+client.focused              $cyan	   $cyan      $elegant $silver
+client.unfocused            $elegant $elegant   $cyan    $silver
+client.focused_inactive     $acqua   $acqua     $silver  $magenta
+client.urgent               $magenta $magenta   $silver  $magenta
+client.placeholder          $magenta $magenta   $silver  $white
 
 # Start i3blocks to display a workspace bar
 bar
@@ -161,15 +161,19 @@ bar
 		focused_workspace   $silver	  $silver		$elegant
 		active_workspace    $elegant  $elegant  $orange
 		inactive_workspace  $elegant  $elegant 	$cyan
-		urgent_workspace    $wine     $wine     $silver
+		urgent_workspace    $acqua    $acqua    $silver
 		background          $elegant
     	}
 }
 
+# Startup programs
+
 # Wallpaper
 exec_always --no-startup-id feh --bg-scale ~/.bg.jpg
+
 # Compositor for window transparency
 exec --no-startup-id compton -f
+
 # Others
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id notify-send "Welcome back, Andrea"
