@@ -7,6 +7,7 @@
 2. Zsh
 3. Powerlevel9k (You can get it using Oh my Zsh)
 4. acpi (To monitor the battery status)
+5. Screenfetch/Neofetch (To display distribution logo and sys info)
 
 #### For the window manager:
 1. i3-gaps
