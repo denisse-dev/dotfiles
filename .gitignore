@@ -2,8 +2,9 @@
 *
 
 # Files currently being tracked by Git and contained in this repo
-!.config/rofi/config
+!.config/neofetch/config.conf
 !.config/terminator/config
+!.config/rofi/config
 !.i3/*
 !.bragging.jpg
 !.desktop.png
