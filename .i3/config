@@ -140,7 +140,7 @@ set $wine 	 #72003e
 set $magenta #af005f
 set $orange  #ff8700
 set $silver  #e4e4e4
-set $elegant #1C2331
+set $elegant #00002c
 
 # Set some nice colors      border	 background text	   indicator
 client.focused              $cyan	   $cyan      $elegant $silver
@@ -174,8 +174,11 @@ exec_always --no-startup-id feh --bg-scale ~/.bg.jpg
 # Compositor for window transparency
 exec --no-startup-id compton -f
 
-# Others
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id notify-send "Welcome back, Andrea"
+# Set keyboard colour config
 exec --no-startup-id g213-led -fx hwave keys 25
+
+# Others
+exec --no-startup-id notify-send "Welcome back Andrea\!" -i ~/.happy.png
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id setxkbmap latam
 exec --no-startup-id xbindkeys
