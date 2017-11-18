@@ -1,0 +1,61 @@
+# For the benefit of emacs users: -*- shell-script -*-
+###########################
+# xbindkeys configuration #
+###########################
+
+# Increase volume
+"pulseaudio-ctl up"
+   m:0x0 + c:123
+   XF86AudioRaiseVolume
+
+# Decrease volume
+"pulseaudio-ctl down"
+   m:0x0 + c:122
+   XF86AudioLowerVolume
+
+# Mute
+"pulseaudio-ctl mute"
+   m:0x0 + c:121
+   XF86AudioMute
+
+# Next song
+"playerctl next"
+   m:0x0 + c:171
+   XF86AudioNext
+
+# Previous song
+"playerctl previous"
+   m:0x0 + c:173
+   XF86AudioPrev
+
+# Play/pause
+"playerctl play-pause"
+   m:0x0 + c:172
+   XF86AudioPlay
+
+# Stop
+"playerctl stop"
+   m:0x0 + c:174
+   XF86AudioStop
+
+# Fullscreen screenshot
+"xfce4-screenshooter -f -s ~/Imágenes/Screenshots/"
+   m:0x0 + c:107
+   Print
+
+# Window screenshot
+"xfce4-screenshooter -w -s ~/Imágenes/Screenshots/"
+   m:0x1 + c:107
+   Shift + Print
+
+# Region screenshot
+   "xfce4-screenshooter -r -s ~/Imágenes/Screenshots/"
+   m:0x8 + c:64
+   Alt + Alt_L
+
+
+
+
+##################################
+# End of xbindkeys configuration #
+##################################
