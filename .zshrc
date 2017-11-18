@@ -33,7 +33,6 @@ man() {
 
 # Aliases for a few useful commands
 alias mirrorUpdate="sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
-alias screenfetch="screenfetch -w -c 31,3"
 alias yaourt="yaourt --pager --color"
 alias pacmanGhost="~/.pacman.sh"
 alias shivita="toilet -f mono12 -F rainbow 'andrea' | ponythink -f winona"
@@ -43,7 +42,7 @@ alias x="ranger"
 alias c="cmus"
 alias h="htop"
 
-screenfetch
+neofetch
 
 # Font mode for powerlevel9k
 POWERLEVEL9K_MODE="nerdfont-complete"
@@ -66,7 +65,7 @@ POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=$'\ue0b7'
 # Context
 DEFAULT_USER="andrea"
 POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=true
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='white'
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='green'
 POWERLEVEL9K_CONTEXT_TEMPLATE="%F{cyan}%n%f"
 POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='black'
 
