@@ -23,3 +23,12 @@
 ##### Optional but highly recommended:
 1. xfce4-power-manager (Simple way to monitor battery status)
 2. xfce4-notifyd (Helpful to get GTK notifications like current song or battery status)
+
+### I ❤ i3 tiling capabilities:
+![Terminals](https://github.com/da-edra/dotfiles/blob/master/.terminals.png)
+
+### Spacemacs rules!
+![Spacemacs](https://github.com/da-edra/dotfiles/blob/master/.spacemacs.png)
+
+### Watch an old recording of my desktop with some cool things:
+[![Bragging](https://github.com/da-edra/dotfiles/blob/master/.bragging.jpg)](https://www.youtube.com/watch?v=vIjWFfd9Ch0)
