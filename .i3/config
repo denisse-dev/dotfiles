@@ -175,7 +175,7 @@ exec_always --no-startup-id feh --bg-scale ~/.bg.jpg
 exec --no-startup-id compton -f
 
 # Set keyboard colour config
-exec --no-startup-id g213-led -fx hwave keys 25
+exec --no-startup-id g213-led -fx cwave all 0a
 
 # Others
 exec --no-startup-id notify-send "Welcome back Andrea\!" -i ~/.happy.png
