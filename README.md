@@ -30,8 +30,6 @@ I then wrote my own i3-gaps and i3blocks configs to look gorgeous while making m
 
 I'm including some screenshots on this repo and a list of dependencies in case you want to clone/fork my repo :)
 
-#### Made with ❤ by yours truly
-
 ##### For the Shell:
 0. Arch Linux (Just kidding any distro is fine).
 1. [Zsh](https://github.com/zsh-users/zsh) the most powerful shell out there!
@@ -58,5 +56,4 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 ##### The best editor is neither Emacs nor Vim, it's Emacs *and* Vim!
 ![Spacemacs](https://github.com/da-edra/dotfiles/blob/master/.spacemacs.png)
 
-### Watch an old recording of my desktop with some cool things:
-[![Bragging](https://github.com/da-edra/dotfiles/blob/master/.bragging.jpg)](https://www.youtube.com/watch?v=vIjWFfd9Ch0)
+# Made with ❤ by yours truly
