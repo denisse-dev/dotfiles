@@ -2,6 +2,8 @@
 
 ![Desktop](https://github.com/da-edra/dotfiles/blob/master/.desktop.png)
 
+## Welcome to my dotfiles!
+
 ```
        __      __  _____ __         
   ____/ /___  / /_/ __(_) /__  _____
@@ -20,8 +22,6 @@
 / /_/ / / / / /_/ / /  /  __/ /_/ / 
 \__,_/_/ /_/\__,_/_/   \___/\__,_/  
 ```
-                                                        
-## Welcome to my dotfiles!
 
 #### I needed a Zsh + i3-gaps + i3blocks config that was beautiful and functional as well as lightweight and CLI focused. 
 But I was struggling to find a Zsh theme and configs that had what I was looking for so I made my own Zsh theme using Powerlevel9k!
@@ -40,7 +40,7 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 ##### For the window manager:
 1. [i3-gaps](https://github.com/Airblader/i3) i3wm with more features.
 2. [i3blocks](https://github.com/vivien/i3blocks) a replacement for the default i3status with more features.
-3. [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) patched fonts (I use Source Code Pro and Roboto Mono).
+3. [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) patched fonts (I use Source Code Pro).
 4. [Rofi](https://github.com/DaveDavenport/rofi) a window switcher, application launcher and dmenu replacement.
 6. [Compton](https://github.com/chjj/compton) a compositor for X, to get window transparency.
 7. [Playerctl](https://github.com/acrisci/playerctl) to display current song on i3blocks.
