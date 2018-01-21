@@ -28,10 +28,10 @@ But I was struggling to find a Zsh theme and configs that had what I was looking
 
 I then wrote my own i3-gaps and i3blocks configs to look gorgeous while making my workflow smoother.
 
-I'm including some screenshots on this repo and a list of dependencies in case you want to clone/fork my repo :)
+I'm including some screenshots on this repo and a list of dependencies in case you want to clone/fork my config :)
 
 ##### For the Shell:
-0. Arch Linux (Just kidding any distro is fine).
+0. Arch Linux (Just kidding any distro is fine, but Arch is the best!).
 1. [Zsh](https://github.com/zsh-users/zsh) the most powerful shell out there!
 2. [Powerlevel9k](https://github.com/bhilburn/powerlevel9k) the most awesome Powerline theme for ZSH around! (dependency for the Zsh theme I made)
 3. acpi (To monitor the battery status).
