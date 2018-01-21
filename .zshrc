@@ -32,7 +32,8 @@ man() {
 }
 
 # Aliases for a few useful commands
-alias mirrorUpdate="sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirrorUpdate="sudo reflector --latest 250 --protocol https --sort rate --save 
+/etc/pacman.d/mirrorlist"
 alias yaourt="yaourt --pager --color"
 alias pacmanGhost="~/.pacman.sh"
 alias shivita="toilet -f mono12 -F rainbow 'andrea' | ponythink -f winona"
@@ -132,3 +133,4 @@ source $ZSH/oh-my-zsh.sh
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs time battery)
 export GPG_TTY=$(tty)
+
