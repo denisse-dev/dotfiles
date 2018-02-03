@@ -31,7 +31,7 @@ I then wrote my own i3-gaps and i3blocks configs to look gorgeous while making m
 I'm including some screenshots on this repo and a list of dependencies in case you want to clone/fork my config :)
 
 ##### For the Shell:
-0. Arch Linux (Just kidding any distro is fine, but Arch is the best!).
+0. [Arch Linux](https://www.archlinux.org/) (Just kidding any distro is fine, but Arch is the best!).
 1. [Zsh](https://github.com/zsh-users/zsh) the most powerful shell out there!
 2. [Powerlevel9k](https://github.com/bhilburn/powerlevel9k) the most awesome Powerline theme for ZSH around! (dependency for the Zsh theme I made)
 3. acpi (To monitor the battery status).
@@ -50,7 +50,7 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 2. xfce4-notifyd (Helpful to get GTK notifications like current song or battery status)
 
 ### Don't push commits to the wrong branch again!
-##### Be notified of untracked files, commits not yet pushed/pulled, current commit & brach and much more... All from the comfort of your Shell!
+##### Be notified of untracked files, commits not yet pushed/pulled, current commit, current branch and much more... All from the comfort of your Shell!
 ![Spacemacs](https://github.com/da-edra/dotfiles/blob/master/.git-tracking.png)
 
 ### I ❤ i3 tiling capabilities:
@@ -61,7 +61,7 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 ![Spacemacs](https://github.com/da-edra/dotfiles/blob/master/.spacemacs.png)
 
 ### Having fun with the Mandelbrot Set
-##### Mathematics are astonishingly beautiful and interesting (fractal geometry is a good example of that) but Math can be even more beautiful when you're drawing CLI fractals with your Shell!
+##### Mathematics is astonishingly beautiful but it can be even more beautiful when you're drawing CLI fractals with your Shell!
 ![Terminals](https://github.com/da-edra/dotfiles/blob/master/.mandelbrot.png)
 
 # Made with ❤ by yours truly
