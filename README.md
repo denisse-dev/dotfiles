@@ -52,6 +52,9 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 ### I ❤ i3 tiling capabilities:
 ![Terminals](https://github.com/da-edra/dotfiles/blob/master/.terminals.png)
 
+### Having fun with the Mandelbrot Set:
+![Terminals](https://github.com/da-edra/dotfiles/blob/master/.mandelbrot.png)
+
 ### [Spacemacs](https://github.com/syl20bnr/spacemacs) rules! 
 ##### The best editor is neither Emacs nor Vim, it's Emacs *and* Vim!
 ![Spacemacs](https://github.com/da-edra/dotfiles/blob/master/.spacemacs.png)
