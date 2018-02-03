@@ -49,14 +49,19 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 1. xfce4-power-manager (Simple way to monitor battery status)
 2. xfce4-notifyd (Helpful to get GTK notifications like current song or battery status)
 
+### Don't push commits to the wrong branch again!
+##### Be notified of untracked files, commits not yet pushed/pulled, current commit & brach and much more... All from the comfort of your Shell!
+![Spacemacs](https://github.com/da-edra/dotfiles/blob/master/.git-tracking.png)
+
 ### I ❤ i3 tiling capabilities:
 ![Terminals](https://github.com/da-edra/dotfiles/blob/master/.terminals.png)
-
-### Having fun with the Mandelbrot Set:
-![Terminals](https://github.com/da-edra/dotfiles/blob/master/.mandelbrot.png)
 
 ### [Spacemacs](https://github.com/syl20bnr/spacemacs) rules! 
 ##### The best editor is neither Emacs nor Vim, it's Emacs *and* Vim!
 ![Spacemacs](https://github.com/da-edra/dotfiles/blob/master/.spacemacs.png)
+
+### Having fun with the Mandelbrot Set
+##### Mathematics are astonishingly beautiful and interesting (fractal geometry is a good example of that) but Math can be even more beautiful when you're drawing CLI fractals with your Shell!
+![Terminals](https://github.com/da-edra/dotfiles/blob/master/.mandelbrot.png)
 
 # Made with ❤ by yours truly
