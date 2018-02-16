@@ -39,17 +39,17 @@
    XF86AudioStop
 
 # Fullscreen screenshot
-"xfce4-screenshooter -f -s ~/Imágenes/Screenshots/"
+"xfce4-screenshooter -f -s ~/Pictures/Screenshots/"
    m:0x0 + c:107
    Print
 
 # Window screenshot
-"xfce4-screenshooter -w -s ~/Imágenes/Screenshots/"
+"xfce4-screenshooter -w -s ~/Pictures/Screenshots/"
    m:0x1 + c:107
    Shift + Print
 
 # Region screenshot
-   "xfce4-screenshooter -r -s ~/Imágenes/Screenshots/"
+   "xfce4-screenshooter -r -s ~/Pictures/Screenshots/"
    m:0x8 + c:64
    Alt + Alt_L
 
