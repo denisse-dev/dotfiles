@@ -1,11 +1,12 @@
 # Enviroment variables
-export ZSH=/home/andrea/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export LC_ALL=es_MX.UTF-8
 export TERMINAL=terminator
 export PAGER=less
 export VISUAL=emacs
 export TERM="xterm-256color"
+export GPG_TTY=$(tty)
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -18,17 +19,17 @@ fi
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -Uz compinit
 
-# Colored man pages using less as pager
+# Coloured man pages using less as pager
 man() {
     env \
-	LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-	LESS_TERMCAP_md=$(printf "\e[1;31m") \
-	LESS_TERMCAP_me=$(printf "\e[0m") \
-	LESS_TERMCAP_se=$(printf "\e[0m") \
-	LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-	LESS_TERMCAP_ue=$(printf "\e[0m") \
-	LESS_TERMCAP_us=$(printf "\e[1;32m") \
-	man "$@"
+	      LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+	      LESS_TERMCAP_md=$(printf "\e[1;31m") \
+	      LESS_TERMCAP_me=$(printf "\e[0m") \
+	      LESS_TERMCAP_se=$(printf "\e[0m") \
+	      LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+	      LESS_TERMCAP_ue=$(printf "\e[0m") \
+	      LESS_TERMCAP_us=$(printf "\e[1;32m") \
+	      man "$@"
 }
 
 # Aliases for a few useful commands
@@ -42,6 +43,7 @@ alias x="ranger"
 alias c="cmus"
 alias h="htop"
 
+# Show OS info when opening a new terminal
 neofetch
 
 # Font mode for powerlevel9k
@@ -131,5 +133,3 @@ source $ZSH/oh-my-zsh.sh
 # Prompt elements
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs time battery)
-export GPG_TTY=$(tty)
-
