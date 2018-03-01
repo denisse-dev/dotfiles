@@ -5,11 +5,14 @@
 !.config/neofetch/config.conf
 !.config/terminator/config
 !.config/rofi/config
+!.config/rofi/andrea.rasi
 !.i3/*
 !.taipei.jpg
 !.bragging.jpg
 !.desktop.png
 !.terminals.png
+!.rofi-drun.png
+!.rofi-window.png
 !.spacemacs.png
 !.mandelbrot.png
 !.git-tracking.png

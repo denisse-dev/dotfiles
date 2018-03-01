@@ -20,7 +20,7 @@ bindsym $mod+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # Start rofi
-bindsym $mod+d exec rofi -show drun -lines 3 -width 100 -padding 800 -font "Source Code Pro Bold 20"
+bindsym $mod+d exec rofi -show drun
 
 # Move between windows
 bindsym $mod+j focus left
