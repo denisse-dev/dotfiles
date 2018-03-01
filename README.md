@@ -1,4 +1,4 @@
-# Arch Linux [i3-gaps + i3blocks + Zsh + Spacemacs + Neofetch]
+# Arch Linux [i3-gaps + i3blocks + Zsh + Spacemacs + Rofi + Neofetch]
 
 ![Desktop](https://github.com/da-edra/dotfiles/blob/master/.desktop.png)
 
@@ -42,7 +42,7 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 2. [i3blocks](https://github.com/vivien/i3blocks) a replacement for the default i3status with more features.
 3. [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) patched fonts (I use Source Code Pro).
 4. [Rofi](https://github.com/DaveDavenport/rofi) a window switcher, application launcher and dmenu replacement.
-6. [Compton](https://github.com/chjj/compton) a compositor for X, to get window transparency.
+6. [Compton](https://github.com/chjj/compton) a compositor for X, to get window transparency and avoid tearing and vsync issues.
 7. [Playerctl](https://github.com/acrisci/playerctl) to display current song on i3blocks.
 
 ###### Optional but highly recommended:
@@ -52,6 +52,12 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 ### Don't push commits to the wrong branch again!
 ##### Be notified of untracked files, commits not yet pushed/pulled, current commit, current branch and much more... All from the comfort of your Shell!
 ![Spacemacs](https://github.com/da-edra/dotfiles/blob/master/.git-tracking.png)
+
+### My [Rofi](https://github.com/DaveDavenport/rofi) theme:
+##### Displays unobtrusively at the top and allows you to quickly launch applications (even CLI!) or switch within windows.
+###### My theme and config are included in this repo inside .config/rofi/
+![Application launcher](https://github.com/da-edra/dotfiles/blob/master/.rofi-drun.png)
+![Window switcher](https://github.com/da-edra/dotfiles/blob/master/.rofi-window.png)
 
 ### I ❤ i3 tiling capabilities:
 ![Terminals](https://github.com/da-edra/dotfiles/blob/master/.terminals.png)
