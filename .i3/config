@@ -169,7 +169,7 @@ bar
 # Startup programs
 
 # Wallpaper
-exec_always --no-startup-id feh --bg-scale ~/.bg.jpg
+exec_always --no-startup-id feh --bg-scale ~/.taipei.jpg
 
 # Compositor for window transparency
 exec --no-startup-id compton -f

@@ -6,6 +6,7 @@
 !.config/terminator/config
 !.config/rofi/config
 !.i3/*
+!.taipei.jpg
 !.bragging.jpg
 !.desktop.png
 !.terminals.png
