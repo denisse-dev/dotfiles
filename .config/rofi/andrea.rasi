@@ -1,0 +1,147 @@
+/**
+ * ROFI Color theme
+ * User: andrea
+ * Copyright: None
+ */
+
+/* Global settings and color variables */
+* {
+   maincolor:        #8CE000;
+   highlight:        bold #8CE000;
+   urgentcolor:      #C40000;
+
+   fgwhite:          #cfcfcf;
+   blackdarkest:     #1d1d1d;
+   blackwidget:      #262626;
+   blackentry:       #292929;
+   blackselect:      #303030;
+   darkgray:         #848484;
+   scrollbarcolor:   #505050;
+   font: "Source Code Pro Bold 20";
+   background-color: @blackdarkest;
+}
+
+window {
+   background-color: @blackdarkest;
+   anchor: north;
+   location: north;
+   y-offset: 0%;
+}
+
+mainbox {
+   background-color: @blackdarkest;
+   spacing: 0px;
+   children: [inputbar, message, sidebar, listview];
+}
+
+message {
+   padding: 6px 10px;
+   background-color:@blackwidget;
+}
+
+textbox {
+   text-color:@darkgray;
+   background-color:@blackwidget;
+}
+
+listview {
+   fixed-height: false;
+   dynamic: true;
+   scrollbar: true;
+   spacing: 0px;
+   padding: 1px 0px 0px 0px;
+   margin: 0px 0px 1px 0px;
+   background: @blackdarkest;
+}
+
+element {
+   padding: 2px 15px;
+}
+
+element normal.normal {
+   padding: 0px 15px;
+   background-color: @blackentry;
+   text-color: @fgwhite;
+}
+
+element normal.urgent {
+   background-color: @blackentry;
+   text-color: @urgentcolor;
+}
+
+element normal.active {
+   background-color: @blackentry;
+   text-color: @maincolor;
+}
+
+element selected.normal {
+    background-color: @blackselect;
+    text-color: @fgwhite;
+}
+
+element selected.urgent {
+    background-color: @urgentcolor;
+    text-color: @blackdarkest;
+}
+
+element selected.active {
+    background-color: @maincolor;
+    text-color: @blackdarkest;
+}
+
+element alternate.normal {
+    background-color: @blackentry;
+    text-color: @fgwhite;
+}
+
+element alternate.urgent {
+    background-color: @blackentry;
+    text-color: @urgentcolor;
+}
+
+element alternate.active {
+    background-color: @blackentry;
+    text-color: @maincolor;
+}
+
+scrollbar {
+   background-color: @blackwidget;
+   handle-color: @darkgray;
+   handle-width: 15px;
+}
+
+sidebar {
+   background-color: @blackwidget;
+}
+
+button {
+   background-color: @blackwidget;
+   text-color: @darkgray;
+}
+
+button selected {
+    text-color: @maincolor;
+}
+
+inputbar {
+   background-color: @blackdarkest;
+   spacing: 0px;
+}
+
+prompt {
+   padding: 6px 9px;
+   background-color: @maincolor;
+   text-color: @blackwidget;
+}
+
+entry {
+   padding: 6px 10px;
+   background-color: @blackwidget;
+   text-color: @fgwhite;
+}
+
+case-indicator {
+   padding: 6px 10px;
+   text-color: @maincolor;
+   background-color: @blackwidget;
+}
