@@ -49,10 +49,6 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 1. xfce4-power-manager (Simple way to monitor battery status)
 2. xfce4-notifyd (Helpful to get GTK notifications like current song or battery status)
 
-### Don't push commits to the wrong branch again!
-##### Be notified of untracked files, commits not yet pushed/pulled, current commit, current branch and much more... All from the comfort of your Shell!
-![Spacemacs](https://github.com/da-edra/dotfiles/blob/master/.git-tracking.png)
-
 ### My [Rofi](https://github.com/DaveDavenport/rofi) theme:
 ##### Displays unobtrusively at the top and allows you to quickly launch applications (even CLI!) or switch within windows.
 ###### My theme and config are included in this repo inside .config/rofi/
