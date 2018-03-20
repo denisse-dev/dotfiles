@@ -73,4 +73,5 @@ my $title = qx(playerctl $player_arg metadata title);
 exit(0) if $?;
 push(@metadata, $title) if $title;
 
+print "\x{266A} ";
 print(join(" - ", @metadata)) if @metadata;
