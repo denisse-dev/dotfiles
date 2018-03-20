@@ -1,20 +1,3 @@
-# Enviroment variables
-export ZSH="$HOME/.oh-my-zsh"
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-export LC_ALL=es_MX.UTF-8
-export TERMINAL=terminator
-export PAGER=less
-export VISUAL=emacs
-export TERM="xterm-256color"
-export GPG_TTY=$(tty)
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vi'
- else
-   export EDITOR='emacs'
-fi
-
 # Syntax highlighting and tab completion
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -Uz compinit
@@ -37,6 +20,7 @@ alias mirrorUpdate="sudo reflector --latest 250 --protocol https --sort rate --s
 alias yaourt="yaourt --pager --color"
 alias pacmanGhost="~/.pacman.sh"
 alias shivita="toilet -f mono12 -F rainbow 'andrea' | ponythink -f winona"
+alias ls="colorls"
 alias ip="ip -c"
 alias rm="rm -i"
 alias x="ranger"
@@ -56,7 +40,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%K{white}%k"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{white}%F{161} \uf155%f%F{white} %k\ue0b0%f "
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{black}%F{green} \uf155%f%F{black} %k\ue0b0%f "
 
 # Separators
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\ue0b0'
@@ -65,16 +49,16 @@ POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\ue0b2'
 POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=$'\ue0b7'
 
 # Context
-DEFAULT_USER="andrea"
+DEFAULT_USER=$USER
 POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=true
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='green'
 POWERLEVEL9K_CONTEXT_TEMPLATE="%F{cyan}%n%f"
 POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='black'
 
 # Dirs
-POWERLEVEL9K_DIR_HOME_BACKGROUND='blue'
+POWERLEVEL9K_DIR_HOME_BACKGROUND='green'
 POWERLEVEL9K_DIR_HOME_FOREGROUND='black'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='blue'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='green'
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='black'
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='yellow'
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='black'
@@ -86,8 +70,8 @@ POWERLEVEL9K_OS_ICON_BACKGROUND='black'
 POWERLEVEL9K_LINUX_ICON='%F{cyan}\uf300 %F{white}arch%F{cyan}linux%f'
 
 # VCS icons
-POWERLEVEL9K_VCS_GIT_ICON=$'\uf1d3'
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uf113'
+POWERLEVEL9K_VCS_GIT_ICON=$''
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$''
 POWERLEVEL9K_VCS_STAGED_ICON=$'\uf055'
 POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uf071'
 POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uf00d'
@@ -103,7 +87,7 @@ POWERLEVEL9K_VCS_CLEAN_BACKGROUND='black'
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='green'
 
 # VCS CONFIG
-POWERLEVEL9K_SHOW_CHANGESET=true
+POWERLEVEL9K_SHOW_CHANGESET=false
 
 # Status
 POWERLEVEL9K_OK_ICON=$'\uf164'
@@ -118,7 +102,7 @@ POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND='blue'
 
 # Time
 POWERLEVEL9K_TIME_FORMAT="%F{black}\uf017 %D{%I:%M}%f"
-POWERLEVEL9K_TIME_BACKGROUND='blue'
+POWERLEVEL9K_TIME_BACKGROUND='green'
 
 # Command auto-correction.
 ENABLE_CORRECTION="true"
