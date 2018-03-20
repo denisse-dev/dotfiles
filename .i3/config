@@ -8,7 +8,7 @@ new_window pixel
 gaps inner 6
 
 # Font for window titles.
-font pango: Source Code Pro Black 11
+font pango: SauceCodePro Nerd Font Black 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -76,7 +76,7 @@ set $workspace3 "3:  terminal"
 set $workspace4 "4:  files"
 set $workspace5 "5:  virtual machines"
 set $workspace6 "6:  status"
-set $workspace7 "7:  music"
+set $workspace7 "7: ♬ music"
 set $workspace8 "8:  random"
 
 # Switch to workspace
