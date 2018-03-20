@@ -49,14 +49,17 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 1. xfce4-power-manager (Simple way to monitor battery status)
 2. xfce4-notifyd (Helpful to get GTK notifications like current song or battery status)
 
+### I ❤ i3 tiling capabilities:
+![Terminals](https://github.com/da-edra/dotfiles/blob/master/.terminals.png)
+
+### Zsh is the best:
+![Zsh Features](https://github.com/da-edra/dotfiles/blob/master/.zsh-features.png)
+
 ### My [Rofi](https://github.com/DaveDavenport/rofi) theme:
 ##### Displays unobtrusively at the top and allows you to quickly launch applications (even CLI!) or switch within windows.
 ###### My theme and config are included in this repo inside .config/rofi/
 ![Application launcher](https://github.com/da-edra/dotfiles/blob/master/.rofi-drun.png)
 ![Window switcher](https://github.com/da-edra/dotfiles/blob/master/.rofi-window.png)
-
-### I ❤ i3 tiling capabilities:
-![Terminals](https://github.com/da-edra/dotfiles/blob/master/.terminals.png)
 
 ### [Spacemacs](https://github.com/syl20bnr/spacemacs) rules! 
 ##### The best editor is neither Emacs nor Vim, it's Emacs *and* Vim!
