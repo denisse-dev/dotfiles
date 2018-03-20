@@ -17,7 +17,7 @@
    blackselect:      #303030;
    darkgray:         #848484;
    scrollbarcolor:   #505050;
-   font: "Source Code Pro Bold 20";
+   font: "Source Code Pro Bold 15";
    background-color: @blackdarkest;
 }
 
