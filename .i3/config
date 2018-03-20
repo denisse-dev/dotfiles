@@ -178,7 +178,9 @@ exec --no-startup-id compton -f
 exec --no-startup-id g213-led -fx cwave all 0a
 
 # Others
-exec --no-startup-id notify-send "Welcome back Andrea\!" -i ~/.happy.png
+exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.happy.png
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id setxkbmap latam
 exec --no-startup-id xbindkeys
+
+for_window [class="Yad"] floating enable
