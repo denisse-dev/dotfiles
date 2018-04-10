@@ -334,6 +334,7 @@ you should place your code here."
   (setq powerline-default-separator 'arrow)
   (spaceline-toggle-minor-modes-off)
   (spaceline-toggle-buffer-size-off)
+  (spaceline-toggle-line-column-off)
 
   ;; Auto-load PDF when compiling LaTeX
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
