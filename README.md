@@ -23,6 +23,8 @@
 \__,_/_/ /_/\__,_/_/   \___/\__,_/  
 ```
 
+[![Built with Spacemacs](https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg)](http://spacemacs.org)
+
 #### I needed a Zsh + i3-gaps + i3blocks config that was beautiful and functional as well as lightweight and CLI focused. 
 But I was struggling to find a Zsh theme and configs that had what I was looking for so I made my own Zsh theme using Powerlevel9k!
 

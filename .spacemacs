@@ -333,6 +333,7 @@ you should place your code here."
   (set-face-attribute 'spaceline-evil-emacs nil :foreground "#151515" :background "#63A600")
   (setq powerline-default-separator 'arrow)
   (spaceline-toggle-minor-modes-off)
+  (spaceline-toggle-buffer-size-off)
 
   ;; Auto-load PDF when compiling LaTeX
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
