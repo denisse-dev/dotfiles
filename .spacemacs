@@ -334,9 +334,6 @@ you should place your code here."
   (setq powerline-default-separator 'arrow)
   (spaceline-toggle-minor-modes-off)
 
-  ;; Uses vanilla Bash instead of Zsh inside Emacs
-  (setq-default shell-file-name "/bin/bash")
-
   ;; Auto-load PDF when compiling LaTeX
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
