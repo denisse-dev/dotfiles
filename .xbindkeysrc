@@ -39,22 +39,19 @@
    XF86AudioStop
 
 # Fullscreen screenshot
-"xfce4-screenshooter -f -s -d 1 ~/Pictures/Screenshots/"
+"xfce4-screenshooter -f -s ~/Pictures/Screenshots/"
    m:0x0 + c:107
    Print
 
 # Window screenshot
-"xfce4-screenshooter -w -s -d 1~/Pictures/Screenshots/"
+"xfce4-screenshooter -w -s ~/Pictures/Screenshots/"
    m:0x1 + c:107
    Shift + Print
 
 # Region screenshot
-   "xfce4-screenshooter -r -s ~/Pictures/Screenshots/"
-   m:0x8 + c:64
-   Alt + Alt_L
-
-
-
+"xfce4-screenshooter -r -s ~/Pictures/Screenshots/"
+   m:0x14 + c:107
+   Control+Mod2 + Print
 
 ##################################
 # End of xbindkeys configuration #

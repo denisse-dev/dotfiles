@@ -117,4 +117,3 @@ source $ZSH/oh-my-zsh.sh
 # Prompt elements
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs time battery)
-
