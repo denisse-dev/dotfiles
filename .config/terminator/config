@@ -23,7 +23,7 @@
 [profiles]
   [[default]]
     background_color = "#00002c"
-    background_darkness = 0.9
+    background_darkness = 0.8
     background_type = transparent
     cursor_color = "#e9422b"
     font = SauceCodePro Nerd Font Semi-Bold 14
