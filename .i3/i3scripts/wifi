@@ -35,12 +35,12 @@ echo $QUALITY% # full text
 echo $QUALITY% # short text
 
 # color
-if [[ $QUALITY -ge 80 ]]; then
+if [[ $QUALITY -ge 60 ]]; then
     echo "#4ec2f7"
-elif [[ $QUALITY -lt 80 ]]; then
-    echo "#8CE000"
 elif [[ $QUALITY -lt 60 ]]; then
-    echo "#fd971f"
+    echo "#8CE000"
 elif [[ $QUALITY -lt 40 ]]; then
+    echo "#fd971f"
+elif [[ $QUALITY -lt 20 ]]; then
     echo "#f92672"
 fi

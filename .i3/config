@@ -134,31 +134,33 @@ mode "resize"
 bindsym $mod+r mode "resize"
 
 # Defining colors
-set $cyan	   #00afd7
+set $cyan	   #4ec2f7
 set $acqua	 #007089 
 set $wine 	 #72003e
 set $magenta #af005f
 set $orange  #ff8700
 set $silver  #e4e4e4
-set $elegant #00002c
+set $toxic   #8EC000
+set $elegant #00002c99
 
 # Set some nice colors      border	 background text	   indicator
-client.focused              $cyan	   $cyan      $elegant $silver
-client.unfocused            $elegant $elegant   $cyan    $silver
-client.focused_inactive     $acqua   $acqua     $silver  $magenta
+client.focused              $cyan	   $cyan      $elegant $cyan
+client.unfocused            $elegant $elegant   $cyan    $elegant
+client.focused_inactive     $acqua   $acqua     $silver  $acqua
 client.urgent               $magenta $magenta   $silver  $magenta
-client.placeholder          $magenta $magenta   $silver  $white
+client.placeholder          $magenta $magenta   $silver  $magenta
 
 # Start i3blocks to display a workspace bar
 bar
 {
 	position top
 	status_command i3blocks
+  i3bar_command i3bar -t
 	font pango: SauceCodePro Nerd Font Black 10	
 	colors
 	{
                         # Border	# Background	# Text
-		focused_workspace   $silver	  $silver		$elegant
+		focused_workspace   $silver   $silver	  $elegant
 		active_workspace    $elegant  $elegant  $orange
 		inactive_workspace  $elegant  $elegant 	$cyan
 		urgent_workspace    $acqua    $acqua    $silver
@@ -169,7 +171,7 @@ bar
 # Startup programs
 
 # Wallpaper
-exec_always --no-startup-id feh --bg-scale ~/.taipei.jpg
+exec_always --no-startup-id feh --bg-scale ~/.cyberpunk.jpg
 
 # Compositor for window transparency
 exec --no-startup-id compton -f
