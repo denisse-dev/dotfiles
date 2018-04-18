@@ -1,13 +1,32 @@
 # Ignore files not tracked by Git
 *
 
-# Files currently being tracked by Git and contained in this repo
+# Config files, scripts
 !.config/neofetch/config.conf
 !.config/terminator/config
 !.config/rofi/config
 !.config/rofi/andrea.rasi
 !.i3/*
-!.taipei.jpg
+!.spacemacs
+!.gitignore
+!.i3blocks.conf
+!.pacman.sh
+!.monitor.sh
+!.zshrc
+!.xbindkeysrc
+!.profile
+!README.md
+
+# Daemons
+!.config/systemd/user/background-changer.service
+!.config/systemd/user/background-changer.timer
+!.config/systemd/user/macspoof@wlp8s0.service
+!.config/systemd/user/openvpn-client@.service
+
+# Images
+!.wallpapers/*
+!.happy.png
+!.zsh-features.png
 !.cyberpunk.jpg
 !.bragging.jpg
 !.desktop.png
@@ -17,14 +36,3 @@
 !.spacemacs.png
 !.mandelbrot.png
 !.git-tracking.png
-!.spacemacs
-!.gitignore
-!.i3blocks.conf
-!.pacman.sh
-!.zshrc
-!.zshrc
-!.xbindkeysrc
-!.profile
-!.happy.png
-!.zsh-features.png
-!README.md

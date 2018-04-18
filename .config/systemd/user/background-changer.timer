@@ -1,0 +1,8 @@
+[Unit]
+Description=Background changer with feh
+
+[Timer]
+OnUnitActiveSec=1m
+
+[Install]
+WantedBy=timers.target

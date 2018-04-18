@@ -1,0 +1,9 @@
+[Unit]
+Description=Background changer with feh
+
+[Service]
+ExecStart=/usr/bin/feh -z -r /home/andrea/.wallpapers --bg-scale --no-fehbg
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target
