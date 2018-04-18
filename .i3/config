@@ -76,7 +76,7 @@ set $workspace3 "3:  terminal"
 set $workspace4 "4:  files"
 set $workspace5 "5:  virtual machines"
 set $workspace6 "6:  status"
-set $workspace7 "7: ♬ music"
+set $workspace7 "7: ♫ music"
 set $workspace8 "8:  random"
 
 # Switch to workspace
@@ -104,10 +104,10 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # Always open some programs on specified workspace
-assign [class="firefox"]  $workspace1
+assign [class="firefox"]    $workspace1
 assign [class="emacs"]	   	$workspace2
 assign [class="VirtualBox"]	$workspace5
-assign [class="cmus"]		$workspace7
+assign [class="cmus"]		    $workspace7
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
@@ -134,13 +134,19 @@ mode "resize"
 bindsym $mod+r mode "resize"
 
 # Defining colors
-set $cyan	   #4ec2f7
-set $acqua	 #007089 
-set $wine 	 #72003e
-set $magenta #af005f
+
+# RGB
+set $cyan0	 #4ec2f7
+set $silver0 #e4e4e4
 set $orange  #ff8700
-set $silver  #e4e4e4
-set $toxic   #8EC000
+
+# RGBA
+set $cyan	   #4ec2f799
+set $acqua	 #00708999
+set $wine 	 #72003e99
+set $magenta #af005f99
+set $silver  #e4e4e499
+set $toxic   #8EC00099
 set $elegant #00002c99
 
 # Set some nice colors      border	 background text	   indicator
@@ -160,33 +166,21 @@ bar
 	colors
 	{
                         # Border	# Background	# Text
-		focused_workspace   $silver   $silver	  $elegant
+		focused_workspace   $silver0  $silver0  $elegant
 		active_workspace    $elegant  $elegant  $orange
-		inactive_workspace  $elegant  $elegant 	$cyan
-		urgent_workspace    $acqua    $acqua    $silver
+		inactive_workspace  $elegant  $elegant 	$cyan0
+		urgent_workspace    $acqua    $acqua    $silver0
 		background          $elegant
     	}
 }
 
 # Startup programs
-
-# Wallpaper
-exec_always --no-startup-id feh --bg-scale ~/.cyberpunk.jpg
-
-# Compositor for window transparency
-exec --no-startup-id compton -f
-
-# Set keyboard colour config
-exec_always --no-startup-id g213-led -r 1 ff0000 & # Red
-exec_always --no-startup-id g213-led -r 2 f0ff00 & # Yellow
-exec_always --no-startup-id g213-led -r 3 0fff00 & # Green
-exec_always --no-startup-id g213-led -r 4 0046ce & # Blue
-exec_always --no-startup-id g213-led -r 5 9900c9 & # Purple
-
-# Others
-exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.happy.png
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id setxkbmap latam
-exec --no-startup-id xbindkeys
-
-for_window [class="Yad"] floating enable
+exec_always --no-startup-id feh --bg-scale ~/.wallpapers/cyberpunk.jpg # Wallpaper
+exec_always --no-startup-id ~/.monitor.sh # Automatically switch within monitors
+exec --no-startup-id g213-led -fx hwave keys 0a # Set the keyboard colours
+exec --no-startup-id setxkbmap latam # Set the keyboard layout
+exec --no-startup-id xbindkeys # Load keyboard shortcuts
+exec --no-startup-id compton -f # Compositor for window transparency
+exec --no-startup-id emacs --daemon=instance1 # Daemonize Emacs
+exec --no-startup-id xfce4-power-manager # To monitor batttery
+exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.happy.png # Greeting on startup
