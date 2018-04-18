@@ -34,7 +34,6 @@ You should not put any user code in this function besides modifying the variable
      auto-completion
      better-defaults
      colors
-     git
      haskell
      helm
      html
@@ -316,8 +315,15 @@ in `dotspacemacs/user-config' first."
         '(
           ;; requires the theming layer
           (spolsky
-           (powerline-active1 :foreground "#e9e2cb" :background "#2075c7" :inverse-video nil)
-           (powerline-active2 :foreground "#e9e2cb" :background "#151515" :inverse-video nil)
+           (default :background "#00002C")
+           (hl-line :background "#000016")
+           (region :background "#2075c7")
+           (mode-line :background "#00152b")
+           (mode-inactive :background "#00152b")
+           (fringe :background "#00002A")
+           (linum :background "#00002A" :foreground "#4ec2f7")
+           (powerline-active1 :foreground "#DEDEDE" :background "#2075c7" :inverse-video nil)
+           (powerline-active2 :foreground "#EEDC82" :background "#151515" :inverse-video nil)
            ))))
 
 (defun dotspacemacs/user-config ()
@@ -328,9 +334,12 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;; Transparency at startup
+  (spacemacs/enable-transparency)
+
   ;; Changes to Spaceline
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-  (set-face-attribute 'spaceline-evil-emacs nil :foreground "#151515" :background "#63A600")
+  (set-face-attribute 'spaceline-evil-emacs nil :background "#63A600" :foreground "#151515")
   (setq powerline-default-separator 'arrow)
   (spaceline-toggle-minor-modes-off)
   (spaceline-toggle-buffer-size-off)
@@ -372,7 +381,7 @@ you should place your code here."
    (quote
     ("8b63fe87e15a2721eb208480bf0829b033ee568dd03bde040e4d53a1b2d071f9" "22a3a2a124792c635cef4e9b91eedcceccf5513de67a62b31ce96cc571e3d989" "c48551a5fb7b9fc019bf3f61ebf14cf7c9cdca79bcb2a4219195371c02268f11" default)))
  '(evil-want-Y-yank-to-eol nil)
- '(linum-format " %7i ")
+ '(linum-format " %d")
  '(package-selected-packages
    (quote
     (yaml-mode spaceline-all-the-icons all-the-icons memoize org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot pdf-tools tablist origami xterm-color shell-pop ranger multi-term flyspell-popup eshell-z eshell-prompt-extras esh-help web-beautify sql-indent livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc insert-shebang fish-mode company-tern tern company-shell coffee-mode unfill rainbow-mode rainbow-identifiers projectile-rails inflections mwim feature-mode color-identifiers-mode company-auctex auctex-latexmk yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode intero hy-mode dash-functional hlint-refactor hindent helm-pydoc helm-hoogle haskell-snippets flycheck-haskell cython-mode company-ghci company-ghc ghc haskell-mode company-cabal company-anaconda cmm-mode anaconda-mode pythonic web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby mmm-mode markdown-toc markdown-mode helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete auctex smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub let-alist with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
