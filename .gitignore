@@ -6,6 +6,11 @@
 !.config/terminator/config
 !.config/rofi/config
 !.config/rofi/andrea.rasi
+!.config/htop/htoprc
+!.config/cmus/autosave
+!.config/gtk-3.0/settings.ini
+!.config/ranger/rc.conf
+!.config/ranger/rifle.conf
 !.i3/*
 !.spacemacs
 !.gitignore
