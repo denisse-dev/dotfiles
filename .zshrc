@@ -111,7 +111,8 @@ ENABLE_CORRECTION="true"
 HIST_STAMPS="mm/dd/yyyy"
 
 # Plugins to load
-plugins=(git)
+plugins=(git
+        virtualenv)
 source $ZSH/oh-my-zsh.sh
 
 # Prompt elements
