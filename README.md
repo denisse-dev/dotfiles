@@ -38,6 +38,7 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 2. [Powerlevel9k](https://github.com/bhilburn/powerlevel9k) the most awesome Powerline theme for ZSH around! (dependency for the Zsh theme I made)
 3. acpi (To monitor the battery status).
 4. [neofetch](https://github.com/dylanaraps/neofetch) a fast, highly customizable system info script.
+5. [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) patched fonts (I use Source Code Pro).
 
 ##### For the window manager:
 1. [i3-gaps](https://github.com/Airblader/i3) i3wm with more features.
@@ -46,6 +47,7 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 4. [Rofi](https://github.com/DaveDavenport/rofi) a window switcher, application launcher and dmenu replacement.
 6. [Compton](https://github.com/chjj/compton) a compositor for X, to get window transparency and avoid tearing and vsync issues.
 7. [Playerctl](https://github.com/acrisci/playerctl) to display current song on i3blocks.
+3. [Feh](https://github.com/derf/feh) to set random wallpapers that change every minute with a systemd timer.
 
 ###### Optional but highly recommended:
 1. xfce4-power-manager (Simple way to monitor battery status)
