@@ -31,12 +31,4 @@
 # Images
 !.wallpapers/*
 !.happy.png
-!.zsh-features.png
-!.bragging.jpg
-!.desktop.png
-!.terminals.png
-!.rofi-drun.png
-!.rofi-window.png
-!.spacemacs.png
-!.mandelbrot.png
-!.git-tracking.png
+!.screenshots/*
