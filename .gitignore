@@ -30,5 +30,8 @@
 
 # Images
 !.wallpapers/*
-!.happy.png
+!.images/*
 !.screenshots/*
+
+# Donations
+!.donations/*
