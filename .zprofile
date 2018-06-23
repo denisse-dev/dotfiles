@@ -1,6 +1,6 @@
 # Enviroment variables
 export ZSH="$HOME/.oh-my-zsh"
-export LC_ALL=es_MX.UTF-8
+export LC_ALL=en_US.UTF-8
 export TERMINAL=terminator
 export PAGER=less
 export VISUAL=emacs
