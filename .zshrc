@@ -20,6 +20,7 @@ alias mirrorUpdate="sudo reflector --latest 250 --protocol https --sort rate --s
 alias yaourt="yaourt --pager --color"
 alias pacmanGhost="~/.pacman.sh"
 alias shivita="toilet -f mono12 -F rainbow 'andrea' | ponythink -f winona"
+alias "git commit"="git commit -S"
 alias ls="colorls"
 alias ip="ip -c"
 alias rm="rm -i"
@@ -40,7 +41,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%K{white}%k"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{black}%F{green} \uf155%f%F{black} %k\ue0b0%f "
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{black}%F{green} \uf155 %f%F{black} %k\ue0b0%f "
 
 # Separators
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\ue0b0'
@@ -67,7 +68,7 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
 # OS segment
 POWERLEVEL9K_OS_ICON_BACKGROUND='black'
-POWERLEVEL9K_LINUX_ICON='%F{cyan}\uf300 %F{white}arch%F{cyan}linux%f'
+POWERLEVEL9K_LINUX_ICON='%F{cyan} \uf303 %F{white} arch %F{cyan}linux%f'
 
 # VCS icons
 POWERLEVEL9K_VCS_GIT_ICON=$''
