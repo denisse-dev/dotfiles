@@ -1,4 +1,5 @@
 [global_config]
+  enabled_plugins = TerminatorThemes, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   inactive_color_offset = 1.0
   tab_position = hidden
   title_font = 3270Medium Nerd Font Bold 14
@@ -23,18 +24,66 @@
 [profiles]
   [[default]]
     background_color = "#00002c"
-    background_darkness = 0.85
-    background_type = transparent
-    cursor_color = "#e9422b"
-    font = SauceCodePro Nerd Font Semi-Bold 14
-    foreground_color = "#57d3e2"
-    icon_bell = False
-    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
-    scroll_background = False
+    cursor_color = "#bbbbbb"
+    font = SauceCodePro Nerd Font Bold 14
+    foreground_color = "#ffffff"
+    palette = "#000000:#f9555f:#21b089:#fef02a:#589df6:#944d95:#1f9ee7:#bbbbbb:#555555:#fa8c8f:#35bb9a:#ffff55:#589df6:#e75699:#3979bc:#ffffff"
     scrollback_infinite = True
     scrollbar_position = hidden
     show_titlebar = False
     use_system_font = False
-    visible_bell = True
+  [[Aci]]
+    background_color = "#0d1926"
+    cursor_color = "#c4e9ff"
+    foreground_color = "#b4e1fd"
+    palette = "#363636:#ff0883:#83ff08:#ff8308:#0883ff:#8308ff:#08ff83:#b6b6b6:#363636:#ff0883:#83ff08:#ff8308:#0883ff:#8308ff:#08ff83:#b6b6b6"
+  [[Ayu mirage]]
+    background_color = "#212733"
+    cursor_color = "#FFD580"
+    foreground_color = "#d9d7ce"
+    palette = "#212733:#ff3333:#bae67e:#ffd580:#5ccfe6:#d4bfff:#5ccfe6:#3d4752:#3e4b59:#ff3333:#bae67e:#ffd580:#5ccfe6:#d4bfff:#5ccfe6:#eeeeec"
+  [[Chalk]]
+    background_color = "#2b2d2e"
+    cursor_color = "#708284"
+    foreground_color = "#d2d8d9"
+    palette = "#7d8b8f:#b23a52:#789b6a:#b9ac4a:#2a7fac:#bd4f5a:#44a799:#d2d8d9:#888888:#f24840:#80c470:#ffeb62:#4196ff:#fc5275:#53cdbd:#d2d8d9"
+  [[Chesterish]]
+    background_color = "#293340"
+    cursor_color = "#2c85f7"
+    foreground_color = "#cdd2e9"
+    palette = "#293340:#e17e85:#61ba86:#ffec8e:#4cb2ff:#be86e3:#2dced0:#cdd2e9:#546386:#e17e85:#61ba86:#ffec8e:#4cb2ff:#be86e3:#2dced0:#cdd2e9"
+  [[Fideloper]]
+    background_color = "#292f33"
+    cursor_color = "#d4605a"
+    foreground_color = "#dbdae0"
+    palette = "#292f33:#cb1e2d:#edb8ac:#b7ab9b:#2e78c2:#c0236f:#309186:#eae3ce:#092028:#d4605a:#d4605a:#a86671:#7c85c4:#5c5db2:#819090:#fcf4df"
+  [[FirefoxDev]]
+    background_color = "#0e1011"
+    cursor_color = "#708284"
+    foreground_color = "#7c8fa4"
+    palette = "#002831:#e63853:#5eb83c:#a57706:#359ddf:#d75cff:#4b73a2:#dcdcdc:#001e27:#e1003f:#1d9000:#cd9409:#006fc0:#a200da:#005794:#e2e2e2"
+  [[Firewatch]]
+    background_color = "#1e2027"
+    cursor_color = "#f6f7ec"
+    foreground_color = "#9ba2b2"
+    palette = "#585f6d:#d95360:#5ab977:#dfb563:#4d89c4:#d55119:#44a8b6:#e6e5ff:#585f6d:#d95360:#5ab977:#dfb563:#4c89c5:#d55119:#44a8b6:#e6e5ff"
+  [[Galaxy]]
+    background_color = "#1d2837"
+    cursor_color = "#bbbbbb"
+    font = InconsolataGo Nerd Font Bold 15
+    foreground_color = "#ffffff"
+    palette = "#000000:#f9555f:#21b089:#fef02a:#589df6:#944d95:#1f9ee7:#bbbbbb:#555555:#fa8c8f:#35bb9a:#ffff55:#589df6:#e75699:#3979bc:#ffffff"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[Grape]]
+    background_color = "#171423"
+    cursor_color = "#a288f7"
+    foreground_color = "#9f9fa1"
+    palette = "#2d283f:#ed2261:#1fa91b:#8ddc20:#487df4:#8d35c9:#3bdeed:#9e9ea0:#59516a:#f0729a:#53aa5e:#b2dc87:#a9bcec:#ad81c2:#9de3eb:#a288f7"
+  [[New Profile]]
+    cursor_color = "#aaaaaa"
   [[Whatever]]
     background_type = transparent
+    cursor_color = "#aaaaaa"
