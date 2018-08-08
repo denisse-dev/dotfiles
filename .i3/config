@@ -70,14 +70,16 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # Name the workspaces
-set $workspace1 "1:  www"
-set $workspace2 "2:  code"
-set $workspace3 "3:  terminal"
-set $workspace4 "4:  files"
-set $workspace5 "5:  virtual machines"
-set $workspace6 "6:  status"
-set $workspace7 "7: ♫ music"
-set $workspace8 "8:  random"
+set $workspace1 "    "
+set $workspace2 "    "
+set $workspace3 "    "
+set $workspace4 "    "
+set $workspace5 "    "
+set $workspace6 "    "
+set $workspace7 "    "
+set $workspace8 "  ♫  "
+set $workspace9 "    "
+set $workspace0 "    "
 
 # Switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -88,8 +90,8 @@ bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace $workspace6
 bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace0
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -100,14 +102,15 @@ bindsym $mod+Shift+5 move container to workspace $workspace5
 bindsym $mod+Shift+6 move container to workspace $workspace6
 bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace0
 
 # Always open some programs on specified workspace
 assign [class="firefox"]    $workspace1
 assign [class="emacs"]	   	$workspace2
 assign [class="VirtualBox"]	$workspace5
 assign [class="cmus"]		    $workspace7
+assign [class="spotify"]		    $workspace7
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
@@ -147,7 +150,7 @@ set $wine 	 #72003e99
 set $magenta #af005f99
 set $silver  #e4e4e499
 set $toxic   #8EC00099
-set $elegant #00002c99
+set $elegant #00002c00
 
 # Set some nice colors      border	 background text	   indicator
 client.focused              $cyan	   $cyan      $elegant $cyan
@@ -162,7 +165,7 @@ bar
 	position top
 	status_command i3blocks
   i3bar_command i3bar -t
-	font pango: SauceCodePro Nerd Font Black 10	
+	font pango: SauceCodePro Nerd Font Black 10
 	colors
 	{
                         # Border	# Background	# Text
@@ -175,7 +178,7 @@ bar
 }
 
 # Startup programs
-exec_always --no-startup-id feh --bg-scale ~/.wallpapers/cyberpunk.jpg # Wallpaper
+exec_always --no-startup-id feh --bg-scale ~/.wallpapers/forest-nightscape.jpg # Wallpaper
 exec_always --no-startup-id ~/.monitor.sh # Automatically switch within monitors
 exec --no-startup-id g213-led -fx hwave keys 0a # Set the keyboard colours
 exec --no-startup-id setxkbmap latam # Set the keyboard layout

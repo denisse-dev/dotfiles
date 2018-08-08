@@ -145,7 +145,7 @@ values."
                                :size 16
                                :weight bold
                                :width normal
-                               :powerline-scale 1)
+                               :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -240,11 +240,11 @@ values."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 95
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-inactive-transparency 90
+   dotspacemacs-inactive-transparency 75
    ;; If non nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
    ;; If non nil show the color guide hint for transient state keys. (default t)
@@ -325,7 +325,8 @@ in `dotspacemacs/user-config' first."
            (linum :background "#00002A" :foreground "#4ec2f7")
            (powerline-active1 :foreground "#DEDEDE" :background "#2075c7" :inverse-video nil)
            (powerline-active2 :foreground "#EEDC82" :background "#151515" :inverse-video nil)
-           ))))
+           )))
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -335,12 +336,9 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  ;; Transparency at startup
-  (spacemacs/enable-transparency)
-
   ;; Changes to Spaceline
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-  (set-face-attribute 'spaceline-evil-emacs nil :background "#63A600" :foreground "#151515")
+  (set-face-attribute 'spaceline-evil-emacs nil :background "#21b089" :foreground "#151515")
   (setq powerline-default-separator 'arrow)
   (spaceline-toggle-minor-modes-off)
   (spaceline-toggle-buffer-size-off)
@@ -400,5 +398,5 @@ you should place your code here."
  '(mode-inactive ((t (:background "#00152b"))))
  '(mode-line ((t (:background "#00152b"))))
  '(powerline-active1 ((t (:foreground "#e9e2cb" :background "#2075c7" :inverse-video nil))))
- '(powerline-active2 ((t (:foreground "#2075c7" :background "#e9e2cb" :inverse-video nil))))
+ '(powerline-active2 ((t (:foreground "#EEDC82" :background "#151515" :inverse-video nil))))
  '(region ((t (:background "#2075c7")))))

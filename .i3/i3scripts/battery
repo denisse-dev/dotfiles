@@ -66,25 +66,27 @@ if ($acpi =~ /(\d\d:\d\d):/) {
 print "$full_text\n";
 print "$short_text\n";
 
-# Use a different colour for battery status
-if ($status eq 'Discharging') {
-    if ($percent < 20) {
-        print "#f77b71\n";
-    } elsif ($percent < 40) {
-        print "#ef6191\n";
-    } elsif ($percent < 60) {
-        print "#b967c7\n";
-    } elsif ($percent < 85) {
-        print "#7884cb\n";
-    } elsif ($percent <= 100) {
-        print "#4ec2f7\n";
-    } elsif ($percent < 5) {
-        exit(33);
-    }
-}
-
-else {
-    print "#ffb64c\n";
-}
+###############################################
+# # Use a different colour for battery status #
+# if ($status eq 'Discharging') {             #
+#     if ($percent < 20) {                    #
+#         print "#f77b71\n";                  #
+#     } elsif ($percent < 40) {               #
+#         print "#ef6191\n";                  #
+#     } elsif ($percent < 60) {               #
+#         print "#b967c7\n";                  #
+#     } elsif ($percent < 85) {               #
+#         print "#7884cb\n";                  #
+#     } elsif ($percent <= 100) {             #
+#         print "#4ec2f7\n";                  #
+#     } elsif ($percent < 5) {                #
+#         exit(33);                           #
+#     }                                       #
+# }                                           #
+#                                             #
+# else {                                      #
+#     print "#ffb64c\n";                      #
+# }                                           #
+###############################################
 
 exit(0);
