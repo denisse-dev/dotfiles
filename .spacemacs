@@ -330,6 +330,13 @@ in `dotspacemacs/user-config' first."
            (powerline-active1 :foreground "#DEDEDE" :background "#2075c7" :inverse-video nil)
            (powerline-active2 :foreground "#EEDC82" :background "#151515" :inverse-video nil)
            )))
+
+  ;; Force golang-mode to respect 3 spaces for tab width
+  (add-hook 'go-mode-hook
+            (lambda ()
+              (setq indent-tabs-mode 1)
+              (setq tab-width 3)))
+
   )
 
 (defun dotspacemacs/user-config ()
