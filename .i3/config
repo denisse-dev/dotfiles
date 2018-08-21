@@ -110,7 +110,21 @@ assign [class="firefox"]    $workspace1
 assign [class="emacs"]	   	$workspace2
 assign [class="VirtualBox"]	$workspace5
 assign [class="cmus"]		    $workspace7
-assign [class="spotify"]		    $workspace7
+assign [class="spotify"]		$workspace7
+
+# Enable float for some windows
+for_window [class="^Pavucontrol$"] floating enable
+for_window [class="^Arandr$"] floating enable
+for_window [class="^Steam$" title="^Friends List$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload

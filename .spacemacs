@@ -30,6 +30,7 @@ You should not put any user code in this function besides modifying the variable
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     go
      nginx
      yaml
      auto-completion
@@ -49,6 +50,7 @@ You should not put any user code in this function besides modifying the variable
      spell-checking
      syntax-checking
      theming
+     git
      version-control
      ;; Use colorize for variables only
      (colors :variables colors-colorize-identifiers 'variables)
@@ -59,6 +61,8 @@ You should not put any user code in this function besides modifying the variable
      ;; Enable dictionary for flyspell and auto-competion
      (spell-checking :variables spell-checking-enable-auto-dictionary t)
      (spell-checking :variables enable-flyspell-auto-completion t)
+     ;; Use vmd (Github-flavored live preview)
+     (markdown :variables markdown-live-preview-engine 'vmd)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
