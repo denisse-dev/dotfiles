@@ -15,11 +15,17 @@ else
 fi
 
 # Ruby gems
-PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-export GEM_HOME=$HOME/.gem
+#PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+#export GEM_HOME=$HOME/.gem
+
+# Rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 # Node.js
 PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
+
 # PIP
 export PATH=$HOME/.local/bin:$PATH
 
