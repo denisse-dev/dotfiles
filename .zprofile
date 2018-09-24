@@ -33,3 +33,6 @@ export PATH=$HOME/.local/bin:$PATH
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
 fi
+
+# Go
+export PATH="$PATH:$HOME/go/bin"

@@ -4,6 +4,7 @@
 # Config files, scripts
 !.config/neofetch/config.conf
 !.config/terminator/config
+!.config/compton/compton.conf
 !.config/rofi/config
 !.config/rofi/andrea.rasi
 !.config/htop/htoprc

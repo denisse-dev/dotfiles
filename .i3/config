@@ -1,3 +1,10 @@
+#  _ _____                    __ _
+# (_)___ /    ___ ___  _ __  / _(_) __ _
+# | | |_ \   / __/ _ \| '_ \| |_| |/ _` |
+# | |___) | | (_| (_) | | | |  _| | (_| |
+# |_|____/   \___\___/|_| |_|_| |_|\__, |
+#                                  |___/
+
 # Default modkey
 set $mod Mod4
 
@@ -70,16 +77,16 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # Name the workspaces
-set $workspace1 "    "
-set $workspace2 "    "
-set $workspace3 "    "
-set $workspace4 "    "
-set $workspace5 "    "
-set $workspace6 "    "
-set $workspace7 "    "
-set $workspace8 "  ♫  "
-set $workspace9 "    "
-set $workspace0 "    "
+set $workspace1 " 1:  "
+set $workspace2 " 2:  "
+set $workspace3 " 3:  "
+set $workspace4 " 4:  "
+set $workspace5 " 5:  "
+set $workspace6 " 6:  "
+set $workspace7 " 7:  "
+set $workspace8 " 8: ♫ "
+set $workspace9 " 9:  "
+set $workspace0 " 10:  "
 
 # Switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -197,7 +204,7 @@ exec_always --no-startup-id ~/.monitor.sh # Automatically switch within monitors
 exec --no-startup-id g213-led -fx hwave keys 0a # Set the keyboard colours
 exec --no-startup-id setxkbmap latam # Set the keyboard layout
 exec --no-startup-id xbindkeys # Load keyboard shortcuts
-exec --no-startup-id compton -f # Compositor for window transparency
+exec --no-startup-id compton --config ~/.config/compton/compton.conf # Compositor for window transparency
 exec --no-startup-id emacs --daemon=instance1 # Daemonize Emacs
 exec --no-startup-id xfce4-power-manager # To monitor batttery
-exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.happy.png # Greeting on startup
+exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.images/happy.png # Greeting on startup

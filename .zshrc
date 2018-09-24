@@ -1,3 +1,9 @@
+#  _____    _
+# |__  /___| |__  _ __ ___
+#   / // __| '_ \| '__/ __|
+#  / /_\__ \ | | | | | (__
+# /____|___/_| |_|_|  \___|
+
 # Syntax highlighting and tab completion
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -Uz compinit
@@ -95,11 +101,7 @@ POWERLEVEL9K_BATTERY_LOW_FOREGROUND='red'
 POWERLEVEL9K_BATTERY_CHARGING_FOREGROUND='blue'
 POWERLEVEL9K_BATTERY_CHARGED_FOREGROUND='green'
 POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND='blue'
-POWERLEVEL9K_BATTERY_VERBOSE=false
-
-# Time
-POWERLEVEL9K_TIME_FORMAT="%F{black}%D{%I:%M}%f"
-POWERLEVEL9K_TIME_BACKGROUND='blue'
+POWERLEVEL9K_BATTERY_VERBOSE=true
 
 # User with skull
 user_with_skull() {
@@ -120,4 +122,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Prompt elements
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_user dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs time battery)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs battery)
