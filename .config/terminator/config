@@ -3,7 +3,7 @@
   inactive_color_offset = 1.0
   tab_position = hidden
   title_font = 3270Medium Nerd Font Bold 14
-  title_inactive_bg_color = "#00002c"
+  title_inactive_bg_color = "#263647"
   title_inactive_fg_color = "#ff0000"
   title_receive_bg_color = "#c90047"
   title_transmit_bg_color = "#00002c"
@@ -23,9 +23,9 @@
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#00002c"
+    background_color = "#263647"
     cursor_color = "#bbbbbb"
-    font = SauceCodePro Nerd Font Bold 14
+    font = SauceCodePro Nerd Font Bold 12
     foreground_color = "#ffffff"
     palette = "#000000:#f9555f:#21b089:#fef02a:#589df6:#944d95:#1f9ee7:#bbbbbb:#555555:#fa8c8f:#35bb9a:#ffff55:#589df6:#e75699:#3979bc:#ffffff"
     scrollback_infinite = True
