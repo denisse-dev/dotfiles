@@ -6,42 +6,38 @@
 
 /* Global settings and color variables */
 * {
-   maincolor:        #4ec2f7;
-   highlight:        bold #ffffff;
-   urgentcolor:      #C40000;
-
-   fgwhite:          #cfcfcf;
-   bluedarkest:      #00002A;
-   bluewidget:       #00002B;
-   blackentry:       #00002C;
-   blackselect:      #00152b;
-   lightblue:        #bbdded;
-   scrollbarcolor:   #505050;
-   font: "SauceCodePro Nerd Font Bold 15";
-   background-color: @bluedarkest;
+   maincolour:   #4ec2f7;
+   highlight:    bold #ffffff;
+   urgentcolour: #C40000;
+   fgwhite:      #cfcfcf;
+   bgcolour:     #263647;
+   lightblue:    #bbdded;
+   lightgreen:   #21b089;
+   font: "SauceCodePro Nerd Font Bold 13";
+   background-color: @bgcolour;
 }
 
 window {
-   background-color: @bluedarkest;
+   background-color: @bgcolour;
    anchor: north;
    location: north;
    y-offset: 0%;
 }
 
 mainbox {
-   background-color: @bluedarkest;
+   background-color: @bgcolour;
    spacing: 0px;
    children: [inputbar, message, sidebar, listview];
 }
 
 message {
    padding: 6px 10px;
-   background-color:@bluewidget;
+   background-color:@bgcolour;
 }
 
 textbox {
    text-color:@lightblue;
-   background-color:@bluewidget;
+   background-color:@bgcolour;
 }
 
 listview {
@@ -51,7 +47,7 @@ listview {
    spacing: 0px;
    padding: 1px 0px 0px 0px;
    margin: 0px 0px 1px 0px;
-   background: @bluedarkest;
+   background: @bgcolour;
 }
 
 element {
@@ -66,27 +62,27 @@ element normal.normal {
 
 element normal.urgent {
    background-color: @blueentry;
-   text-color: @urgentcolor;
+   text-color: @urgentcolour;
 }
 
 element normal.active {
    background-color: @blueentry;
-   text-color: @maincolor;
+   text-color: @maincolour;
 }
 
 element selected.normal {
-    background-color: @maincolor;
+    background-color: @maincolour;
     text-color: @blueentry;
 }
 
 element selected.urgent {
-    background-color: @urgentcolor;
-    text-color: @bluedarkest;
+    background-color: @urgentcolour;
+    text-color: @bgcolour;
 }
 
 element selected.active {
-    background-color: @maincolor;
-    text-color: @bluedarkest;
+    background-color: @maincolour;
+    text-color: @bgcolour;
 }
 
 element alternate.normal {
@@ -96,52 +92,52 @@ element alternate.normal {
 
 element alternate.urgent {
     background-color: @blueentry;
-    text-color: @urgentcolor;
+    text-color: @urgentcolour;
 }
 
 element alternate.active {
     background-color: @blueentry;
-    text-color: @maincolor;
+    text-color: @maincolour;
 }
 
 scrollbar {
-   background-color: @bluewidget;
-   handle-color: @lightblue;
+   background-color: @bgcolour;
+   handle-color: @lightgreen;
    handle-width: 15px;
 }
 
 sidebar {
-   background-color: @bluewidget;
+   background-color: @bgcolour;
 }
 
 button {
-   background-color: @bluewidget;
+   background-color: @bgcolour;
    text-color: @lightblue;
 }
 
 button selected {
-    text-color: @maincolor;
+    text-color: @maincolour;
 }
 
 inputbar {
-   background-color: @bluedarkest;
+   background-color: @bgcolour;
    spacing: 0px;
 }
 
 prompt {
    padding: 6px 9px;
-   background-color: @maincolor;
-   text-color: @bluewidget;
+   background-color: @maincolour;
+   text-color: @bgcolour;
 }
 
 entry {
    padding: 6px 10px;
-   background-color: @bluewidget;
+   background-color: @bgcolour;
    text-color: @fgwhite;
 }
 
 case-indicator {
    padding: 6px 10px;
-   text-color: @maincolor;
-   background-color: @bluewidget;
+   text-color: @maincolour;
+   background-color: @bgcolour;
 }
