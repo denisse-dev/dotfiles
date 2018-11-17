@@ -27,7 +27,7 @@ bindsym $mod+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # Start rofi
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+d exec rofi -show drun -columns 3
 
 # Move between windows
 bindsym $mod+j focus left
