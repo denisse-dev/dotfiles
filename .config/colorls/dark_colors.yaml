@@ -1,7 +1,7 @@
 # Main Colors
 unrecognized_file: lightcoral
-recognized_file:   teal
-dir:               lightgoldenrod
+recognized_file:   lightgoldenrod
+dir:               teal
 
 # Link
 dead_link: red
@@ -25,7 +25,7 @@ file_small:  peachpuff
 
 # Random
 report: white
-user:   andrea
+user:   peachpuff
 tree:   cyan
 empty:  yellow
 error:  red

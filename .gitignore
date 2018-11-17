@@ -5,6 +5,7 @@
 !.config/neofetch/config.conf
 !.config/terminator/config
 !.config/compton/compton.conf
+!.config/colorls/*
 !.config/rofi/config
 !.config/rofi/andrea.rasi
 !.config/htop/htoprc
