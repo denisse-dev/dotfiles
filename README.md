@@ -1,3 +1,5 @@
+<div align="center">
+
 ### Arch Linux [i3-gaps + i3blocks + Zsh + Spacemacs + Rofi + Neofetch + Spacemacs]
 
 ![Desktop](https://github.com/da-edra/dotfiles/blob/master/.screenshots/desktop.png)
@@ -21,8 +23,10 @@
 \__,_/_/ /_/\__,_/_/   \___/\__,_/  
 ```
 
+![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
+![forthebadge](https://forthebadge.com/images/badges/made-with-crayons.svg)
+</div>
 
-[![Built with Spacemacs](https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg)](http://spacemacs.org) [![Donate with Bitcoin](https://en.cryptobadges.io/badge/micro/1MP7teHXCtZWYyAfD2q9ADAqLVUmACVjWU)](https://en.cryptobadges.io/donate/1MP7teHXCtZWYyAfD2q9ADAqLVUmACVjWU) [![Donate with Ethereum](https://en.cryptobadges.io/badge/micro/0xe54f3f6937b6f2a89863e51c7da88fee5e491b7d)](https://en.cryptobadges.io/donate/0xe54f3f6937b6f2a89863e51c7da88fee5e491b7d) [![Donate with Litecoin](https://en.cryptobadges.io/badge/micro/LX99xASdE2QLDg3jD6nmSf8sL3TyrxWjPF)](https://en.cryptobadges.io/donate/LX99xASdE2QLDg3jD6nmSf8sL3TyrxWjPF) [![Donate with Monero](https://en.cryptobadges.io/badge/micro/4929kMcgTmcfGgNQg4b6ExV7ywpd8wdmPP3byuJEALMvAX8mushD39jPhFELVkayX5Ai5jUqVCN2eJi7soAtCK6iVpibYK8)](https://en.cryptobadges.io/donate/4929kMcgTmcfGgNQg4b6ExV7ywpd8wdmPP3byuJEALMvAX8mushD39jPhFELVkayX5Ai5jUqVCN2eJi7soAtCK6iVpibYK8)
 ------
 ### Welcome to my dotfiles! :space_invader:
 
@@ -69,15 +73,14 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 ![Zsh Features](https://github.com/da-edra/dotfiles/blob/master/.screenshots/zsh-features.png)
 ---
 ### My [Rofi](https://github.com/DaveDavenport/rofi) theme:
-![Application launcher](https://github.com/da-edra/dotfiles/blob/master/.screenshots/rofi-drun.png)
-![Window switcher](https://github.com/da-edra/dotfiles/blob/master/.screenshots/rofi-window.png)
+![Application launcher](https://github.com/da-edra/dotfiles/blob/master/.screenshots/rofi.png)
 ---
 ### [Spacemacs](https://github.com/syl20bnr/spacemacs) rules!
 ###### The best editor is neither Emacs nor Vim, it's Emacs *and* Vim!
 ![Spacemacs](https://github.com/da-edra/dotfiles/blob/master/.screenshots/spacemacs.png)
 ---
-### Having fun with the Mandelbrot Set
-###### Drawing CLI fractals with the Shell!
-![Terminals](https://github.com/da-edra/dotfiles/blob/master/.screenshots/mandelbrot.png)
----
+<div align="center">
+
 # Made with :sparkling_heart: by yours truly.
+
+</div>
