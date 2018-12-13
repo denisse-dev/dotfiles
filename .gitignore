@@ -1,39 +1,44 @@
 # Ignore files not tracked by Git
 *
 
-# Config files, scripts
-!.config/neofetch/config.conf
-!.config/terminator/config
-!.config/compton/compton.conf
-!.config/colorls/*
-!.config/rofi/config
-!.config/rofi/andrea.rasi
-!.config/htop/htoprc
-!.config/cmus/autosave
-!.config/gtk-3.0/settings.ini
-!.config/ranger/rc.conf
-!.config/ranger/rifle.conf
-!.i3/*
-!.spacemacs
+# Git files
 !.gitignore
+!.gitconfig
+!.gitmessage
+
+# Config files, scripts
+!.config/neofetch/
+!.config/bat/config
+!.config/compton/
+!.config/colorls/
+!.config/rofi/
+!.config/htop/htoprc
+!.config/cums/autosave
+!.config/gtk-3.0/settings.ini
+!.config/ranger/
+
+# i3 config
+!.i3/
 !.i3blocks.conf
+
+# Zsh, Spacemacs, Xbindkeys
+!.spacemacs
+!.zshrc
+!.zprofile
+!.xbindkeysrc
+!README.md
+
+# Images
+!.wallpapers/
+!.images/
+!.screenshots/
+
+# Other scripts
 !.pacman.sh
 !.monitor.sh
-!.zshrc
-!.xbindkeysrc
-!.zprofile
-!README.md
 
 # Daemons
 !.config/systemd/user/background-changer.service
 !.config/systemd/user/background-changer.timer
 !.config/systemd/user/macspoof@wlp8s0.service
 !.config/systemd/user/openvpn-client@.service
-
-# Images
-!.wallpapers/*
-!.images/*
-!.screenshots/*
-
-# Donations
-!.donations/*

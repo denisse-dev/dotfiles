@@ -207,4 +207,5 @@ exec --no-startup-id xbindkeys # Load keyboard shortcuts
 exec --no-startup-id compton --config ~/.config/compton/compton.conf # Compositor for window transparency
 exec --no-startup-id emacs --daemon=instance1 # Daemonize Emacs
 exec --no-startup-id xfce4-power-manager # To monitor batttery
+exec --no-startup-id dunst # Start notification daemon
 exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.images/happy.png # Greeting on startup
