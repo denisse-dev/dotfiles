@@ -21,7 +21,7 @@ font pango: SauceCodePro Nerd Font Black 11
 floating_modifier $mod
 
 # Start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec alacritty
 
 # Kill focused window
 bindsym $mod+Shift+q kill
