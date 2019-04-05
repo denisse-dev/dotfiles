@@ -70,46 +70,34 @@ font:
 
 render_timer: false
 
-# Colors (Turing)
+# Colors (Dracula)
 colors:
+  # Default colors
   primary:
-    background: '0x263647'
-    foreground: '0xeaeaea'
-    bright_foreground: '0xffffff'
+    background: '0x282a36'
+    foreground: '0xf8f8f2'
 
-  cursor:
-    text: '0x000000'
-    cursor: '0xffffff'
-
+  # Normal colors
   normal:
     black:   '0x000000'
-    red:     '0xf9555f'
-    green:   '0x21b089'
-    yellow:  '0xfef02a'
-    blue:    '0x589df6'
-    magenta: '0x944d95'
-    cyan:    '0x1f9ee7'
-    white:   '0xdddddd'
+    red:     '0xff5555'
+    green:   '0x50fa7b'
+    yellow:  '0xf1fa8c'
+    blue:    '0xcaa9fa'
+    magenta: '0xff79c6'
+    cyan:    '0x8be9fd'
+    white:   '0xbfbfbf'
 
+  # Bright colors
   bright:
-    black:   '0x555555'
-    red:     '0xfa8c8f'
-    green:   '0x35bb9a'
-    yellow:  '0xffff55'
-    blue:    '0x589df6'
-    magenta: '0xe75699'
-    cyan:    '0x3979bc'
-    white:   '0xffffff'
-
-  dim:
-    black:   '0x333333'
-    red:     '0xf2777a'
-    green:   '0x99cc99'
-    yellow:  '0xffcc66'
-    blue:    '0x6699cc'
-    magenta: '0xcc99cc'
-    cyan:    '0x66cccc'
-    white:   '0xdddddd'
+    black:   '0x575b70'
+    red:     '0xff6e67'
+    green:   '0x5af78e'
+    yellow:  '0xf4f99d'
+    blue:    '0xcaa9fa'
+    magenta: '0xff92d0'
+    cyan:    '0x9aedfe'
+    white:   '0xe6e6e6'
 
 visual_bell:
   animation: EaseOutExpo

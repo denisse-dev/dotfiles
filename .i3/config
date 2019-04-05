@@ -171,7 +171,7 @@ set $wine 	 #72003e99
 set $magenta #af005f99
 set $silver  #e4e4e499
 set $toxic   #8EC00099
-set $elegant #00002c00
+set $elegant #00002c30
 
 # Set some nice colors      border	 background text	   indicator
 client.focused              $cyan	   $cyan      $elegant $cyan
@@ -201,10 +201,10 @@ bar
 # Startup programs
 exec_always --no-startup-id feh --bg-scale ~/.wallpapers/forest-nightscape.jpg # Wallpaper
 exec_always --no-startup-id ~/.monitor.sh # Automatically switch within monitors
+exec --no-startup-id compton --config ~/.config/compton/compton.conf # Compositor for window transparency
 exec --no-startup-id g213-led -fx hwave keys 0a # Set the keyboard colours
 exec --no-startup-id setxkbmap latam # Set the keyboard layout
 exec --no-startup-id xbindkeys # Load keyboard shortcuts
-exec --no-startup-id compton --config ~/.config/compton/compton.conf # Compositor for window transparency
 exec --no-startup-id emacs --daemon=instance1 # Daemonize Emacs
 exec --no-startup-id xfce4-power-manager # To monitor batttery
 exec --no-startup-id dunst # Start notification daemon
