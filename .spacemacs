@@ -37,48 +37,66 @@ You should not put any user code in this function besides modifying the variable
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     ansible
+     asm
      auto-completion
      better-defaults
+     c-c++
      colors
+     csv
+     docker
+     emacs-lisp
+     emoji
      git
      go
      haskell
      helm
      html
      javascript
+     json
      latex
+     lsp
+     major-modes
      markdown
+     neotree
      nginx
-     pdf-tools
+     pdf
      puppet
      python
+     ranger
+     react
      ruby
      ruby-on-rails
+     rust
      shell
      spell-checking
+     sql
      syntax-checking
+     terraform
      theming
+     tmux
+     typescript
      version-control
      yaml
-     ;; Use colorize for variables only
-     (colors :variables colors-colorize-identifiers 'variables)
-     ;; Enable Nyan Cat on progress bar
-     (colors :variables colors-enable-nyan-cat-progress-bar t)
-     ;; LaTeX folding for long lines
      (latex :variables latex-enable-folding t)
-     ;; Enable dictionary for flyspell and auto-competion
      (spell-checking :variables spell-checking-enable-auto-dictionary t)
-     ;; Use vmd (Github-flavored live preview)
      (markdown :variables markdown-live-preview-engine 'vmd)
-     ;; Variables for Golang
+     (colors :variables
+             colors-enable-nyan-cat-progress-bar t
+             colors-colorize-identifiers 'variables)
      (go :variables
-         go-use-gometalinter t
-         flycheck-gometalinter-enable-linters '("go imports")
-         go-format-before-save t)
+         go-use-golangci-lint t
+         go-linter 'golangci-lint
+         godoc-at-point-function 'godoc-gogetdoc
+         go-format-before-save t
+         gofmt-command "goimports"
+         go-backend 'lsp
+         go-tab-width 2)
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t)
-     )
+     (ranger :variables
+             ranger-show-preview t))
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -87,14 +105,18 @@ You should not put any user code in this function besides modifying the variable
    '(
      aggressive-indent
      all-the-icons
+     all-the-icons-dired
+     all-the-icons-ivy
      beacon
      dumb-jump
-     flycheck-gometalinter
+     flycheck-golangci-lint
      git-messenger
      go-playground
      gotest
      highlight-indent-guides
-     rainbow-delimiters
+     mode-icons
+     prettier-js
+     projectile
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -126,7 +148,7 @@ values."
    ;; (default t)
    dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 300
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -167,7 +189,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(dracula)
+   dotspacemacs-themes '(farmhouse-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -299,7 +321,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers '(:relative t
+   dotspacemacs-line-numbers '(:relative nil
                                          :disabled-for-modes dired-mode
                                          pdf-view-mode
                                          :size-limit-kb 2000)
@@ -312,7 +334,7 @@ values."
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc…
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-   dotspacemacs-smart-closing-parenthesis nil
+   dotspacemacs-smart-closing-parenthesis t
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
@@ -336,19 +358,11 @@ values."
    dotspacemacs-whitespace-cleanup 'trailing
    ))
 
-(defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init', before layer configuration
-executes.
- This function is mostly useful for variables that need to be set
-before packages are loaded. If you are unsure, you should try in setting them
-in `dotspacemacs/user-config' first."
-  ;; Force golang-mode to respect 3 spaces for tab width
-  (add-hook 'go-mode-hook
-            (lambda ()
-              (setq indent-tabs-mode 1)
-              (setq tab-width 3)))
-  )
+(defun enable-minor-mode (my-pair)
+  "Enable minor mode if filename match the regexp.  MY-PAIR is a cons cell (regexp . minor-mode)."
+  (if (buffer-file-name)
+      (if (string-match (car my-pair) buffer-file-name)
+          (funcall (cdr my-pair)))))
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
@@ -357,11 +371,11 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them
 in `dotspacemacs/user-config' first."
-  ;; Force golang-mode to respect 3 spaces for tab width
-  (add-hook 'go-mode-hook
-            (lambda ()
-              (setq indent-tabs-mode 1)
-              (setq tab-width 3)))
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-golangci-lint-setup))
+  (add-hook 'web-mode-hook #'(lambda ()
+                               (enable-minor-mode
+                                '("\\.jsx?\\'" . prettier-js-mode))))
   )
 
 (defun dotspacemacs/user-config ()
@@ -374,18 +388,19 @@ you should place your code here."
 
   ;; Changes to Spaceline
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-  (set-face-attribute 'spaceline-evil-emacs nil :background "#50fa7b" :foreground "#151515")
+  (set-face-attribute 'spaceline-evil-emacs nil :background "#23cbfe" :foreground "#151515")
   (setq powerline-default-separator 'arrow)
   (spaceline-toggle-buffer-size-off)
   (spaceline-toggle-minor-modes-off)
   (spaceline-toggle-window-number-off)
   (spaceline-toggle-buffer-encoding-abbrev-off)
 
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
   ;; Activate column indicator in prog-mode and text-mode
   (add-hook 'prog-mode-hook 'turn-on-fci-mode)
   (add-hook 'text-mode-hook 'turn-on-fci-mode)
-  (setq fci-rule-color "#bd93f9")
+  (setq fci-rule-color "#23cbfe")
 
   ;; Auto-load PDF when compiling LaTeX
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
@@ -407,12 +422,9 @@ you should place your code here."
   ;; Use Source Code Pro Nerd Font patched for mode-line to display more icons
   (set-face-attribute 'mode-line nil :font "SauceCodePro Nerd Font Bold")
 
-  ;; NeoTree theme to show icons on GUI, arrows on CLI
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-
   ;; Start beacon mode to show a light when the cursor moves
   (beacon-mode t)
-  (setq beacon-color "#ff79c6")
+  (setq beacon-color "#23cbfe")
   (setq beacon-blink-when-point-moves-vertically 1)
   (setq beacon-blink-when-point-moves-horizontally 1)
   (setq beacon-blink-when-focused t)
@@ -424,9 +436,17 @@ you should place your code here."
 
   ;; Visual line navigation for textual modes
   (spacemacs/toggle-visual-line-navigation-on)
+  (setq truncate-lines t)
   (spacemacs/toggle-truncate-lines-on)
-  (add-hook 'prog-mode-hook 'spacemacs/toggle-truncate-lines-on)
   (add-hook 'text-mode-hook 'spacemacs/toggle-visual-line-navigation-on)
+  (add-hook 'prog-mode-hook 'spacemacs/toggle-visual-line-navigation-on)
+
+  (setq javascript-indent-level 2)
+  (setq js-indent-level 2)
+  (setq js2-basic-offset 2)
+  (setq neo-theme 'icons)
+  (setq mode-icons-change-mode-name t)
+  (mode-icons-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -451,10 +471,9 @@ you should place your code here."
    (quote
     ("9108af90a0bd5c36b67973aea59a0f55ad7ae36c8bcc0d9145e91e5e290cac31" "a584e58e19f492cad36b361fc066da1e4d57fd360c77968edfabcdf77361126a" "e1c47ab9db37fccca2a2597b290d2aaac241967b8dcd73e02e244178cbd00c37" "823f4cfc17fccd45c42d1cd75214c73369bc5e3066bf4f9963c71aca36d94434" "6a13e8c06de875e6438445d0ff571d36a0de849e6a8b268c99ef771f907eea98" "cf45214bd141043f51c82bf4e340e72773ba2bf7cd1d1984de6d50e506d60cd5" "caf521e66311479f696ac7669692286c0ef6e102e4eaf4910462a52da4e54c39" "38132599432926fee460d42607fde769967ec814af16da3f406ac510306bff2e" "8b63fe87e15a2721eb208480bf0829b033ee568dd03bde040e4d53a1b2d071f9" "22a3a2a124792c635cef4e9b91eedcceccf5513de67a62b31ce96cc571e3d989" "c48551a5fb7b9fc019bf3f61ebf14cf7c9cdca79bcb2a4219195371c02268f11" default)))
  '(evil-want-Y-yank-to-eol nil)
- '(linum-format " %d")
  '(package-selected-packages
    (quote
-    (spaceline-all-the-icons highlight-indent-guides transient turing-theme yasnippet-snippets company-quickhelp yapfify yaml-mode xterm-color web-mode web-beautify vmd-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-isort puppet-mode pug-mode projectile-rails rake inflections pip-requirements pdf-tools tablist origami orgit nginx-mode mwim multi-term mmm-mode minitest markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero hy-mode hlint-refactor hindent helm-pydoc helm-hoogle helm-gitignore helm-css-scss helm-company helm-c-yasnippet haskell-snippets haml-mode go-playground gotest go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-popup flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-haskell flycheck-gometalinter flycheck feature-mode evil-magit magit magit-popup git-commit ghub treepy graphql with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-auctex company-anaconda company color-identifiers-mode coffee-mode cmm-mode chruby bundler inf-ruby beacon auto-yasnippet yasnippet auto-dictionary auctex anaconda-mode pythonic all-the-icons memoize ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (x86-lookup terraform-mode hcl-mode ranger neotree nasm-mode mode-icons jinja2-mode emoji-cheat-sheet-plus dockerfile-mode docker docker-tramp disaster company-emoji company-c-headers company-ansible cmake-mode clang-format auctex-latexmk ansible-doc ansible all-the-icons-ivy ivy all-the-icons-dired flycheck-golangci-lint tide typescript-mode prettier-js csv-mode toml-mode racer flycheck-rust cargo rust-mode lv spaceline-all-the-icons highlight-indent-guides transient turing-theme yasnippet-snippets company-quickhelp yapfify yaml-mode xterm-color web-mode web-beautify vmd-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-isort puppet-mode pug-mode projectile-rails rake inflections pip-requirements pdf-tools tablist origami orgit nginx-mode mwim multi-term mmm-mode minitest markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero hy-mode hlint-refactor hindent helm-pydoc helm-hoogle helm-gitignore helm-css-scss helm-company helm-c-yasnippet haskell-snippets haml-mode go-playground gotest go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-popup flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-haskell flycheck-gometalinter flycheck feature-mode evil-magit magit magit-popup git-commit ghub treepy graphql with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-auctex company-anaconda company color-identifiers-mode coffee-mode cmm-mode chruby bundler inf-ruby beacon auto-yasnippet yasnippet auto-dictionary auctex anaconda-mode pythonic all-the-icons memoize ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -466,34 +485,34 @@ you should place your code here."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(TeX-view-program-selection
-   (quote
-    (((output-dvi has-no-display-manager)
-      "dvi2tty")
-     ((output-dvi style-pstricks)
-      "dvips and gv")
-     (output-dvi "xdvi")
-     (output-pdf "PDF Tools")
-     (output-html "xdg-open"))))
- '(ansi-color-names-vector
-   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
- '(custom-safe-themes
-   (quote
-    ("9108af90a0bd5c36b67973aea59a0f55ad7ae36c8bcc0d9145e91e5e290cac31" "a584e58e19f492cad36b361fc066da1e4d57fd360c77968edfabcdf77361126a" "e1c47ab9db37fccca2a2597b290d2aaac241967b8dcd73e02e244178cbd00c37" "823f4cfc17fccd45c42d1cd75214c73369bc5e3066bf4f9963c71aca36d94434" "6a13e8c06de875e6438445d0ff571d36a0de849e6a8b268c99ef771f907eea98" "cf45214bd141043f51c82bf4e340e72773ba2bf7cd1d1984de6d50e506d60cd5" "caf521e66311479f696ac7669692286c0ef6e102e4eaf4910462a52da4e54c39" "38132599432926fee460d42607fde769967ec814af16da3f406ac510306bff2e" "8b63fe87e15a2721eb208480bf0829b033ee568dd03bde040e4d53a1b2d071f9" "22a3a2a124792c635cef4e9b91eedcceccf5513de67a62b31ce96cc571e3d989" "c48551a5fb7b9fc019bf3f61ebf14cf7c9cdca79bcb2a4219195371c02268f11" default)))
- '(evil-want-Y-yank-to-eol nil)
- '(linum-format " %d")
- '(package-selected-packages
-   (quote
-    (ruby-hash-syntax json-navigator helm-xref editorconfig doom-modeline eldoc-eval counsel-projectile counsel swiper ivy browse-at-remote window-purpose imenu-list visual-fill-column turing-theme yasnippet-snippets company-quickhelp yapfify yaml-mode xterm-color web-mode web-beautify vmd-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-isort puppet-mode pug-mode projectile-rails rake inflections pip-requirements pdf-tools tablist origami orgit nginx-mode mwim multi-term mmm-mode minitest markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero hy-mode hlint-refactor hindent helm-pydoc helm-hoogle helm-gitignore helm-css-scss helm-company helm-c-yasnippet haskell-snippets haml-mode go-playground gotest go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-popup flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-haskell flycheck-gometalinter flycheck feature-mode evil-magit magit magit-popup git-commit ghub treepy graphql with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-auctex company-anaconda company color-identifiers-mode coffee-mode cmm-mode chruby bundler inf-ruby beacon auto-yasnippet yasnippet auto-dictionary auctex anaconda-mode pythonic all-the-icons memoize ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(TeX-view-program-selection
+     (quote
+      (((output-dvi has-no-display-manager)
+        "dvi2tty")
+       ((output-dvi style-pstricks)
+        "dvips and gv")
+       (output-dvi "xdvi")
+       (output-pdf "PDF Tools")
+       (output-html "xdg-open"))))
+   '(ansi-color-names-vector
+     ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
+   '(custom-safe-themes
+     (quote
+      ("9108af90a0bd5c36b67973aea59a0f55ad7ae36c8bcc0d9145e91e5e290cac31" "a584e58e19f492cad36b361fc066da1e4d57fd360c77968edfabcdf77361126a" "e1c47ab9db37fccca2a2597b290d2aaac241967b8dcd73e02e244178cbd00c37" "823f4cfc17fccd45c42d1cd75214c73369bc5e3066bf4f9963c71aca36d94434" "6a13e8c06de875e6438445d0ff571d36a0de849e6a8b268c99ef771f907eea98" "cf45214bd141043f51c82bf4e340e72773ba2bf7cd1d1984de6d50e506d60cd5" "caf521e66311479f696ac7669692286c0ef6e102e4eaf4910462a52da4e54c39" "38132599432926fee460d42607fde769967ec814af16da3f406ac510306bff2e" "8b63fe87e15a2721eb208480bf0829b033ee568dd03bde040e4d53a1b2d071f9" "22a3a2a124792c635cef4e9b91eedcceccf5513de67a62b31ce96cc571e3d989" "c48551a5fb7b9fc019bf3f61ebf14cf7c9cdca79bcb2a4219195371c02268f11" default)))
+   '(evil-want-Y-yank-to-eol nil)
+   '(linum-format " %d")
+   '(package-selected-packages
+     (quote
+      (flycheck-golangci-lint ruby-hash-syntax json-navigator helm-xref editorconfig doom-modeline eldoc-eval counsel-projectile counsel swiper ivy browse-at-remote window-purpose imenu-list visual-fill-column turing-theme yasnippet-snippets company-quickhelp yapfify yaml-mode xterm-color web-mode web-beautify vmd-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-isort puppet-mode pug-mode projectile-rails rake inflections pip-requirements pdf-tools tablist origami orgit nginx-mode mwim multi-term mmm-mode minitest markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero hy-mode hlint-refactor hindent helm-pydoc helm-hoogle helm-gitignore helm-css-scss helm-company helm-c-yasnippet haskell-snippets haml-mode go-playground gotest go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-popup flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-haskell flycheck-gometalinter flycheck feature-mode evil-magit magit magit-popup git-commit ghub treepy graphql with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-auctex company-anaconda company color-identifiers-mode coffee-mode cmm-mode chruby bundler inf-ruby beacon auto-yasnippet yasnippet auto-dictionary auctex anaconda-mode pythonic all-the-icons memoize ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((((min-colors 16777216)) (:background "#282a36" :foreground "#f8f8f2")) (t (:background "#000000" :foreground "#f8f8f2")))))
+  )

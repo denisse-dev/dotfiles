@@ -68,8 +68,6 @@ font:
   # false.
   use_thin_strokes: true
 
-render_timer: false
-
 # Colors (Monokai Dark)
 colors:
   # Default colors

@@ -116,8 +116,8 @@ bindsym $mod+Shift+0 move container to workspace $workspace0
 assign [class="firefox"]    $workspace1
 assign [class="emacs"]	   	$workspace2
 assign [class="VirtualBox"]	$workspace5
-assign [class="cmus"]		    $workspace7
-assign [class="spotify"]		$workspace7
+assign [class="cmus"]		    $workspace8
+assign [class="spotify"]		$workspace8
 
 # Enable float for some windows
 for_window [class="^Pavucontrol$"] floating enable
@@ -139,6 +139,9 @@ bindsym $mod+Shift+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+# Lock screen
+bindsym $mod+shift+x exec betterlockscreen -l dim
+
 # Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -158,21 +161,19 @@ mode "resize"
 bindsym $mod+r mode "resize"
 
 # Defining colors
+set $bg      #282A36
+set $fg      #f8f8f2
+set $cyan    #8be9fd
+set $green   #50fa7b
+set $magenta #ff79c6
+set $purple  #bd93f9
 
-# RGB
-set $cyan    #4ec2f7
-set $acqua	 #007089
-set $magenta #af005f
-set $silver  #e4e4e4
-set $elegant #00002c
-set $none    #00000000
-
-# Set some nice colors      border	 background text	   indicator
-client.focused              $cyan	   $cyan      $elegant $cyan
-client.unfocused            $elegant $elegant   $cyan    $elegant
-client.focused_inactive     $acqua   $acqua     $silver  $acqua
-client.urgent               $magenta $magenta   $silver  $magenta
-client.placeholder          $magenta $magenta   $silver  $magenta
+# Set some nice colors      border	 background text     indicator
+client.focused              $green	 $green     $bg      $green
+client.unfocused            $bg      $bg        $cyan    $cyan
+client.focused_inactive     $bg      $bg        $green   $green
+client.urgent               $bg      $bg        $magenta $magenta
+client.placeholder          $bg      $bg        $cyan    $cyan
 
 # Start i3blocks to display a workspace bar
 bar
@@ -183,12 +184,12 @@ bar
 	font pango: SauceCodePro Nerd Font Black 10
 	colors
 	{
-    #                   Border   Background Text
-		focused_workspace   $silver  $silver    $elegant
-		active_workspace    $elegant $elegant   $magenta
-		inactive_workspace  $none    $none      $cyan
-		urgent_workspace    $acqua   $acqua     $silver
-		background          $none
+    #                   Border Background Text
+		focused_workspace   $fg    $fg        $bg
+		active_workspace    $bg    $bg        $purple
+		inactive_workspace  $bg    $bg        $cyan
+		urgent_workspace    $bg    $bg        $magenta
+		background          $bg
   }
 }
 
