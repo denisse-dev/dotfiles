@@ -145,33 +145,27 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Resize window (you can also use the mouse for that)
 mode "resize"
 {
-        # Resize with the arrow keys
-        bindsym Left resize shrink width 2 px or 2 ppt
-        bindsym Down resize grow height 2 px or 2 ppt
-        bindsym Up resize shrink height 2 px or 2 ppt
-        bindsym Right resize grow width 2 px or 2 ppt
+  # Resize with the arrow keys
+  bindsym Left resize shrink width 2 px or 2 ppt
+  bindsym Down resize grow height 2 px or 2 ppt
+  bindsym Up resize shrink height 2 px or 2 ppt
+  bindsym Right resize grow width 2 px or 2 ppt
 
-        # Back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+  # Back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
 # Defining colors
 
 # RGB
-set $cyan0	 #4ec2f7
-set $silver0 #e4e4e4
-set $orange  #ff8700
-
-# RGBA
-set $cyan	   #4ec2f799
-set $acqua	 #00708999
-set $wine 	 #72003e99
-set $magenta #af005f99
-set $silver  #e4e4e499
-set $toxic   #8EC00099
-set $elegant #00002c30
+set $cyan    #4ec2f7
+set $acqua	 #007089
+set $magenta #af005f
+set $silver  #e4e4e4
+set $elegant #00002c
+set $none    #00000000
 
 # Set some nice colors      border	 background text	   indicator
 client.focused              $cyan	   $cyan      $elegant $cyan
@@ -183,29 +177,26 @@ client.placeholder          $magenta $magenta   $silver  $magenta
 # Start i3blocks to display a workspace bar
 bar
 {
-	position top
+  position top
 	status_command i3blocks
   i3bar_command i3bar -t
 	font pango: SauceCodePro Nerd Font Black 10
 	colors
 	{
-                        # Border	# Background	# Text
-		focused_workspace   $silver0  $silver0  $elegant
-		active_workspace    $elegant  $elegant  $orange
-		inactive_workspace  $elegant  $elegant 	$cyan0
-		urgent_workspace    $acqua    $acqua    $silver0
-		background          $elegant
-    	}
+    #                   Border   Background Text
+		focused_workspace   $silver  $silver    $elegant
+		active_workspace    $elegant $elegant   $magenta
+		inactive_workspace  $none    $none      $cyan
+		urgent_workspace    $acqua   $acqua     $silver
+		background          $none
+  }
 }
 
 # Startup programs
 exec_always --no-startup-id feh --bg-scale ~/.wallpapers/forest-nightscape.jpg # Wallpaper
 exec_always --no-startup-id ~/.monitor.sh # Automatically switch within monitors
 exec --no-startup-id compton --config ~/.config/compton/compton.conf # Compositor for window transparency
-exec --no-startup-id g213-led -fx hwave keys 0a # Set the keyboard colours
 exec --no-startup-id setxkbmap latam # Set the keyboard layout
 exec --no-startup-id xbindkeys # Load keyboard shortcuts
-exec --no-startup-id emacs --daemon=instance1 # Daemonize Emacs
 exec --no-startup-id xfce4-power-manager # To monitor batttery
-exec --no-startup-id dunst # Start notification daemon
 exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.images/happy.png # Greeting on startup
