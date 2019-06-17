@@ -12,13 +12,7 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[1;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-else
-    export EDITOR='emacs'
-fi
+export EDITOR='emacs'
 
 # Rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -31,10 +25,10 @@ export npm_config_prefix=~/.node_modules
 # PIP
 export PATH=$HOME/.local/bin:$PATH
 
-# startx when logged in
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
-fi
-
 # Go
 export PATH="$PATH:$HOME/go/bin"
+
+# startx when logged in
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec ssh-agent startx
+fi

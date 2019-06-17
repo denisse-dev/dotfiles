@@ -113,5 +113,14 @@ HIST_STAMPS="mm/dd/yyyy"
 
 # Plugins to load
 plugins=(git
-         virtualenv)
+         gitfast
+         golang
+         history-substring-search
+         terraform
+         virtualenv
+         zsh-autosuggestions
+         zsh-completions
+         zsh-syntax-highlighting)
+
+autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh

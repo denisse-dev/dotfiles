@@ -1,7 +1,7 @@
 [user]
-	name = Andrea
+	name = Andrea Denisse
 	email = crypto.andrea@protonmail.ch
-	signingkey = 1799292C58FD6F85
+	signingkey = 696A86F7D95CBD1D
 [commit]
 	gpgsign = true
 	template = ~/.gitmessage
@@ -23,3 +23,5 @@
 	prune = true
 [rebase]
 	autosquash = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/

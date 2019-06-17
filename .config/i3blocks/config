@@ -24,19 +24,19 @@ color=#1793D1
 [openvpn]
 command=printf "\uf084 " && ~/.i3/i3scripts/openvpn
 interval=5
-color=#6cdcdf
+color=#8be9fd
 
 [home]
 command=printf "\\uf015 " && ~/.i3/i3scripts/disk
 instance=/home/
 interval=3600
-color=#f4df62
+color=#ffb86c
 
 [root]
 command=printf "\\uf292 " && ~/.i3/i3scripts/disk
 instance=/
 interval=3600
-color=#f47cbf
+color=#ff79c6
 
 [temperature]
 interval=2
@@ -44,34 +44,34 @@ color=#a9e185
 
 [cpu_usage]
 interval=2
-color=#6cdcdf
+color=#8be9fd
 
 [memory]
 command=printf "\\uf013 " && ~/.i3/i3scripts/memory
 interval=2
-color=#f4df62
+color=#ffb86c
 
 [volume]
 interval=1
 signal=10
-color=#f47cbf
+color=#ff79c6
 
 [battery]
-interval=30
+interval=2
 color=#a9e185
 
 [wifi]
 command=printf "\\uf1eb " && ~/.i3/i3scripts/wifi
-instance=wlp8s0
+instance=wlp2s0
 interval=5
-color=#6cdcdf
+color=#8be9fd
 
 [time]
 command=printf "\\uf017 " && date '+%I:%M'
-interval=5
-color=#f4df62
+interval=1
+color=#ffb86c
 
 [date]
 command=printf "\\uf073 " && date '+%A%e '
 interval=60
-color=#f47cbf
+color=#ff79c6
