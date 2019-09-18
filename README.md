@@ -5,22 +5,22 @@
 ![Desktop](https://github.com/da-edra/dotfiles/blob/master/.screenshots/desktop.png)
 
 ```
-       __      __  _____ __         
+       __      __  _____ __
   ____/ /___  / /_/ __(_) /__  _____
  / __  / __ \/ __/ /_/ / / _ \/ ___/
-/ /_/ / /_/ / /_/ __/ / /  __(__  ) 
-\__,_/\____/\__/_/ /_/_/\___/____/  
-             __                     
-            / /_  __  __            
-           / __ \/ / / /            
-          / /_/ / /_/ /             
-         /_.___/\__, /              
-               /____/               
-                   __               
+/ /_/ / /_/ / /_/ __/ / /  __(__  )
+\__,_/\____/\__/_/ /_/_/\___/____/
+             __
+            / /_  __  __
+           / __ \/ / / /
+          / /_/ / /_/ /
+         /_.___/\__, /
+               /____/
+                   __
   ____ _____  ____/ /_______  ____ _
  / __ `/ __ \/ __  / ___/ _ \/ __ `/
-/ /_/ / / / / /_/ / /  /  __/ /_/ / 
-\__,_/_/ /_/\__,_/_/   \___/\__,_/  
+/ /_/ / / / / /_/ / /  /  __/ /_/ /
+\__,_/_/ /_/\__,_/_/   \___/\__,_/
 ```
 
 ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
@@ -46,7 +46,7 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 | acpi                                                     | To monitor the battery status                                    |
 | [neofetch](https://github.com/dylanaraps/neofetch)       | A fast, highly customizable system info script                   |
 | [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)    | Fonts patched with lots of amazing icons (I use Source Code Pro) |
- 
+
 ------
 
 **For the window manager:**
