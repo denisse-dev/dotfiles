@@ -1,6 +1,6 @@
 <div align="center">
 
-### Arch Linux [i3-gaps + i3blocks + Zsh + Spacemacs + Rofi + Neofetch + Spacemacs]
+### Arch Linux [i3-gaps + i3blocks + Zsh + Spacemacs + Rofi + Neofetch]
 
 ![Desktop](https://github.com/da-edra/dotfiles/blob/master/.screenshots/desktop.png)
 
