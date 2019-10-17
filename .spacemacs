@@ -71,7 +71,8 @@ You should not put any user code in this function besides modifying the variable
      shell
      spell-checking
      sql
-     syntax-checking
+     syntax-checkings
+     systemd
      terraform
      theming
      tmux

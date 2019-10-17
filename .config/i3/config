@@ -162,14 +162,16 @@ bindsym $mod+r mode "resize"
 
 # Defining colors
 set $bg      #282A36
+set $lg      #44475a
 set $fg      #f8f8f2
 set $cyan    #8be9fd
 set $green   #50fa7b
 set $magenta #ff79c6
+set $comment #6272a4
 set $purple  #bd93f9
 
 # Set some nice colors      border	 background text     indicator
-client.focused              $green	 $green     $bg      $green
+client.focused              $magenta $magenta   $fg      $magenta
 client.unfocused            $bg      $bg        $cyan    $cyan
 client.focused_inactive     $bg      $bg        $green   $green
 client.urgent               $bg      $bg        $magenta $magenta
@@ -180,7 +182,7 @@ bar
 {
   position top
 	status_command i3blocks
-  i3bar_command i3bar -t
+  i3bar_command i3bar
 	font pango: SauceCodePro Nerd Font Black 10
 	colors
 	{
@@ -194,8 +196,8 @@ bar
 }
 
 # Startup programs
-exec_always --no-startup-id feh --bg-scale ~/.wallpapers/forest-nightscape.jpg # Wallpaper
-exec_always --no-startup-id ~/.monitor.sh # Automatically switch within monitors
+exec_always --no-startup-id ~/.scripts/monitors.sh # Automatically switch within monitors
+exec_always --no-startup-id ~/.scripts/wallpapers.sh # Set a random wallpaper
 exec --no-startup-id compton --config ~/.config/compton/compton.conf # Compositor for window transparency
 exec --no-startup-id setxkbmap latam # Set the keyboard layout
 exec --no-startup-id xbindkeys # Load keyboard shortcuts

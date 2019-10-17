@@ -18,6 +18,10 @@
 !.config/ranger/
 !.config/i3/config
 !.config/i3blocks/config
+!.scripts/monitors.sh
+!.scripts/packages.sh
+!.scripts/pacman.sh
+!.scripts/wallpapers.sh
 
 # Zsh, Spacemacs, Xbindkeys
 !.spacemacs

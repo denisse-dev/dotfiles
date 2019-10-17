@@ -1,5 +1,5 @@
 # Enviroment variables
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="/home/andrea/.oh-my-zsh"
 export LC_ALL=en_US.UTF-8
 export TERMINAL=alacritty
 export PAGER=less
@@ -13,10 +13,6 @@ export LESS_TERMCAP_so=$'\e[1;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 export EDITOR='emacs'
-
-# Rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
 # Node.js
 PATH="$HOME/.node_modules/bin:$PATH"

@@ -4,18 +4,12 @@
 #  / /_\__ \ | | | | | (__
 # /____|___/_| |_|_|  \___|
 
-# Syntax highlighting and tab completion
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-autoload -Uz compinit
-
 # Aliases for a few useful commands
 alias mirrorUpdate="sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
-alias yaourt="yaourt --pager --color"
-alias pacmanGhost="~/.pacman.sh"
+alias pacmanGhost="~/.scripts/pacman.sh"
 alias shivita="toilet -f mono12 -F rainbow 'andrea' | ponythink -f winona"
 alias emacs="emacs -nw"
-alias cat="bat"
-alias ls="colorls"
+alias ls="lsd"
 alias ip="ip -c"
 alias rm="rm -i"
 alias x="ranger"
@@ -30,7 +24,7 @@ P9K_MODE="nerdfont-complete"
 
 # Prompt elements
 P9K_LEFT_PROMPT_ELEMENTS=(custom_user dir vcs)
-P9K_RIGHT_PROMPT_ELEMENTS=(background_jobs go_version rbenv)
+P9K_RIGHT_PROMPT_ELEMENTS=(background_jobs go_version)
 
 # Set name of the theme to load.
 ZSH_THEME="powerlevel9k/powerlevel9k"
