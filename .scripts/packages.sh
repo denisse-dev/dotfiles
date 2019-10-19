@@ -8,8 +8,8 @@ operations:
     -t <options> installs packages of GUI or CLI
 
 Examples:
-sudo ./packages.sh -at GUI
-sudo ./packages.sh -a -t cli"
+$ sudo ./packages.sh -at GUI
+$ sudo ./packages.sh -a -t cli"
 
 if [ -z "$SUDO_USER" ]; then
     echo "$HELP"
@@ -88,17 +88,26 @@ AUR_PACKAGES=(
 )
 
 function banner() {
+    RED='\033[0;31m'
     YELLOW='\033[0;33m'
     CYAN='\033[0;36m'
     NC='\033[0m'
-    MSG="${YELLOW}~ ${CYAN}$* ${YELLOW}~${NC}"
-    EDGE=$(echo "  $*  " | sed 's/./~/g')
-    echo -e "\n${YELLOW}$EDGE${NC}"
+    TEXT=$CYAN
+    BORDER=$YELLOW
+    EDGE=$(echo "  $1  " | sed 's/./~/g')
+
+    if [ "$2" == "warn" ]; then
+        TEXT=$YELLOW
+        BORDER=$RED
+    fi
+
+    MSG="${BORDER}~ ${TEXT}$1 ${BORDER}~${NC}"
+    echo -e "${BORDER}$EDGE${NC}"
     echo -e "$MSG"
-    echo -e "${YELLOW}$EDGE${NC}\n"
+    echo -e "${BORDER}$EDGE${NC}"
 }
 
-function installPackages() {
+function packageIterator() {
     PACKAGES=("$@")
     for i in "${PACKAGES[@]}";
     do
@@ -114,18 +123,19 @@ function installYay() {
 }
 
 function installAurPackages() {
-    banner "I will install the AUR packages"
-    PACKAGES=("$@")
-    for i in "${PACKAGES[@]}";
-    do
-        sudo -u "$SUDO_USER" yay -S "$i" -q --noconfirm
-    done
+    if [ -n "$aurFlag" ]; then
+        banner "I will install the AUR packages"
+
+        for i in "${AUR_PACKAGES[@]}";
+        do
+            sudo -u "$SUDO_USER" yay -S "$i" -q --noconfirm
+        done
+    fi
 }
 
 function installOhMyZsh() {
     banner "I will install Oh My Zsh and plugins"
     URL='https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh'
-    USER_HOME=$(eval echo "~${SUDO_USER}")
 
     sudo -u "$SUDO_USER" -- sh -c "$(curl -fsSL $URL)"
     sudo -u "$SUDO_USER" -- sh -c "
@@ -145,6 +155,8 @@ function configurePacman() {
 
 function installSpacemacs() {
     if [ "$(uname -m)" == 'x86_64' ]; then
+        banner "I will install spacemacs"
+
         sudo -u "$SUDO_USER" -- sh -c "
         git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
         cd ~/.emacs.d
@@ -153,13 +165,29 @@ function installSpacemacs() {
     fi
 }
 
+function installPackages() {
+    banner "I will install the base system"
+    configurePacman
+    packageIterator "${BASE_PACKAGES[@]}"
+
+    if [ "$typeVal" == 'cli' ]; then
+        banner "I will install the CLI packages"
+        packageIterator "${CLI_PACKAGES[@]}"
+    elif [ "$typeVal" == 'gui' ]; then
+        banner "I will install the GUI packages"
+        packageIterator "${GUI_PACKAGES[@]}"
+    fi
+
+    installYay
+}
+
 if [ -z "$typeFlag" ]; then
-    banner "Packages can't be blank"
+    banner "Packages can't be blank" "warn"
     exit 1
 fi
 
 if [ "$typeVal" != 'cli' ] && [ "$typeVal" != 'gui' ]; then
-    banner "Invalid packages"
+    banner "Invalid packages" "warn"
     exit 1
 fi
 
@@ -177,24 +205,8 @@ if [ "$(uname -m)" == 'x86_64' ]; then
     AUR_PACKAGES+=('spotify')
 fi
 
-banner "I will install the base system"
-configurePacman
-installPackages "${BASE_PACKAGES[@]}"
-
-if [ "$typeVal" == 'cli' ]; then
-    banner "I will install the CLI packages"
-    installPackages "${CLI_PACKAGES[@]}"
-elif [ "$typeVal" == 'gui' ]; then
-    banner "I will install the GUI packages"
-    installPackages "${GUI_PACKAGES[@]}"
-fi
-
-installYay
-
-if [ -n "$aurFlag" ]; then
-    installAurPackages "${AUR_PACKAGES[@]}"
-fi
-
+installPackages
+installAurPackages
 installOhMyZsh
 installSpacemacs
 
