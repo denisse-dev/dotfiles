@@ -11,6 +11,8 @@ Examples:
 $ sudo ./packages.sh -at GUI
 $ sudo ./packages.sh -a -t cli"
 
+source $(dirname "$0")/shared.sh
+
 if [ -z "$SUDO_USER" ]; then
     echo "$HELP"
     exit 1
@@ -40,6 +42,7 @@ BASE_PACKAGES=(
     'blueman'
     'bluez-utils'
     'curl'
+    'dhcpcd'
     'firewalld'
     'git'
     'go-pie'
@@ -50,12 +53,14 @@ BASE_PACKAGES=(
     'lsd'
     'neofetch'
     'openvpn'
+    'openssh'
     'pacman-contrib'
     'ranger'
     'tmux'
     'usbguard'
     'weechat'
     'whois'
+    'xterm'
     'zsh'
     'zsh-theme-powerlevel9k'
 )
@@ -66,15 +71,18 @@ CLI_PACKAGES=(
 )
 
 GUI_PACKAGES=(
+    'adapta-gtk-theme'
     'adobe-source-code-pro-fonts'
     'alacritty'
     'compton'
     'emacs'
+    'evince'
     'feh'
     'firefox'
     'i3-gaps'
     'i3blocks'
     'i3lock'
+    'papirus-icon-theme'
     'rofi'
     'xbindkeys'
     'xfce4-notifyd'
@@ -86,26 +94,6 @@ AUR_PACKAGES=(
     'nerd-fonts-source-code-pro'
     'oh-my-zsh-git'
 )
-
-function banner() {
-    RED='\033[0;31m'
-    YELLOW='\033[0;33m'
-    CYAN='\033[0;36m'
-    NC='\033[0m'
-    TEXT=$CYAN
-    BORDER=$YELLOW
-    EDGE=$(echo "  $1  " | sed 's/./~/g')
-
-    if [ "$2" == "warn" ]; then
-        TEXT=$YELLOW
-        BORDER=$RED
-    fi
-
-    MSG="${BORDER}~ ${TEXT}$1 ${BORDER}~${NC}"
-    echo -e "${BORDER}$EDGE${NC}"
-    echo -e "$MSG"
-    echo -e "${BORDER}$EDGE${NC}"
-}
 
 function packageIterator() {
     PACKAGES=("$@")
@@ -191,6 +179,10 @@ if [ "$typeVal" != 'cli' ] && [ "$typeVal" != 'gui' ]; then
     exit 1
 fi
 
+if [ "$typeVal" == 'gui' ]; then
+    AUR_PACKAGES+=('bibata-cursor-theme')
+fi
+
 if [ "$(uname -m)" == 'x86_64' ]; then
     BASE_PACKAGES+=('acpi'
                     'reflector'
@@ -201,7 +193,8 @@ if [ "$(uname -m)" == 'x86_64' ]; then
                     'xfce4-power-manager')
     GUI_PACKAGES+=('gimp'
                    'pavucontrol'
-                   'vlc')
+                   'vlc'
+                   'xorg-xinit')
     AUR_PACKAGES+=('spotify')
 fi
 
