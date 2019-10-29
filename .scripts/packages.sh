@@ -95,44 +95,36 @@ AUR_PACKAGES=(
     'oh-my-zsh-git'
 )
 
-function packageIterator() {
-    PACKAGES=("$@")
-    for i in "${PACKAGES[@]}";
-    do
-        pacman -S "$i" --quiet --noconfirm
-    done
+function installAurPackages() {
+    if [ -z "$aurFlag" ]; then
+        return 0
+    fi
+    banner "I will install the AUR packages"
+    packageIterator "yay" "${AUR_PACKAGES[@]}"
 }
 
 function installYay() {
+    if pacman -Qs yay > /dev/null ; then
+        return 0
+    fi
     sudo -u "$SUDO_USER" -- sh -c "
     git clone https://aur.archlinux.org/yay.git;
     cd yay || return;
     yes | makepkg -si"
 }
 
-function installAurPackages() {
-    if [ -n "$aurFlag" ]; then
-        banner "I will install the AUR packages"
-
-        for i in "${AUR_PACKAGES[@]}";
-        do
-            sudo -u "$SUDO_USER" yay -S "$i" -q --noconfirm
-        done
-    fi
-}
-
 function installOhMyZsh() {
+    local URL='https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh'
     banner "I will install Oh My Zsh and plugins"
-    URL='https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh'
 
-    sudo -u "$SUDO_USER" -- sh -c "$(curl -fsSL $URL)"
+    sudo -u "$SUDO_USER" -- sh -c "$(curl -fsSL $URL &>/dev/null)"
     sudo -u "$SUDO_USER" -- sh -c "
-    git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+    git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions &>/dev/null
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions &>/dev/null
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting &>/dev/null
+    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k &>/dev/null
     cd ~/.oh-my-zsh/custom/themes/powerlevel9k
-    git checkout next
+    git checkout next &>/dev/null
     cd - &>/dev/null"
 }
 
@@ -146,9 +138,9 @@ function installSpacemacs() {
         banner "I will install spacemacs"
 
         sudo -u "$SUDO_USER" -- sh -c "
-        git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+        git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d &>/dev/null
         cd ~/.emacs.d
-        git checkout develop
+        git checkout develop &>/dev/null
         cd - &>/dev/null"
     fi
 }
@@ -156,14 +148,14 @@ function installSpacemacs() {
 function installPackages() {
     banner "I will install the base system"
     configurePacman
-    packageIterator "${BASE_PACKAGES[@]}"
+    packageIterator "pacman" "${BASE_PACKAGES[@]}"
 
     if [ "$typeVal" == 'cli' ]; then
         banner "I will install the CLI packages"
-        packageIterator "${CLI_PACKAGES[@]}"
+        packageIterator "pacman" "${CLI_PACKAGES[@]}"
     elif [ "$typeVal" == 'gui' ]; then
         banner "I will install the GUI packages"
-        packageIterator "${GUI_PACKAGES[@]}"
+        packageIterator "pacman" "${GUI_PACKAGES[@]}"
     fi
 
     installYay

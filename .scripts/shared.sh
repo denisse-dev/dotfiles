@@ -26,3 +26,29 @@ function rootValidator() {
         exit 1
     fi
 }
+
+function packageIterator() {
+    local MANAGER="$1"
+    shift
+    local PACKAGES=("$@")
+
+    for i in "${PACKAGES[@]}";
+    do
+        if pacman -Qs "$i" > /dev/null ; then
+            continue
+        fi
+
+        if [ "$MANAGER" == yay ]; then
+            if ! sudo -u "$SUDO_USER" yay -S "$i" -q --noconfirm > /dev/null; then
+                banner "I was unable to install the package $i" "warn"
+                exit 1
+            fi
+            continue
+        fi
+
+        if ! pacman -S "$i" --quiet --noconfirm > /dev/null; then
+            banner "I was unable to install the package $i" "warn"
+            exit 1
+        fi
+    done
+}

@@ -29,6 +29,10 @@ done
 
 GOOGLE_AUTHENTICATOR='auth     required  pam_google_authenticator.so'
 DISABLE_PASSWORD='auth      include   system-remote-login'
+PAM_CONFIG=(
+    "s/${DISABLE_PASSWORD}/${GOOGLE_AUTHENTICATOR}\n#${DISABLE_PASSWORD}/g"
+    's/#auth     required  pam_securetty.so/auth      required  pam_securetty.so/g'
+)
 SSH_CONFIG=(
     's/#PubkeyAuthentication yes/PubkeyAuthentication yes/g'
     's/#MaxAuthTries 6/MaxAuthTries 3/g'
@@ -36,10 +40,9 @@ SSH_CONFIG=(
     's/#PasswordAuthentication yes/PasswordAuthentication no/g'
     's/#X11Forwarding no/X11Forwarding no/g'
 )
-
-PAM_CONFIG=(
-    "s/${DISABLE_PASSWORD}/${GOOGLE_AUTHENTICATOR}\n#${DISABLE_PASSWORD}/g"
-    's/#auth     required  pam_securetty.so/auth      required  pam_securetty.so/g'
+TOTP_PACKAGES=(
+    'libpam-google-authenticator'
+    'qrencode'
 )
 
 function sedIterator() {
@@ -58,14 +61,7 @@ function reloadDaemons() {
 }
 
 function configureTotp() {
-    RES=$(pacman -Qi libpam-google-authenticator qrencode)
-    if [ "$RES" == 1 ]; then
-        RES=$(pacman -S libpam-google-authenticator qrencode --quiet --noconfirm)
-        if [ -n "$RES" ]; then
-            banner "I was unable to install the required packages" "warn"
-            exit 1
-        fi
-    fi
+    packageIterator "pacman" "${TOTP_PACKAGES[@]}"
     SSH_CONFIG+=(
         's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g'
     )
