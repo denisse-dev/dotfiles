@@ -1,16 +1,8 @@
 #!/bin/bash
 
-PARAMS=(
-    "animals"
-    "clouds"
-    "dogs"
-    "flowers"
-    "mountains"
-    "nature"
-)
-RAND=$((RANDOM % ${#PARAMS[@]}))
 RESOLUTION="2560x1440"
-URL="https://source.unsplash.com/featured/${RESOLUTION}/daily?${PARAMS[$RAND]}"
+URL="https://source.unsplash.com/featured/${RESOLUTION}/daily?cyberpunk"
+# URL="https://source.unsplash.com/${RESOLUTION}/?cyberpunk"
 WALLPAPER=~/.wallpaper.jpeg
 
 if test -f "$WALLPAPER"; then

@@ -75,6 +75,7 @@ GUI_PACKAGES=(
     'adobe-source-code-pro-fonts'
     'alacritty'
     'compton'
+    'discount'
     'emacs'
     'evince'
     'feh'
@@ -82,10 +83,12 @@ GUI_PACKAGES=(
     'i3-gaps'
     'i3blocks'
     'i3lock'
+    'npm'
     'papirus-icon-theme'
     'rofi'
     'xbindkeys'
     'xfce4-notifyd'
+    'xfce4-screenshooter'
     'xorg'
 )
 
@@ -110,21 +113,21 @@ function installYay() {
     sudo -u "$SUDO_USER" -- sh -c "
     git clone https://aur.archlinux.org/yay.git;
     cd yay || return;
-    yes | makepkg -si"
+   yes | makepkg -si"
 }
 
 function installOhMyZsh() {
     local URL='https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh'
     banner "I will install Oh My Zsh and plugins"
 
-    sudo -u "$SUDO_USER" -- sh -c "$(curl -fsSL $URL &>/dev/null)"
+    sudo -u "$SUDO_USER" -- sh -c "$(curl -fsSL $URL)"
     sudo -u "$SUDO_USER" -- sh -c "
-    git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions &>/dev/null
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions &>/dev/null
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting &>/dev/null
-    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k &>/dev/null
+    git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
     cd ~/.oh-my-zsh/custom/themes/powerlevel9k
-    git checkout next &>/dev/null
+    git checkout next
     cd - &>/dev/null"
 }
 
@@ -187,7 +190,8 @@ if [ "$(uname -m)" == 'x86_64' ]; then
                    'pavucontrol'
                    'vlc'
                    'xorg-xinit')
-    AUR_PACKAGES+=('spotify')
+    AUR_PACKAGES+=('spotify'
+                   'pulseaudio-ctl')
 fi
 
 installPackages

@@ -26,5 +26,5 @@ export PATH="$PATH:$HOME/go/bin"
 
 # startx when logged in
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec ssh-agent startx
+    exec ssh-agent startx
 fi

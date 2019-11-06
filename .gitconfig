@@ -1,7 +1,7 @@
 [user]
 	name = Andrea Denisse Gómez
-	email = crypto.andrea@protonmail.ch
-	signingkey = 696A86F7D95CBD1D
+	email = git@denisse.dev
+	signingkey = FF03424057D3110C
 [commit]
 	gpgsign = true
 	template = ~/.gitmessage
