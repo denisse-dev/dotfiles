@@ -71,7 +71,7 @@ You should not put any user code in this function besides modifying the variable
      shell
      spell-checking
      sql
-     syntax-checkings
+     syntax-checking
      systemd
      terraform
      theming

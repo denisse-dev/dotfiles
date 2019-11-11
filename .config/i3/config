@@ -202,4 +202,4 @@ exec_always --no-startup-id ~/.scripts/monitors.sh # Automatically switch within
 exec_always --no-startup-id ~/.scripts/wallpapers.sh # Set a random wallpaper
 exec --no-startup-id compton --config ~/.config/compton/compton.conf # Compositor for window transparency
 exec --no-startup-id xfce4-power-manager # To monitor batttery
-exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.images/happy.png # Greeting on startup
+exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.images/icons8-dog-100.png # Greeting on startup

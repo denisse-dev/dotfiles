@@ -38,23 +38,29 @@ fi
 
 BASE_PACKAGES=(
     'acpi'
+    'atool'
     'bat'
     'blueman'
     'bluez-utils'
     'curl'
     'dhcpcd'
+    'ffmpegthumbnailer'
     'firewalld'
     'git'
     'go-pie'
     'go-tools'
+    'highlight'
     'htop'
     'jq'
     'less'
     'lsd'
+    'mediainfo'
     'neofetch'
+    'odt2txt'
     'openvpn'
     'openssh'
     'pacman-contrib'
+    'poppler'
     'ranger'
     'tmux'
     'usbguard'
@@ -113,7 +119,7 @@ function installYay() {
     sudo -u "$SUDO_USER" -- sh -c "
     git clone https://aur.archlinux.org/yay.git;
     cd yay || return;
-   yes | makepkg -si"
+    yes | makepkg -si"
 }
 
 function installOhMyZsh() {

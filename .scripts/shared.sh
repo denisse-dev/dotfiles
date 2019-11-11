@@ -34,19 +34,19 @@ function packageIterator() {
 
     for i in "${PACKAGES[@]}";
     do
-        if pacman -Qs "$i" > /dev/null ; then
+        if pacman -Qq "$i" > /dev/null ; then
             continue
         fi
 
         if [ "$MANAGER" == yay ]; then
-            if ! sudo -u "$SUDO_USER" yay -S "$i" -q --noconfirm > /dev/null; then
+            if ! sudo -u "$SUDO_USER" yay -S "$i" -q --noconfirm; then
                 banner "I was unable to install the package $i" "warn"
                 exit 1
             fi
             continue
         fi
 
-        if ! pacman -S "$i" --quiet --noconfirm > /dev/null; then
+        if ! pacman -S "$i" --quiet --noconfirm; then
             banner "I was unable to install the package $i" "warn"
             exit 1
         fi

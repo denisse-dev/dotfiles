@@ -1,8 +1,7 @@
 #!/bin/bash
 
 RESOLUTION="2560x1440"
-URL="https://source.unsplash.com/featured/${RESOLUTION}/daily?cyberpunk"
-# URL="https://source.unsplash.com/${RESOLUTION}/?cyberpunk"
+URL="https://source.unsplash.com/featured/${RESOLUTION}/?cyberpunk"
 WALLPAPER=~/.wallpaper.jpeg
 
 if test -f "$WALLPAPER"; then
