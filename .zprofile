@@ -13,6 +13,7 @@ export LESS_TERMCAP_so=$'\e[1;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 export EDITOR='emacs'
+export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # Node.js
 PATH="$HOME/.node_modules/bin:$PATH"

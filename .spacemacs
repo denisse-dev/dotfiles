@@ -195,11 +195,16 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 16
-                               :weight bold
-                               :width normal
-                               :powerline-scale 1.2)
+   dotspacemacs-default-font '(("FuraCode Nerd Font Mono"
+                                :size 16
+                                :weight medium
+                                :width normal
+                                :powerline-scale 1)
+                               ("Fira Code Symbol"
+                                :size 16
+                                :weight normal
+                                :width normal
+                                :powerline-scale 1))
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -454,7 +459,44 @@ you should place your code here."
 
   ;; Add a new line to all visited and saved files
   (setq require-final-newline 'visit-save)
-  )
+
+  ;; Fira Code Font Ligatures in Emacs/Spacemacs on (Arch) Linux thanks to:
+  ;; https://www.rockyourcode.com/fira-code-font-ligatures-in-emacs-spacemacs-on-arch-linux
+  (defun my-correct-symbol-bounds (pretty-alist)
+    "Prepend a TAB character to each symbol in this alist,
+  this way compose-region called by prettify-symbols-mode
+  will use the correct width of the symbols
+  instead of the width measured by char-width."
+    (mapcar (lambda (el)
+              (setcdr el (string ?\t (cdr el)))
+              el)
+            pretty-alist))
+  (defun my-ligature-list (ligatures codepoint-start)
+    "Create an alist of strings to replace with
+  codepoints starting from codepoint-start."
+    (let ((codepoints (-iterate '1+ codepoint-start (length ligatures))))
+      (-zip-pair ligatures codepoints)))
+  (setq my-fira-code-ligatures
+        (let* ((ligs '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\"
+                       "{-" "[]" "::" ":::" ":=" "!!" "!=" "!==" "-}"
+                       "--" "---" "-->" "->" "->>" "-<" "-<<" "-~"
+                       "#{" "#[" "##" "###" "####" "#(" "#?" "#_" "#_("
+                       ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*"
+                       "/**" "/=" "/==" "/>" "//" "///" "&&" "||" "||="
+                       "|=" "|>" "^=" "$>" "++" "+++" "+>" "=:=" "=="
+                       "===" "==>" "=>" "=>>" "<=" "=<<" "=/=" ">-" ">="
+                       ">=>" ">>" ">>-" ">>=" ">>>" "<*" "<*>" "<|" "<|>"
+                       "<$" "<$>" "<!--" "<-" "<--" "<->" "<+" "<+>" "<="
+                       "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<" "<~"
+                       "<~~" "</" "</>" "~@" "~-" "~=" "~>" "~~" "~~>" "%%"
+                       "x" ":" "+" "+" "*")))
+          (my-correct-symbol-bounds (my-ligature-list ligs #Xe100))))
+  (defun my-set-fira-code-ligatures ()
+    "Add fira code ligatures for use with prettify-symbols-mode."
+    (setq prettify-symbols-alist
+          (append my-fira-code-ligatures prettify-symbols-alist))
+    (prettify-symbols-mode))
+  (add-hook 'prog-mode-hook 'my-set-fira-code-ligatures))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
