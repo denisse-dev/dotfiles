@@ -106,18 +106,31 @@ ENABLE_CORRECTION="true"
 HIST_STAMPS="mm/dd/yyyy"
 
 # Plugins to load
-plugins=(git
-         gitfast
-         golang
-         history-substring-search
-         terraform
-         virtualenv
-         zsh-autosuggestions
-         zsh-completions
-         zsh-syntax-highlighting)
+plugins=(
+    colorize
+    copyfile
+    docker
+    docker-compose
+    emacs
+    extract
+    git
+    gitfast
+    golang
+    history-substring-search
+    kubectl
+    rust
+    safe-paste
+    terraform
+    tmux
+    virtualenv
+    zsh-autosuggestions
+    zsh-completions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
+)
 
+setopt HIST_IGNORE_SPACE
 autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
-
-autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/vault vault
+complete -o nospace -C /usr/bin/terraform terraform

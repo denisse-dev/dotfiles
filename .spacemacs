@@ -26,111 +26,112 @@ You should not put any user code in this function besides modifying the variable
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
-   dotspacemacs-enable-lazy-installation 'unused
-   ;; If non-nil then Spacemacs will ask for confirmation before installing
-   ;; a layer lazily. (default t)
-   dotspacemacs-ask-for-lazy-installation t
-   ;; If non-nil layers with lazy install support are lazy installed.
-   ;; List of additional paths where to look for configuration layers.
-   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '()
-   ;; List of configuration layers to load.
-   dotspacemacs-configuration-layers
-   '(
-     ansible
-     asm
-     auto-completion
-     better-defaults
-     c-c++
-     colors
-     csv
-     docker
-     emacs-lisp
-     emoji
-     git
-     go
-     haskell
-     helm
-     html
-     javascript
-     json
-     latex
-     lsp
-     major-modes
-     markdown
-     neotree
-     nginx
-     pdf
-     puppet
-     python
-     ranger
-     react
-     ruby
-     ruby-on-rails
-     rust
-     shell
-     spell-checking
-     sql
-     syntax-checking
-     systemd
-     terraform
-     theming
-     tmux
-     typescript
-     version-control
-     yaml
-     (latex :variables latex-enable-folding t)
-     (spell-checking :variables spell-checking-enable-auto-dictionary t)
-     (markdown :variables markdown-live-preview-engine 'vmd)
-     (colors :variables
-             colors-enable-nyan-cat-progress-bar t
-             colors-colorize-identifiers 'variables)
-     (go :variables
-         go-use-golangci-lint t
-         go-linter 'golangci-lint
-         godoc-at-point-function 'godoc-gogetdoc
-         go-format-before-save t
-         gofmt-command "goimports"
-         go-backend 'lsp
-         go-tab-width 2)
-     (auto-completion :variables
-                      auto-completion-enable-snippets-in-popup t
-                      auto-completion-enable-help-tooltip t)
-     (ranger :variables
-             ranger-show-preview t))
-   ;; List of additional packages that will be installed without being
-   ;; wrapped in a layer. If you need some configuration for these
-   ;; packages, then consider creating a layer. You can also put the
-   ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages
-   '(
-     aggressive-indent
-     all-the-icons
-     all-the-icons-dired
-     all-the-icons-ivy
-     beacon
-     dumb-jump
-     flycheck-golangci-lint
-     git-messenger
-     go-playground
-     gotest
-     highlight-indent-guides
-     mode-icons
-     prettier-js
-     projectile
-     )
-   ;; A list of packages that cannot be updated.
-   dotspacemacs-frozen-packages '()
-   ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
-   ;; Defines the behaviour of Spacemacs when installing packages.
-   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
-   ;; `used-only' installs only explicitly used packages and uninstall any
-   ;; unused packages as well as their unused dependencies.
-   ;; `used-but-keep-unused' installs only the used packages but won't uninstall
-   ;; them if they become unused. `all' installs *all* packages supported by
-   ;; Spacemacs and never uninstall them. (default is `used-only')
-   dotspacemacs-install-packages 'used-only))
+  dotspacemacs-enable-lazy-installation 'unused
+  ;; If non-nil then Spacemacs will ask for confirmation before installing
+  ;; a layer lazily. (default t)
+  dotspacemacs-ask-for-lazy-installation t
+  ;; If non-nil layers with lazy install support are lazy installed.
+  ;; List of additional paths where to look for configuration layers.
+  ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
+  dotspacemacs-configuration-layer-path '()
+  ;; List of configuration layers to load.
+  dotspacemacs-configuration-layers
+  '(
+    ansible
+    asciidoc
+    asm
+    auto-completion
+    better-defaults
+    c-c++
+    colors
+    csv
+    docker
+    emacs-lisp
+    emoji
+    git
+    go
+    haskell
+    helm
+    html
+    javascript
+    json
+    latex
+    lsp
+    major-modes
+    markdown
+    neotree
+    nginx
+    pdf
+    puppet
+    python
+    ranger
+    react
+    ruby
+    ruby-on-rails
+    rust
+    shell
+    spell-checking
+    sql
+    syntax-checking
+    systemd
+    terraform
+    theming
+    tmux
+    typescript
+    version-control
+    yaml
+    (latex :variables latex-enable-folding t)
+    (spell-checking :variables spell-checking-enable-auto-dictionary t)
+    (markdown :variables markdown-live-preview-engine 'vmd)
+    (colors :variables
+            colors-enable-nyan-cat-progress-bar t
+            colors-colorize-identifiers 'variables)
+    (go :variables
+        go-use-golangci-lint t
+        go-linter 'golangci-lint
+        godoc-at-point-function 'godoc-gogetdoc
+        go-format-before-save t
+        gofmt-command "goimports"
+        go-backend 'lsp
+        go-tab-width 2)
+    (auto-completion :variables
+                     auto-completion-enable-snippets-in-popup t
+                     auto-completion-enable-help-tooltip t)
+    (ranger :variables
+            ranger-show-preview t))
+  ;; List of additional packages that will be installed without being
+  ;; wrapped in a layer. If you need some configuration for these
+  ;; packages, then consider creating a layer. You can also put the
+  ;; configuration in `dotspacemacs/user-config'.
+  dotspacemacs-additional-packages
+  '(
+    aggressive-indent
+    all-the-icons
+    all-the-icons-dired
+    all-the-icons-ivy
+    beacon
+    dumb-jump
+    flycheck-golangci-lint
+    git-messenger
+    go-playground
+    gotest
+    highlight-indent-guides
+    mode-icons
+    prettier-js
+    projectile
+    )
+  ;; A list of packages that cannot be updated.
+  dotspacemacs-frozen-packages '()
+  ;; A list of packages that will not be installed and loaded.
+  dotspacemacs-excluded-packages '()
+  ;; Defines the behaviour of Spacemacs when installing packages.
+  ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
+  ;; `used-only' installs only explicitly used packages and uninstall any
+  ;; unused packages as well as their unused dependencies.
+  ;; `used-but-keep-unused' installs only the used packages but won't uninstall
+  ;; them if they become unused. `all' installs *all* packages supported by
+  ;; Spacemacs and never uninstall them. (default is `used-only')
+  dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
   "Initialization function.

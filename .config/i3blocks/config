@@ -1,77 +1,100 @@
+# For the benefit of emacs users: -*- shell-script -*-
+#
 #  _ _____ _     _            _
 # (_)___ /| |__ | | ___   ___| | _____
 # | | |_ \| '_ \| |/ _ \ / __| |/ / __|
 # | |___) | |_) | | (_) | (__|   <\__ \
 # |_|____/|_.__/|_|\___/ \___|_|\_\___/
 
-command=~/.i3/i3scripts/$BLOCK_NAME
+command=~/.config/i3blocks/blocks/$BLOCK_NAME/$BLOCK_NAME
 align=center
 separator=false
+color=#ffffff
 separator_block_width=20
 markup=pango
 
 [mediaplayer]
-instance=spotify
-interval=5
-signal=10
-color=#a9e185
-
-[arch_update.py]
-command=printf "\\uf303 " && ~/.i3/i3scripts/arch_update.py -b "#FFFFFF" -u "#FFFFFF"
-interval=3600
-color=#1793D1
-
-[openvpn]
-command=printf "\uf084 " && ~/.i3/i3scripts/openvpn
-interval=5
-color=#8be9fd
-
-[home]
-command=printf "\\uf015 " && ~/.i3/i3scripts/disk
-instance=/home/
-interval=3600
-color=#ffb86c
-
-[root]
-command=printf "\\uf292 " && ~/.i3/i3scripts/disk
-instance=/
-interval=3600
-color=#ff79c6
-
-[temperature]
+command=playerctl metadata --format "{{ artist }} - {{ title }}"
 interval=2
-color=#a9e185
+label=<span color="#a9e185"> </span>
 
-[cpu_usage]
-interval=2
-color=#8be9fd
-
-[memory]
-command=printf "\\uf013 " && ~/.i3/i3scripts/memory
-interval=2
-color=#ffb86c
-
-[volume]
-interval=1
-signal=10
-color=#ff79c6
+[arch-update]
+command=checkupdates | wc -l
+interval=once
+label=<span color="#1793D1"> </span>
 
 [battery]
 interval=2
-color=#a9e185
+color=#ff79c6
 
 [wifi]
-command=printf "\\uf1eb " && ~/.i3/i3scripts/wifi
-instance=wlp2s0
+command=iwgetid -r | tr '\n' ' ' && grep $(iwgetid -m | awk '{ printf "%s", $1 }') /proc/net/wireless | awk '{ printf "%i%\n", int($3 * 100 / 70) }'
+instance=wlp11s0f3u1
 interval=5
-color=#8be9fd
+label=<span color="#ffb86c"> </span>
+
+[new-vpn]
+command=~/.config/i3blocks/blocks/openvpn/openvpn
+interval=1
+label=<span color="#8be9fd"> </span>
+
+[home]
+command=df -h /home | awk 'FNR==2{print $4}'
+interval=3
+label=<span color="#a9e185"> </span>
+
+[root]
+command=df -h / | awk 'FNR==2{print $4}'
+interval=3
+label=<span color="#ff79c6"> </span>
+
+[gpu-load]
+command=~/.config/i3blocks/blocks/gpu-load/gpu-load | awk 'FNR==1{ printf "%s %s\n", $1, $2 }'
+label=<span color="#ffb86c"> </span>
+interval=2
+
+[gpu-temperature]
+command=~/.config/i3blocks/blocks/temperature/temperature
+interval=2
+SENSOR_CHIP="k10temp-pci-00c3"
+label=<span color="#ffb86c"> </span>
+
+[cpu_usage]
+command=~/.config/i3blocks/blocks/cpu_usage/cpu_usage
+interval=2
+label=<span color="#8be9fd"> </span>
+
+[cpu-temperature]
+command=~/.config/i3blocks/blocks/temperature/temperature
+interval=2
+SENSOR_CHIP="jc42-i2c-0-1a"
+label=<span color="#8be9fd"> </span>
+
+[memory]
+command=free -h --si | awk 'FNR==2{ print $0 }' | awk '{ print $7 }'
+interval=2
+label=<span color="#a9e185"> </span>
+
+[volume]
+command=pulseaudio-ctl full-status | awk '{ printf "%i%\n", $1 }'
+interval=2
+label=<span color="#ff79c6"> </span>
 
 [time]
-command=printf "\\uf017 " && date '+%I:%M'
+command=date '+%I:%M'
 interval=1
-color=#ffb86c
+label=<span color="#ffb86c"> </span>
 
 [date]
-command=printf "\\uf073 " && date '+%A%e '
+command=date '+%A %e'
 interval=60
-color=#ff79c6
+label=<span color="#8be9fd"> </span>
+
+[shutdown_menu]
+full_text=<span color="#a9e185"> </span>
+command=~/.config/i3blocks/blocks/shutdown_menu/shutdown_menu
+ROFI_TEXT=Menu:
+ROFI_OPTIONS=-no-config -location 3 -yoffset 29 -width 5 -xoffset 5 -bw 0 -border 0 -theme ~/.config/rofi/menu.rasi
+ENABLE_CONFIRMATIONS=true
+LAUNCHER=rofi
+LOCKSCRIPT=betterlockscreen -l dimblur

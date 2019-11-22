@@ -79,16 +79,16 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # Name the workspaces
-set $workspace1 " 1:  "
-set $workspace2 " 2:  "
-set $workspace3 " 3:  "
-set $workspace4 " 4:  "
-set $workspace5 " 5:  "
-set $workspace6 " 6:  "
+set $workspace1 " 1:  "
+set $workspace2 " 2:  "
+set $workspace3 " 3:  "
+set $workspace4 " 4:  "
+set $workspace5 " 5:  "
+set $workspace6 " 6:  "
 set $workspace7 " 7:  "
 set $workspace8 " 8: ♫ "
-set $workspace9 " 9:  "
-set $workspace0 " 10:  "
+set $workspace9 " 9:  "
+set $workspace0 " 10:  "
 
 # Switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -134,6 +134,7 @@ for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
+for_window [class="Yad"] floating enable
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
@@ -142,25 +143,23 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Lock screen
-bindsym $mod+shift+x exec betterlockscreen -l dim
-
-# Exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+x exec betterlockscreen -l dimblur
 
 # Resize window (you can also use the mouse for that)
 mode "resize"
 {
-  # Resize with the arrow keys
-  bindsym Left resize shrink width 2 px or 2 ppt
-  bindsym Down resize grow height 2 px or 2 ppt
-  bindsym Up resize shrink height 2 px or 2 ppt
-  bindsym Right resize grow width 2 px or 2 ppt
+    # Resize with the arrow keys
+    bindsym Left resize shrink width 2 px or 2 ppt
+    bindsym Down resize grow height 2 px or 2 ppt
+    bindsym Up resize shrink height 2 px or 2 ppt
+    bindsym Right resize grow width 2 px or 2 ppt
 
-  # Back to normal: Enter or Escape
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
+    # Back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+bindsym $mod+Shift+e exec "~/.config/i3blocks/blocks/shutdown_menu/shutdown_menu"
 
 # Defining colors
 set $bg      #282A36
@@ -182,24 +181,26 @@ client.placeholder          $bg      $bg        $cyan    $cyan
 # Start i3blocks to display a workspace bar
 bar
 {
-  position top
-	status_command i3blocks
-  i3bar_command i3bar
-	font pango: SpaceMono Nerd Font Regular 11
-	colors
-	{
-      #                   Border Background Text
-		  focused_workspace   $fg    $fg        $bg
-		  active_workspace    $bg    $bg        $purple
-		  inactive_workspace  $bg    $bg        $cyan
-		  urgent_workspace    $bg    $bg        $magenta
-		  background          $bg
-  }
+    position top
+	  status_command i3blocks
+    i3bar_command i3bar
+	  font pango: SpaceMono Nerd Font Regular 11
+	  colors
+	  {
+        #                   Border Background Text
+		    focused_workspace   $fg    $fg        $bg
+		    active_workspace    $bg    $bg        $purple
+		    inactive_workspace  $bg    $bg        $cyan
+		    urgent_workspace    $bg    $bg        $magenta
+		    background          $bg
+    }
 }
 
 # Startup programs
 exec_always --no-startup-id ~/.scripts/monitors.sh # Automatically switch within monitors
 exec_always --no-startup-id ~/.scripts/wallpapers.sh # Set a random wallpaper
+exec --no-startup-id betterlockscreen -w dim
+exec --no-startup-id source ~/.wallpaper.jpeg
 exec --no-startup-id compton --config ~/.config/compton/compton.conf # Compositor for window transparency
 exec --no-startup-id xfce4-power-manager # To monitor batttery
 exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.images/icons8-dog-100.png # Greeting on startup
