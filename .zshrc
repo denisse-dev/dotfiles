@@ -5,16 +5,20 @@
 # /____|___/_| |_|_|  \___|
 
 # Aliases for a few useful commands
-alias mirrorUpdate="sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
-alias pacmanGhost="~/.scripts/pacman.sh"
-alias shivita="toilet -f mono12 -F rainbow 'andrea' | ponythink -f winona"
-alias emacs="emacs -nw"
-alias ls="lsd"
-alias ip="ip -c"
-alias rm="rm -i"
-alias x="ranger"
-alias c="cmus"
-alias h="htop"
+alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias pacmanGhost='~/.scripts/pacman.sh'
+alias shivita='toilet -f mono12 -F rainbow 'andrea' | ponythink -f winona'
+alias emacs='emacs -nw'
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+alias ip='ip -c'
+alias rm='rm -i'
+alias x='ranger'
+alias c='cmus'
+alias h='htop'
 
 # Show OS info when opening a new terminal
 neofetch
@@ -104,6 +108,7 @@ ENABLE_CORRECTION="true"
 
 # Command execution time stamp shown in the history command output.
 HIST_STAMPS="mm/dd/yyyy"
+DISABLE_LS_COLORS="true"
 
 # Plugins to load
 plugins=(
@@ -112,7 +117,6 @@ plugins=(
     docker
     docker-compose
     emacs
-    extract
     git
     gitfast
     golang
@@ -120,7 +124,6 @@ plugins=(
     kubectl
     rust
     safe-paste
-    terraform
     tmux
     virtualenv
     zsh-autosuggestions
