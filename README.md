@@ -2,7 +2,7 @@
 
 ### Arch Linux [i3-gaps + i3blocks + Zsh + Spacemacs + Rofi + Neofetch]
 
-![Desktop](https://github.com/da-edra/dotfiles/blob/master/screenshots/desktop.png)
+![Desktop](.images/desktop.png)
 
 ```
        __      __  _____ __
@@ -67,17 +67,17 @@ I'm including some screenshots on this repo and a list of dependencies in case y
 ------
 
 ### I :sparkling_heart: i3 tiling capabilities:
-![Terminals](https://github.com/da-edra/dotfiles/blob/master/screenshots/terminals.png)
+![Terminals](.images/terminals.png)
 ---
 ### Zsh is the best:
-![Zsh Features](https://github.com/da-edra/dotfiles/blob/master/screenshots/zsh-features.png)
+![Zsh Features](.images/zsh-features.png)
 ---
 ### My [Rofi](https://github.com/DaveDavenport/rofi) theme:
-![Application launcher](https://github.com/da-edra/dotfiles/blob/master/screenshots/rofi.png)
+![Application launcher](.images/rofi.png)
 ---
 ### [Spacemacs](https://github.com/syl20bnr/spacemacs) rules!
 ###### The best editor is neither Emacs nor Vim, it's Emacs *and* Vim!
-![Spacemacs](https://github.com/da-edra/dotfiles/blob/master/screenshots/spacemacs.png)
+![Spacemacs](.images/spacemacs.png)
 ---
 <div align="center">
 

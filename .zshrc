@@ -99,7 +99,7 @@ P9K_GO_VERSION_PROMPT_ALWAYS_SHOW=true
 
 # User with skull
 user_with_skull() {
-    echo -n "\ufb8a $(whoami)"
+    echo -n " 安丹梅"
 }
 P9K_CUSTOM_USER="user_with_skull"
 
@@ -137,3 +137,5 @@ autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 complete -o nospace -C /usr/bin/vault vault
 complete -o nospace -C /usr/bin/terraform terraform
+
+export VAULT_SKIP_VERIFY=true

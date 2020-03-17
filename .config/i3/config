@@ -173,10 +173,10 @@ set $purple  #bd93f9
 
 # Set some nice colors      border	 background text     indicator
 client.focused              $comment $comment   $fg      $comment
-client.unfocused            $bg      $bg        $cyan    $cyan
-client.focused_inactive     $bg      $bg        $green   $green
-client.urgent               $bg      $bg        $magenta $magenta
-client.placeholder          $bg      $bg        $cyan    $cyan
+client.unfocused            $bg      $bg        $cyan    $bg
+client.focused_inactive     $bg      $bg        $green   $bg
+client.urgent               $bg      $bg        $magenta $bg
+client.placeholder          $bg      $bg        $cyan    $bg
 
 # Start i3blocks to display a workspace bar
 bar
@@ -197,10 +197,9 @@ bar
 }
 
 # Startup programs
-exec_always --no-startup-id ~/.scripts/monitors.sh # Automatically switch within monitors
-exec_always --no-startup-id ~/.scripts/wallpapers.sh # Set a random wallpaper
+exec_always --no-startup-id ~/.scripts/monitors.sh
+exec_always --no-startup-id ~/.scripts/wallpapers.sh
 exec --no-startup-id betterlockscreen -w dim
-exec --no-startup-id source ~/.wallpaper.jpeg
-exec --no-startup-id compton --config ~/.config/compton/compton.conf # Compositor for window transparency
-exec --no-startup-id xfce4-power-manager # To monitor batttery
-exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.images/icons8-dog-100.png # Greeting on startup
+exec --no-startup-id compton --config ~/.config/compton/compton.conf
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.images/icons8-dog-100.png

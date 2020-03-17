@@ -2,7 +2,7 @@
 
 RESOLUTION="2560x1440"
 URL="https://source.unsplash.com/featured/${RESOLUTION}/?cyberpunk"
-WALLPAPER=~/.wallpaper.jpeg
+WALLPAPER=~/.images/wallpaper.jpeg
 
 if test -f "$WALLPAPER"; then
     feh --bg-scale "$WALLPAPER"

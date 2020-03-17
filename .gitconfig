@@ -1,7 +1,3 @@
-[user]
-	name = Andrea Denisse Gómez
-	email = git@denisse.dev
-	signingkey = BC63E97214C0C4EB
 [commit]
 	gpgsign = true
 	template = ~/.gitmessage
@@ -22,11 +18,11 @@
 	editor = emacs
 	pager = less
 [url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
+	insteadOf = https://github.com/
 [url "ssh://git@gitlab.com/"]
-  insteadOf = https://gitlab.com/
+	insteadOf = https://gitlab.com/
 [url "ssh://git@bitbucket.org/"]
-  insteadOf = https://bitbucket.org/
+	insteadOf = https://bitbucket.org/
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
@@ -36,3 +32,5 @@
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
 	templateDir = /home/andrea/.git-templates/git-secrets
+[include]
+	path = .gitconfig_user

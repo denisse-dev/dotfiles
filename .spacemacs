@@ -26,112 +26,122 @@ You should not put any user code in this function besides modifying the variable
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
-  dotspacemacs-enable-lazy-installation 'unused
-  ;; If non-nil then Spacemacs will ask for confirmation before installing
-  ;; a layer lazily. (default t)
-  dotspacemacs-ask-for-lazy-installation t
-  ;; If non-nil layers with lazy install support are lazy installed.
-  ;; List of additional paths where to look for configuration layers.
-  ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-  dotspacemacs-configuration-layer-path '()
-  ;; List of configuration layers to load.
-  dotspacemacs-configuration-layers
-  '(
-    ansible
-    asciidoc
-    asm
-    auto-completion
-    better-defaults
-    c-c++
-    colors
-    csv
-    docker
-    emacs-lisp
-    emoji
-    git
-    go
-    haskell
-    helm
-    html
-    javascript
-    json
-    latex
-    lsp
-    major-modes
-    markdown
-    neotree
-    nginx
-    pdf
-    puppet
-    python
-    ranger
-    react
-    ruby
-    ruby-on-rails
-    rust
-    shell
-    spell-checking
-    sql
-    syntax-checking
-    systemd
-    terraform
-    theming
-    tmux
-    typescript
-    version-control
-    yaml
-    (latex :variables latex-enable-folding t)
-    (spell-checking :variables spell-checking-enable-auto-dictionary t)
-    (markdown :variables markdown-live-preview-engine 'vmd)
-    (colors :variables
-            colors-enable-nyan-cat-progress-bar t
-            colors-colorize-identifiers 'variables)
-    (go :variables
-        go-use-golangci-lint t
-        go-linter 'golangci-lint
-        godoc-at-point-function 'godoc-gogetdoc
-        go-format-before-save t
-        gofmt-command "goimports"
-        go-backend 'lsp
-        go-tab-width 2)
-    (auto-completion :variables
-                     auto-completion-enable-snippets-in-popup t
-                     auto-completion-enable-help-tooltip t)
-    (ranger :variables
-            ranger-show-preview t))
-  ;; List of additional packages that will be installed without being
-  ;; wrapped in a layer. If you need some configuration for these
-  ;; packages, then consider creating a layer. You can also put the
-  ;; configuration in `dotspacemacs/user-config'.
-  dotspacemacs-additional-packages
-  '(
-    aggressive-indent
-    all-the-icons
-    all-the-icons-dired
-    all-the-icons-ivy
-    beacon
-    dumb-jump
-    flycheck-golangci-lint
-    git-messenger
-    go-playground
-    gotest
-    highlight-indent-guides
-    mode-icons
-    prettier-js
-    projectile
-    )
-  ;; A list of packages that cannot be updated.
-  dotspacemacs-frozen-packages '()
-  ;; A list of packages that will not be installed and loaded.
-  dotspacemacs-excluded-packages '()
-  ;; Defines the behaviour of Spacemacs when installing packages.
-  ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
-  ;; `used-only' installs only explicitly used packages and uninstall any
-  ;; unused packages as well as their unused dependencies.
-  ;; `used-but-keep-unused' installs only the used packages but won't uninstall
-  ;; them if they become unused. `all' installs *all* packages supported by
-  ;; Spacemacs and never uninstall them. (default is `used-only')
-  dotspacemacs-install-packages 'used-only))
+   dotspacemacs-enable-lazy-installation 'unused
+   ;; If non-nil then Spacemacs will ask for confirmation before installing
+   ;; a layer lazily. (default t)
+   dotspacemacs-ask-for-lazy-installation t
+   ;; If non-nil layers with lazy install support are lazy installed.
+   ;; List of additional paths where to look for configuration layers.
+   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
+   dotspacemacs-configuration-layer-path '()
+   ;; List of configuration layers to load.
+   dotspacemacs-configuration-layers
+   '(
+     ansible
+     asciidoc
+     asm
+     auto-completion
+     better-defaults
+     c-c++
+     chinese
+     colors
+     csv
+     docker
+     emacs-lisp
+     emoji
+     git
+     go
+     haskell
+     helm
+     html
+     javascript
+     json
+     kubernetes
+     latex
+     lsp
+     major-modes
+     markdown
+     multiple-cursors
+     neotree
+     nginx
+     pdf
+     puppet
+     python
+     ranger
+     react
+     ruby
+     ruby-on-rails
+     rust
+     shell
+     spell-checking
+     sql
+     syntax-checking
+     systemd
+     terraform
+     theming
+     tmux
+     typescript
+     vagrant
+     version-control
+     yaml
+     (latex :variables latex-enable-folding t)
+     (spell-checking :variables spell-checking-enable-auto-dictionary t)
+     (markdown :variables markdown-live-preview-engine 'vmd)
+     (colors :variables
+             colors-enable-nyan-cat-progress-bar t
+             colors-colorize-identifiers 'variables)
+     (go :variables
+         go-use-golangci-lint t
+         go-linter 'golangci-lint
+         godoc-at-point-function 'godoc-gogetdoc
+         go-format-before-save t
+         gofmt-command "goimports"
+         go-backend 'lsp
+         go-tab-width 2)
+     (auto-completion :variables
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-help-tooltip t
+                      auto-completion-enable-sort-by-usage t
+                      auto-completion-tab-key-behavior 'complete
+                      spacemacs-default-company-backends '(company-files company-capf))
+     (ranger :variables
+             ranger-show-preview t)
+     (yaml :variables yaml-enable-lsp t)
+     (docker :variables docker-dockerfile-backend 'lsp)
+     (terraform :variables terraform-auto-format-on-save t))
+   ;; List of additional packages that will be installed without being
+   ;; wrapped in a layer. If you need some configuration for these
+   ;; packages, then consider creating a layer. You can also put the
+   ;; configuration in `dotspacemacs/user-config'.
+   dotspacemacs-additional-packages
+   '(
+     aggressive-indent
+     all-the-icons
+     all-the-icons-dired
+     all-the-icons-ivy
+     beacon
+     dumb-jump
+     flycheck-golangci-lint
+     git-messenger
+     go-playground
+     gotest
+     highlight-indent-guides
+     mode-icons
+     prettier-js
+     projectile
+     )
+   ;; A list of packages that cannot be updated.
+   dotspacemacs-frozen-packages '()
+   ;; A list of packages that will not be installed and loaded.
+   dotspacemacs-excluded-packages '()
+   ;; Defines the behaviour of Spacemacs when installing packages.
+   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
+   ;; `used-only' installs only explicitly used packages and uninstall any
+   ;; unused packages as well as their unused dependencies.
+   ;; `used-but-keep-unused' installs only the used packages but won't uninstall
+   ;; them if they become unused. `all' installs *all* packages supported by
+   ;; Spacemacs and never uninstall them. (default is `used-only')
+   dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -461,6 +471,9 @@ you should place your code here."
   ;; Add a new line to all visited and saved files
   (setq require-final-newline 'visit-save)
 
+  ;; Globally enable company mode for auto completion
+  (global-company-mode)
+
   ;; Fira Code Font Ligatures in Emacs/Spacemacs on (Arch) Linux thanks to:
   ;; https://www.rockyourcode.com/fira-code-font-ligatures-in-emacs-spacemacs-on-arch-linux
   (defun my-correct-symbol-bounds (pretty-alist)
@@ -529,6 +542,10 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-tooltip-common
+   ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection
+   ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
  '(default ((((min-colors 16777216)) (:background "#282a36" :foreground "#f8f8f2")) (t (:background "#000000" :foreground "#f8f8f2")))))
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
@@ -558,7 +575,7 @@ This function is called at the very end of Spacemacs initialization."
    '(linum-format " %d")
    '(package-selected-packages
      (quote
-      (flymd flycheck-golangci-lint ruby-hash-syntax json-navigator helm-xref editorconfig doom-modeline eldoc-eval counsel-projectile counsel swiper ivy browse-at-remote window-purpose imenu-list visual-fill-column turing-theme yasnippet-snippets company-quickhelp yapfify yaml-mode xterm-color web-mode web-beautify vmd-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-isort puppet-mode pug-mode projectile-rails rake inflections pip-requirements pdf-tools tablist origami orgit nginx-mode mwim multi-term mmm-mode minitest markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero hy-mode hlint-refactor hindent helm-pydoc helm-hoogle helm-gitignore helm-css-scss helm-company helm-c-yasnippet haskell-snippets haml-mode go-playground gotest go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-popup flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-haskell flycheck-gometalinter flycheck feature-mode evil-magit magit magit-popup git-commit ghub treepy graphql with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-auctex company-anaconda company color-identifiers-mode coffee-mode cmm-mode chruby bundler inf-ruby beacon auto-yasnippet yasnippet auto-dictionary auctex anaconda-mode pythonic all-the-icons memoize ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+      (indent-tools flymd flycheck-golangci-lint ruby-hash-syntax json-navigator helm-xref editorconfig doom-modeline eldoc-eval counsel-projectile counsel swiper ivy browse-at-remote window-purpose imenu-list visual-fill-column turing-theme yasnippet-snippets company-quickhelp yapfify yaml-mode xterm-color web-mode web-beautify vmd-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-isort puppet-mode pug-mode projectile-rails rake inflections pip-requirements pdf-tools tablist origami orgit nginx-mode mwim multi-term mmm-mode minitest markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero hy-mode hlint-refactor hindent helm-pydoc helm-hoogle helm-gitignore helm-css-scss helm-company helm-c-yasnippet haskell-snippets haml-mode go-playground gotest go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-popup flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-haskell flycheck-gometalinter flycheck feature-mode evil-magit magit magit-popup git-commit ghub treepy graphql with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-auctex company-anaconda company color-identifiers-mode coffee-mode cmm-mode chruby bundler inf-ruby beacon auto-yasnippet yasnippet auto-dictionary auctex anaconda-mode pythonic all-the-icons memoize ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
