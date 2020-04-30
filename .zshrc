@@ -8,7 +8,6 @@
 alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias pacmanGhost='~/.scripts/pacman.sh'
 alias shivita='toilet -f mono12 -F rainbow 'andrea' | ponythink -f winona'
-alias emacs='emacs -nw'
 alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
@@ -28,7 +27,7 @@ P9K_MODE="nerdfont-complete"
 
 # Prompt elements
 P9K_LEFT_PROMPT_ELEMENTS=(custom_user dir vcs)
-P9K_RIGHT_PROMPT_ELEMENTS=(background_jobs go_version)
+P9K_RIGHT_PROMPT_ELEMENTS=(background_jobs go_version virtualenv)
 
 # Set name of the theme to load.
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -96,6 +95,8 @@ P9K_BATTERY_VERBOSE=true
 # Programming languages
 P9K_RBENV_PROMPT_ALWAYS_SHOW=true
 P9K_GO_VERSION_PROMPT_ALWAYS_SHOW=true
+P9K_VIRTUALENV_FOREGROUND='white'
+P9K_VIRTUALENV_BACKGROUND='darkblue'
 
 # User with skull
 user_with_skull() {

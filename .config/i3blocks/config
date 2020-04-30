@@ -6,7 +6,6 @@
 # | |___) | |_) | | (_) | (__|   <\__ \
 # |_|____/|_.__/|_|\___/ \___|_|\_\___/
 
-command=~/.config/i3blocks/blocks/$BLOCK_NAME/$BLOCK_NAME
 align=center
 separator=false
 color=#ffffff

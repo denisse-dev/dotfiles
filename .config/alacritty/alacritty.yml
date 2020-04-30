@@ -24,9 +24,6 @@ window:
 
 scrolling:
   multiplier: 1
-  auto_scroll: false
-
-tabspaces: 2
 
 # Font configurations
 font:
