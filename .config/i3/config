@@ -17,7 +17,7 @@ new_window pixel
 gaps inner 6
 
 # Font for window titles.
-font pango: SpaceMono Nerd Font Mono Medium 11
+font pango: SauceCodePro Nerd Font 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -79,15 +79,15 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # Name the workspaces
-set $workspace1 " 1:  "
-set $workspace2 " 2:  "
-set $workspace3 " 3:  "
-set $workspace4 " 4:  "
-set $workspace5 " 5:  "
-set $workspace6 " 6:  "
+set $workspace1 " 1:  "
+set $workspace2 " 2:  "
+set $workspace3 " 3:  "
+set $workspace4 " 4:  "
+set $workspace5 " 5:  "
+set $workspace6 " 6:  "
 set $workspace7 " 7:  "
 set $workspace8 " 8: ♫ "
-set $workspace9 " 9:  "
+set $workspace9 " 9:  "
 set $workspace0 " 10:  "
 
 # Switch to workspace
@@ -158,41 +158,34 @@ mode "resize"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+e exec "~/.config/i3blocks/blocks/shutdown_menu/shutdown_menu"
 
-# Defining colors
-set $bg      #282A36
-set $lg      #44475a
-set $fg      #f8f8f2
-set $cyan    #8be9fd
-set $green   #50fa7b
-set $magenta #ff79c6
-set $comment #6272a4
-set $purple  #bd93f9
-
-# Set some nice colors      border	 background text     indicator
-client.focused              $comment $comment   $fg      $comment
-client.unfocused            $bg      $bg        $cyan    $bg
-client.focused_inactive     $bg      $bg        $green   $bg
-client.urgent               $bg      $bg        $magenta $bg
-client.placeholder          $bg      $bg        $cyan    $bg
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
 
 # Start i3blocks to display a workspace bar
-bar
-{
+bar {
     position top
-	  status_command i3blocks
+    status_command i3blocks
     i3bar_command i3bar
-	  font pango: SpaceMono Nerd Font Regular 11
-	  colors
-	  {
-        #                   Border Background Text
-		    focused_workspace   $fg    $fg        $bg
-		    active_workspace    $bg    $bg        $purple
-		    inactive_workspace  $bg    $bg        $cyan
-		    urgent_workspace    $bg    $bg        $magenta
-		    background          $bg
+    font pango: SauceCodePro Nerd Font 9
+    colors {
+        background #282A36
+        statusline #F8F8F2
+        separator  #44475A
+
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
     }
 }
 
@@ -200,6 +193,6 @@ bar
 exec_always --no-startup-id ~/.scripts/monitors.sh
 exec_always --no-startup-id ~/.scripts/wallpapers.sh
 exec --no-startup-id betterlockscreen -w dim
-exec --no-startup-id compton --config ~/.config/compton/compton.conf
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id notify-send "Welcome back Andrea!" -i ~/.images/icons8-dog-100.png
+exec --no-startup-id notify-send "Welcome back $USER!" -i ~/.images/icons8-dog-100.png
