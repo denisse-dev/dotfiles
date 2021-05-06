@@ -174,7 +174,7 @@ client.background       #F8F8F2
 
 # Start i3blocks to display a workspace bar
 bar {
-    font pango: SauceCodePro Nerd Font 10
+    font pango: SauceCodePro Nerd Font 9
     i3bar_command i3bar
     output primary
     position top

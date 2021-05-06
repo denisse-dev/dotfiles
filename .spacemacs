@@ -64,12 +64,11 @@ This function should only modify configuration layer settings."
             c-c++-enable-clang-format-on-save t
             c-c++-lsp-enable-semantic-highlight 'rainbow)
      chinese
-     (chinese :variables
-              chinese-default-input-method 'wubi)
      colors
      (colors :variables
              colors-colorize-identifiers 'variables
              colors-enable-nyan-cat-progress-bar (display-graphic-p))
+     csv
      docker
      (docker :variables
              docker-dockerfile-backend 'lsp)
@@ -306,15 +305,15 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 1.0)
+   dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 0.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
 
    ;; Default font or prioritized list of fonts.
-   dotspacemacs-default-font '("SauceCodePro Nerd Font"
-                               :size 16.0
+   dotspacemacs-default-font '("SauceCodePro Nerd Font Mono"
+                               :size 15
                                :weight normal
                                :width normal)
 
@@ -480,7 +479,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil `smartparens-strict-mode' will be enabled in programming modes.
    ;; (default nil)
-   dotspacemacs-smartparens-strict-mode t
+   dotspacemacs-smartparens-strict-mode nil
 
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc...
@@ -583,6 +582,14 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq theming-modifications
+        '((dracula
+           ;; Font locking
+           (font-lock-comment-face :slant italic)
+           (web-mode-html-attr-name-face :inherit font-lock-variable-name-face
+                                         :foreground nil)
+           ;; Modeline
+           (mode-line :foreground "#f8f8f2"))))
   )
 
 (defun dotspacemacs/user-load ()
@@ -608,11 +615,14 @@ before packages are loaded."
   (spaceline-toggle-purpose-off)
   (spaceline-toggle-buffer-encoding-abbrev-off)
 
-
   ;; Activate column indicator in prog-mode and text-mode
-  (add-hook 'prog-mode-hook 'turn-on-fci-mode)
-  (add-hook 'text-mode-hook 'turn-on-fci-mode)
-  (setq fci-rule-color "#bd93f9")
+  ;; (setq fci-rule-color "#bd93f9")
+  ;; (setq-default fill-column 100)
+  ;; display-fill-column-indicator-mode
+
+  (setq display-fill-column-indicator-column 80)
+  ;; (add-hook 'prog-mode-hook 'turn-on-fci-mode)
+  ;; (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
   ;; Auto start rainbow delimeters in most programming modes
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
@@ -647,7 +657,14 @@ before packages are loaded."
 
   (global-git-commit-mode t)
 
+  (set-face-foreground 'line-number-current-line "#bd93f9")
+  (set-face-attribute 'line-number-current-line nil :weight 'bold)
+  (set-cursor-color "#bd93f9")
   (global-display-line-numbers-mode)
+
+  ;; Indentation for Python
+  (setq-default python-indent-offset 4)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -657,17 +674,18 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tagedit systemd symon symbol-overlay string-inflection sqlup-mode sql-indent sphinx-doc spaceline-all-the-icons smex smeargle slim-mode scss-mode sass-mode ron-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox pangu-spacing overseer orgit org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-brain open-junk-file neotree nameless mwim multiple-cursors move-text mode-icons mmm-mode markdown-toc magit-svn magit-section magit-gitflow macrostep lsp-ui lsp-python-ms lsp-pyright lsp-origami lsp-ivy lorem-ipsum live-py-mode link-hint json-navigator jinja2-mode ivy-yasnippet ivy-xref ivy-rtags ivy-rich ivy-purpose ivy-hydra ivy-avy insert-shebang indent-guide importmagic impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation highlight-indent-guides helm-make google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-popup flyspell-correct-ivy flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-golangci-lint flycheck-elsa flycheck-bashate flx-ido fish-mode find-by-pinyin-dired fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emr emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode dockerfile-mode docker disaster diminish devdocs define-word cython-mode cpp-auto-include counsel-projectile counsel-css company-ycmd company-web company-terraform company-statistics company-shell company-rtags company-quickhelp company-go company-emoji company-c-headers company-box company-ansible company-anaconda column-enforce-mode color-identifiers-mode clean-aindent-mode chinese-wbim chinese-conv centered-cursor-mode ccls cargo browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile ansible-doc ansible all-the-icons-ivy all-the-icons-dired aggressive-indent ace-window ace-pinyin ace-link ac-ispell)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(evil-want-Y-yank-to-eol nil)
+   '(package-selected-packages
+     '(vdiff yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tagedit systemd symon symbol-overlay string-inflection sqlup-mode sql-indent sphinx-doc spaceline-all-the-icons smex smeargle slim-mode scss-mode sass-mode ron-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox pangu-spacing overseer orgit org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-brain open-junk-file neotree nameless mwim multiple-cursors move-text mode-icons mmm-mode markdown-toc magit-svn magit-section magit-gitflow macrostep lsp-ui lsp-python-ms lsp-pyright lsp-origami lsp-ivy lorem-ipsum live-py-mode link-hint json-navigator jinja2-mode ivy-yasnippet ivy-xref ivy-rtags ivy-rich ivy-purpose ivy-hydra ivy-avy insert-shebang indent-guide importmagic impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation highlight-indent-guides helm-make google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-popup flyspell-correct-ivy flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-golangci-lint flycheck-elsa flycheck-bashate flx-ido fish-mode find-by-pinyin-dired fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emr emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode dockerfile-mode docker disaster diminish devdocs define-word cython-mode cpp-auto-include counsel-projectile counsel-css company-ycmd company-web company-terraform company-statistics company-shell company-rtags company-quickhelp company-go company-emoji company-c-headers company-box company-ansible company-anaconda column-enforce-mode color-identifiers-mode clean-aindent-mode chinese-wbim chinese-conv centered-cursor-mode ccls cargo browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile ansible-doc ansible all-the-icons-ivy all-the-icons-dired aggressive-indent ace-window ace-pinyin ace-link ac-ispell)))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+  )
