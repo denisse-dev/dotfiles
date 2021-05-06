@@ -4,7 +4,7 @@ MONITOR_RESOLUTIONS=(
     '2560x1440'
     '1080x1920'
 )
-BASE_URL="https://source.unsplash.com/featured/RESOLUTION/?minimalism"
+BASE_URL="https://source.unsplash.com/featured/RESOLUTION/?sakura"
 BASE_WALLPAPER=~/.images/wallpaper_RESOLUTION.jpeg
 
 function wallpaper_existence_validator() {
