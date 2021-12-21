@@ -40,7 +40,10 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(ansible
+   '(typescript
+     nginx
+     javascript
+     ansible
      auto-completion
      (auto-completion :variables
                       auto-completion-complete-with-key-sequence nil
@@ -97,6 +100,11 @@ This function should only modify configuration layer settings."
            json-backend 'lsp
            json-fmt-tool 'prettier
            json-fmt-on-save t)
+     latex
+     (latex :variables
+            latex-backend 'lsp
+            latex-refresh-preview t
+            latex-view-pdf-in-split-window t)
      lsp
      markdown
      (markdown :variables
@@ -108,12 +116,16 @@ This function should only modify configuration layer settings."
      org
      python
      (python :variables
-             python-backend 'lsp python-lsp-server 'pyls
+             python-backend 'lsp
+             python-lsp-server 'pylsp
              python-format-on-save t
-             python-formatter 'lsp
+             python-formatter 'black
              python-pipenv-activate t
              python-sort-imports-on-save t
-             python-tab-width 2)
+             python-tab-width 2
+             python-test-runner 'pytest
+             python-auto-set-local-pyenv-version 'on-project-switch
+             python-auto-set-local-pyvenv-virtualenv 'on-project-switch)
      rust
      (rust :variables
            rust-backend 'lsp)
@@ -133,7 +145,9 @@ This function should only modify configuration layer settings."
      sql
      (sql :variables
           sql-backend 'lsp
-          sql-capitalize-keywords t)
+          sql-capitalize-keywords t
+          sql-lsp-sqls-workspace-config-path 'workspace
+          sql-auto-indent nil)
      terraform
      (terraform :variables
                 terraform-auto-format-on-save t
@@ -157,6 +171,7 @@ This function should only modify configuration layer settings."
      all-the-icons-dired
      all-the-icons-ivy
      highlight-indent-guides
+     pkgbuild-mode
      mode-icons)
 
    ;; A list of packages that cannot be updated.
@@ -616,19 +631,16 @@ before packages are loaded."
   (spaceline-toggle-buffer-encoding-abbrev-off)
 
   ;; Activate column indicator in prog-mode and text-mode
-  ;; (setq fci-rule-color "#bd93f9")
-  ;; (setq-default fill-column 100)
-  ;; display-fill-column-indicator-mode
-
   (setq display-fill-column-indicator-column 80)
-  ;; (add-hook 'prog-mode-hook 'turn-on-fci-mode)
-  ;; (add-hook 'text-mode-hook 'turn-on-fci-mode)
+  (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+  (add-hook 'text-mode-hook #'display-fill-column-indicator-mode)
 
   ;; Auto start rainbow delimeters in most programming modes
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
   ;; Auto start aggressive indent in most programming modes
-  (add-hook 'prog-mode-hook #'aggressive-indent-mode)
+  ;; (add-hook 'prog-mode-hook #'aggressive-indent-mode)
+  ;; (add-to-list 'aggressive-indent-excluded-modes 'python-mode)
 
   ;; Add some nice additions like italicized comments, etc.
   (set-face-attribute 'font-lock-comment-delimiter-face nil :slant 'italic)
@@ -665,6 +677,10 @@ before packages are loaded."
   ;; Indentation for Python
   (setq-default python-indent-offset 4)
 
+  ;; Autoload pkgbuild mode on start
+  (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
+  (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode))
+			                          auto-mode-alist))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -674,18 +690,18 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(evil-want-Y-yank-to-eol nil)
-   '(package-selected-packages
-     '(vdiff yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tagedit systemd symon symbol-overlay string-inflection sqlup-mode sql-indent sphinx-doc spaceline-all-the-icons smex smeargle slim-mode scss-mode sass-mode ron-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox pangu-spacing overseer orgit org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-brain open-junk-file neotree nameless mwim multiple-cursors move-text mode-icons mmm-mode markdown-toc magit-svn magit-section magit-gitflow macrostep lsp-ui lsp-python-ms lsp-pyright lsp-origami lsp-ivy lorem-ipsum live-py-mode link-hint json-navigator jinja2-mode ivy-yasnippet ivy-xref ivy-rtags ivy-rich ivy-purpose ivy-hydra ivy-avy insert-shebang indent-guide importmagic impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation highlight-indent-guides helm-make google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-popup flyspell-correct-ivy flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-golangci-lint flycheck-elsa flycheck-bashate flx-ido fish-mode find-by-pinyin-dired fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emr emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode dockerfile-mode docker disaster diminish devdocs define-word cython-mode cpp-auto-include counsel-projectile counsel-css company-ycmd company-web company-terraform company-statistics company-shell company-rtags company-quickhelp company-go company-emoji company-c-headers company-box company-ansible company-anaconda column-enforce-mode color-identifiers-mode clean-aindent-mode chinese-wbim chinese-conv centered-cursor-mode ccls cargo browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile ansible-doc ansible all-the-icons-ivy all-the-icons-dired aggressive-indent ace-window ace-pinyin ace-link ac-ispell)))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   )
-  )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(package-selected-packages
+   '(typescript-mode nginx-mode all-the-icons-ivy-rich tern npm-mode nodejs-repl livid-mode skewer-mode js2-refactor js2-mode js-doc import-js grizzl helm-gtags ggtags dap-mode lsp-treemacs bui treemacs cfrs pfuture posframe counsel-gtags add-node-modules-path vdiff yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tagedit systemd symon symbol-overlay string-inflection sqlup-mode sql-indent sphinx-doc spaceline-all-the-icons smex smeargle slim-mode scss-mode sass-mode ron-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox pangu-spacing overseer orgit org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-brain open-junk-file neotree nameless mwim multiple-cursors move-text mode-icons mmm-mode markdown-toc magit-svn magit-section magit-gitflow macrostep lsp-ui lsp-python-ms lsp-pyright lsp-origami lsp-ivy lorem-ipsum live-py-mode link-hint json-navigator jinja2-mode ivy-yasnippet ivy-xref ivy-rtags ivy-rich ivy-purpose ivy-hydra ivy-avy insert-shebang indent-guide importmagic impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation highlight-indent-guides helm-make google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-popup flyspell-correct-ivy flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-golangci-lint flycheck-elsa flycheck-bashate flx-ido fish-mode find-by-pinyin-dired fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emr emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode dockerfile-mode docker disaster diminish devdocs define-word cython-mode cpp-auto-include counsel-projectile counsel-css company-ycmd company-web company-terraform company-statistics company-shell company-rtags company-quickhelp company-go company-emoji company-c-headers company-box company-ansible company-anaconda column-enforce-mode color-identifiers-mode clean-aindent-mode chinese-wbim chinese-conv centered-cursor-mode ccls cargo browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile ansible-doc ansible all-the-icons-ivy all-the-icons-dired aggressive-indent ace-window ace-pinyin ace-link ac-ispell)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)

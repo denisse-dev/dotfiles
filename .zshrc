@@ -5,7 +5,7 @@
 # /____|___/_| |_|_|  \___|
 # Aliases for a few useful commands
 
-alias mirrorUpdate='sudo reflector --country us --latest 15 --protocol https --sort rate --save /etc/pacman.d/mirrorlist --verbose'
+alias mirrorUpdate='reflector --country us --latest 15 --protocol https --sort rate --save /etc/pacman.d/mirrorlist --verbose'
 alias pacmanGhost='~/.scripts/pacman.sh'
 alias shivita='toilet -f mono12 -F rainbow 'andrea' | ponythink -f winona'
 alias ls='lsd'
@@ -28,7 +28,6 @@ bashcompinit
 zstyle :compinstall filename '$HOME/.zshrc'
 complete -o nospace -C /usr/bin/vault vault
 complete -o nospace -C /usr/bin/terraform terraform
-neofetch
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
