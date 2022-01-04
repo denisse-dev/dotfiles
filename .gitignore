@@ -56,3 +56,6 @@
 !.images/spacemacs.png
 !.images/terminals.png
 !.images/zsh-features.png
+!.config/waybar/
+!.config/waybar/config
+!.config/waybar/style.css
