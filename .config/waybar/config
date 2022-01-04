@@ -1,0 +1,127 @@
+{
+    "layer": "top",
+    "Position": "top",
+    "height": 30,
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["custom/media", "network", "sway/language", "disk", "cpu", "temperature#cpu", "memory", "pulseaudio", "clock#pacific", "clock#central", "clock#eastern", "clock#date", "battery", "tray"],
+    "sway/workspaces": {
+        "all-outputs": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "  ",
+            "2": "  ",
+            "3": "  ",
+            "4": "  ",
+            "5": "  ",
+            "6": "  ",
+            "7": "  ",
+            "8": " ♫ ",
+            "9": "  ",
+            "10": "  "
+        }
+    },
+    "custom/media": {
+        "format": "<span color='#bd93f9'>♫</span> {}",
+        "escape": true,
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl stop",
+        "smooth-scrolling-threshold": 1,
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
+    },
+    "network": {
+        "format-wifi": "<span color='#8be9fd'></span> {signalStrength}<span color='#8be9fd'>%</span>",
+        "format-ethernet": "<span color='#8be9fd'></span>",
+        "format-linked": "<span color='#8be9fd'></span>",
+        "format-disconnected": "<span color='#8be9fd'>⚠</span>",
+        "format-alt": "{ifname}<span color='#8be9fd'>:</span> {ipaddr}<span color='#8be9fd'>/</span>{cidr}",
+        "tooltip-format": "{ifname} {gwaddr} ",
+        "tooltip-format-wifi": "{essid} {ipaddr}/{cidr}",
+        "tooltip-format-ethernet": "{ifname} {ipaddr}/{cidr}"
+    },
+    "sway/language": {
+        "format": "<span color='#50fa7b'></span> {short}",
+        "tooltip-format": "{long}",
+        "tooltip": true
+    },
+    "disk": {
+        "interval": 30,
+        "format": "<span color='#f1fa8c'></span> {percentage_free}<span color='#f1fa8c'>%</span>",
+        "path": "/"
+    },
+    "cpu": {
+        "format": "<span color='#ff5555'></span> {usage}<span color='#ff5555'>%</span> ",
+        "interval": 2,
+        "tooltip": true
+    },
+    "temperature#cpu": {
+        "thermal-zone": 8,
+        "critical-threshold": 80,
+        "format": " {temperatureC}<span color='#ff5555'>°C</span>",
+        "format-icons": ["", "", ""]
+    },
+    "memory": {
+        "format": "<span color='#ff79c6'></span> {percentage}<span color='#ff79c6'>%</span>"
+    },
+    "pulseaudio": {
+        "scroll-step": 2,
+        "format": "<span color='#bd93f9'>{icon}</span> {volume}<span color='#bd93f9'>%</span> {format_source}",
+        "format-bluetooth": "<span color='#bd93f9'>{icon}</span> {volume}<span color='#bd93f9'>%</span> {format_source}",
+        "format-bluetooth-muted": "{icon}  {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "<span color='#bd93f9'></span> {volume}<span color='#bd93f9'>%</span>",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "clock#pacific": {
+        "timezone": "US/Pacific",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "<span color='#8be9fd'></span> {:%Y<span color='#8be9fd'>-</span>%m<span color='#8be9fd'>-</span>%d}",
+        "format": "<span color='#8be9fd'></span> {:%I<span color='#8be9fd'>:</span>%M <span color='#8be9fd'>%Z</span>}"
+    },
+    "clock#central": {
+        "timezone": "US/Central",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "<span color='#50fa7b'></span> {:%Y<span color='#50fa7b'>-</span>%m<span color='#50fa7b'>-</span>%d}",
+        "format": "<span color='#50fa7b'></span> {:%I<span color='#50fa7b'>:</span>%M <span color='#50fa7b'>%Z</span>}"
+    },
+    "clock#eastern": {
+        "timezone": "US/Eastern",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "<span color='#f1fa8c'></span> {:%Y<span color='#f1fa8c'>-</span>%m<span color='#f1fa8c'>-</span>%d}",
+        "format": "<span color='#f1fa8c'></span> {:%I<span color='#f1fa8c'>:</span>%M <span color='#f1fa8c'>%Z}</span>"
+    },
+    "clock#date": {
+        "timezone": "US/Central",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "locale": "zh_CN.UTF-8",
+        "format": "<span color='#ff5555'></span> {:%Y<span color='#ff5555'>年%B</span>%d<span color='#ff5555'>日</span> <span color='#ff5555'>%A。</span>}",
+        "format-alt": "<span color='#ff5555'></span> {:%Y<span color='#ff5555'>-</span>%m<span color='#ff5555'>-</span>%d}"
+    },
+    "battery": {
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "<span color='#ff79c6'>{icon}</span> {capacity}<span color='#ff79c6'>%</span>",
+        "format-plugged": "<span color='#ff79c6'></span> {capacity}<span color='#ff79c6'>%</span>",
+        "format-alt": "<span color='#ff79c6'>{icon}</span> {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "tray": {
+        "spacing": 10
+    }
+}

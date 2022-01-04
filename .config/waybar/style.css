@@ -1,0 +1,131 @@
+* {
+    font-family: 'Mplus Code';
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #282A36;
+    color: #f8f8f2;
+    transition-property: background-color;
+}
+
+#workspaces button {
+    background-color: transparent;
+    color: #f8f8f2;
+    padding: 0 5px;
+}
+
+#workspaces button:hover {
+    background: #f8f8f2;
+    color: #282A36;
+}
+
+#workspaces button.focused:hover {
+    background: #282A36;
+    color: #bd93f9;
+    border-color: #bd93f9;
+    border-top: solid 2px;
+}
+
+#workspaces button.focused,
+#mode {
+    background: #bd93f9;
+    color: #282A36;
+}
+
+#workspaces button.urgent {
+    background: #ff5555;
+    color: #282A36;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/*******************/
+/* Modules section */
+/*******************/
+
+#battery,
+#clock,
+#cpu,
+#custom-media,
+#disk,
+#language,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray {
+    border-top: solid 2px;
+    color: #f8f8f2;
+    margin: 0 4px;
+    padding: 0 4px;
+}
+
+#battery {
+    border-color: #ff79c6;
+}
+
+#clock.pacific {
+    border-color: #8be9fd;
+}
+
+#clock.central {
+    border-color: #50fa7b;
+}
+
+#clock.eastern {
+    border-color: #f1fa8c;
+}
+
+#clock.date {
+    border-color: #ff5555;
+}
+
+#cpu {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+#temperature.cpu {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#cpu,
+#temperature.cpu {
+    border-color: #ff5555;
+}
+
+#custom-media {
+    border-color: #bd93f9;
+}
+
+#disk {
+    border-color: #f1fa8c;
+}
+
+#language {
+    border-color: #50fa7b;
+    min-width: 2.5rem;
+}
+
+#memory {
+    border-color: #ff79c6;
+}
+
+#network {
+    border-color: #8be9fd;
+}
+
+#pulseaudio {
+    border-color: #bd93f9;
+}
+
+#tray {
+    border-color: #bd93f9;
+}
