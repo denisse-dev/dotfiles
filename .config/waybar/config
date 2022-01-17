@@ -1,25 +1,29 @@
 {
     "layer": "top",
-    "Position": "top",
-    "height": 30,
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["sway/window"],
+    "position": "top",
+    "height": 25,
+    "modules-left": ["sway/workspaces", "sway/window"],
+    "modules-center": [""],
     "modules-right": ["custom/media", "network", "sway/language", "disk", "cpu", "temperature#cpu", "memory", "pulseaudio", "clock#pacific", "clock#central", "clock#eastern", "clock#date", "battery", "tray"],
     "sway/workspaces": {
         "all-outputs": false,
         "format": "{icon}",
         "format-icons": {
-            "1": "  ",
-            "2": "  ",
-            "3": "  ",
-            "4": "  ",
-            "5": "  ",
-            "6": "  ",
-            "7": "  ",
-            "8": " ♫ ",
-            "9": "  ",
-            "10": "  "
+            "1": " 一 ",
+            "2": " 二 ",
+            "3": " 三 ",
+            "4": " 四 ",
+            "5": " 五 ",
+            "6": " 六 ",
+            "7": " 七 ",
+            "8": " 八 ",
+            "9": " 九 ",
+            "10": " 零 "
         }
+    },
+    "sway/window": {
+        "format": " {} ",
+        "max-length": 50
     },
     "custom/media": {
         "format": "<span color='#bd93f9'>♫</span> {}",
