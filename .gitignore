@@ -57,3 +57,5 @@
 !.config/waybar/
 !.config/waybar/config
 !.config/waybar/style.css
+!.config/sway/
+!.config/sway/config
