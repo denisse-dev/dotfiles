@@ -36,6 +36,8 @@
 !.config/ranger/
 !.config/ranger/rc.conf
 !.config/ranger/rifle.conf
+!.config/mako/
+!.config/mako/config
 !.config/i3/
 !.config/i3/config
 !.config/i3blocks/

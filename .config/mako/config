@@ -1,0 +1,25 @@
+sort=-time
+layer=overlay
+background-color=#44475a
+text-color=#f8f8f2
+width=300
+height=300
+border-size=3
+border-radius=9
+icons=1
+max-icon-size=64
+default-timeout=5000
+ignore-timeout=1
+font=Mplus Code 12
+output=DP-5
+icon-path=/usr/share/icons/Tela-pink/
+
+[urgency=low]
+border-color=#8be9fd
+
+[urgency=normal]
+border-color=#bd93f9
+
+[urgency=high]
+border-color=#ff5555
+default-timeout=0
