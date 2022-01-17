@@ -18,7 +18,18 @@ alias rm='rm -i'
 alias x='ranger'
 alias h='htop'
 
-setopt autocd extendedglob nomatch notify appendhistory sharehistory incappendhistory HIST_IGNORE_SPACE COMPLETE_ALIASES
+setopt COMPLETE_ALIASES
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt appendhistory
+setopt autocd
+setopt extendedglob
+setopt incappendhistory
+setopt nomatch
+setopt notify
+setopt sharehistory
+
 unsetopt beep
 bindkey -e
 autoload -Uz compinit promptinit bashcompinit
