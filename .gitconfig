@@ -38,6 +38,3 @@
 	rebase = false
 [include]
 	path = .gitconfig_user
-[user]
-	email = git@denisse.dev
-	name = Andrea Denisse Gómez-Martínez

@@ -14,10 +14,6 @@
 !.config/alacritty/
 !.config/alacritty/alacritty.yml
 !.config/betterlockscreenrc
-!.config/neofetch/
-!.config/neofetch/config.conf
-!.config/neofetch/ascii
-!.config/neofetch/logo.png
 !.config/bat/
 !.config/bat/config
 !.config/compton/
