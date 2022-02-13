@@ -1,184 +1,56 @@
-#     _    _                 _ _____ _______   __
-#    / \  | | __ _  ___ _ __(_)_   _|_   _\ \ / /
-#   / _ \ | |/ _` |/ __| '__| | | |   | |  \ V /
-#  / ___ \| | (_| | (__| |  | | | |   | |   | |
-# /_/   \_\_|\__,_|\___|_|  |_| |_|   |_|   |_|
-#
-# See this wiki page for more info:
-# https://github.com/jwilm/alacritty/wiki
-
 env:
-  TERM: xterm-256color
+  TERM: alacritty
 
-# Window configurations
+import:
+  - ~/.config/alacritty/themes/dracula.yml
+
 window:
-  dimensions:
-    columns: 0
-    lines: 0
-
-  padding:
-    x: 0
-    y: 0
-
-  decorations: full
-
+  opacity: 1.0
+  title: Alacritty
   dynamic_title: true
+  class:
+    instance: Alacritty
+    general: Alacritty
 
 scrolling:
-  multiplier: 1
+  history: 100000
+  multiplier: 6
 
-# Font configurations
 font:
   normal:
-    family: SauceCodePro Nerd Font
+    family: monospace
     style: Regular
-
   bold:
-    family: SauceCodePro Nerd Font
     style: Bold
-
   italic:
-    family: SauceCodePro Nerd Font
     style: Italic
-
-  size: 10.0
-
-  offset:
-    x: 0
-    y: 0
-
-  glyph_offset:
-    x: 0
-    y: 0
-
-  scale_with_dpi: true
-
-  use_thin_strokes: false
-
+  bold_italic:
+    style: Bold Italic
+  size: 12.0
+  builtin_box_drawing: true
 draw_bold_text_with_bright_colors: true
 
-# ...
-
-# Colors (Dracula)
-colors:
-  # Default colors
-  primary:
-    background: '0x282a36'
-    foreground: '0xf8f8f2'
-
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '0x9a9a9a'
-    #bright_foreground: '0xffffff'
-
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor. If these are unset,
-  # the cursor color will be the inverse of the cell color.
-  cursor:
-    text: '0x44475a'
-    cursor: '0xf8f8f2'
-
-  # Selection colors
-  #
-  # Colors which should be used to draw the selection area. If selection
-  # background is unset, selection color will be the inverse of the cell colors.
-  # If only text is unset the cell text color will remain the same.
-  selection:
-    text: '0xf8f8f2'
-    background: '0x44475a'
-
-  # Normal colors
-  normal:
-    black:   '0x000000'
-    red:     '0xff5555'
-    green:   '0x50fa7b'
-    yellow:  '0xf1fa8c'
-    blue:    '0xbd93f9'
-    magenta: '0xff79c6'
-    cyan:    '0x8be9fd'
-    white:   '0xbfbfbf'
-
-  # Bright colors
-  bright:
-    black:   '0x4d4d4d'
-    red:     '0xff6e67'
-    green:   '0x5af78e'
-    yellow:  '0xf4f99d'
-    blue:    '0xcaa9fa'
-    magenta: '0xff92d0'
-    cyan:    '0x9aedfe'
-    white:   '0xe6e6e6'
-
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  dim:
-    black:   '0x14151b'
-    red:     '0xff2222'
-    green:   '0x1ef956'
-    yellow:  '0xebf85b'
-    blue:    '0x4d5b86'
-    magenta: '0xff46b0'
-    cyan:    '0x59dffc'
-    white:   '0xe6e6d1'
-
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
-  #
-  indexed_colors: []
-
-# Visual Bell
-# ...
-
-background_opacity: 1.0
+bell:
+  animation: Ease
+  duration: 5
+  color: '#bd93f9'
+  command:
+    program: notify-send
+    args: ["🔔"]
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: true
 
-mouse_bindings:
-  - { mouse: Middle, action: PasteSelection }
-
-mouse:
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
-  faux_scrolling_lines: 1
-  hide_when_typing: false
-
 cursor:
-  style: Block
-  unfocused_hollow: true
-
-live_config_reload: true
+  style:
+    shape: Beam
+    blinking: Always
+  unfocused_hollow: false
 
 shell:
   program: /bin/zsh
 
 key_bindings:
-  - { key: Y,              mods: Control, action: Paste                      }
-  - { key: W,              mods: Alt,     action: Copy                       }
-  - { key: Insert,         mods: Shift,   action: PasteSelection             }
-  - { key: Key0,           mods: Control, action: ResetFontSize              }
-  - { key: Equals,         mods: Control, action: IncreaseFontSize           }
-  - { key: NumpadAdd,      mods: Control, action: IncreaseFontSize           }
-  - { key: NumpadSubtract, mods: Control, action: DecreaseFontSize           }
-  - { key: Minus,          mods: Control, action: DecreaseFontSize           }
-  - { key: Return,         mods: Alt,     action: ToggleFullscreen           }
-  - { key: Paste,                         action: Paste                      }
-  - { key: Copy,                          action: Copy                       }
-  - { key: L,              mods: Control, action: ClearLogNotice             }
-  - { key: L,              mods: Control, chars: "\x0c"                      }
-  - { key: PageUp,         mods: Shift,   action: ScrollPageUp,   mode: ~Alt }
-  - { key: PageDown,       mods: Shift,   action: ScrollPageDown, mode: ~Alt }
-  - { key: Home,           mods: Shift,   action: ScrollToTop,    mode: ~Alt }
-  - { key: End,            mods: Shift,   action: ScrollToBottom, mode: ~Alt }
+  - {key: Y, mods: Control, action: Paste}
+  - {key: W, mods: Alt, action: Copy}
