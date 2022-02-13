@@ -21,6 +21,8 @@
 !.config/colorls/
 !.config/colorls/dark_colors.yaml
 !.config/colorls/files.yaml
+!.config/fontconfig/
+!.config/fontconfig/fonts.conf
 !.config/rofi/
 !.config/rofi/andrea.rasi
 !.config/rofi/config
@@ -29,6 +31,8 @@
 !.config/cmus/autosave
 !.config/gtk-3.0/
 !.config/gtk-3.0/settings.ini
+!.config/picom/
+!.config/picom/picom.conf
 !.config/ranger/
 !.config/ranger/rc.conf
 !.config/ranger/rifle.conf
