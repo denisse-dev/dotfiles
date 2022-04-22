@@ -1,3 +1,4 @@
+---
 env:
   TERM: alacritty
 
@@ -29,14 +30,6 @@ font:
   size: 12.0
   builtin_box_drawing: true
 draw_bold_text_with_bright_colors: true
-
-bell:
-  animation: Ease
-  duration: 5
-  color: '#bd93f9'
-  command:
-    program: notify-send
-    args: ["🔔"]
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
