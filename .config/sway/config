@@ -23,9 +23,10 @@ exec_always kanshi
 # Idle configuration #
 ######################
 exec swayidle -w \
-         timeout 3 'swaylock -f -c 000000' \
-         timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+     timeout 900 'swaylock -f -c 000000' \
+     timeout 2100 'swaymsg "output * dpms off"' \
+             resume 'swaymsg "output * dpms on"' \
+     before-sleep 'swaylock -f -c 000000'
 
 #######################
 # Input configuration #
@@ -34,8 +35,6 @@ input "*" {
       xkb_layout us
       xkb_variant intl
 }
-
-input "1452:591:Keychron_K6_Keyboard" xkb_model apple
 
 input "type:touchpad" {
     tap enabled
@@ -144,6 +143,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86Search exec bemenu-run
 
+gaps inner 10
+
 # Resizing containers:
 mode "resize" {
     # left will shrink the containers width
@@ -169,6 +170,7 @@ bindsym $mod+r mode "resize"
 
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused          #bd93f9 #bd93f9 #F8F8F2 #bd93f9   #bd93f9
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
 client.unfocused        #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
