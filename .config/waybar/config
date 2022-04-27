@@ -2,8 +2,8 @@
     "layer": "top",
     "position": "top",
     "height": 25,
-    "modules-left": ["sway/workspaces", "sway/window"],
-    "modules-center": [""],
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["sway/window"],
     "modules-right": ["custom/media", "network", "sway/language", "disk", "cpu", "temperature#cpu", "memory", "pulseaudio", "clock#pacific", "clock#central", "clock#eastern", "clock#date", "battery", "tray"],
     "sway/workspaces": {
         "all-outputs": false,
@@ -22,8 +22,8 @@
         }
     },
     "sway/window": {
-        "format": " {} ",
-        "max-length": 50
+        "format": "{}",
+        "max-length": 150
     },
     "custom/media": {
         "format": "<span color='#bd93f9'>♫</span> {}",
