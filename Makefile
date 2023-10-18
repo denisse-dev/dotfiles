@@ -5,5 +5,5 @@ update:
 	@git pull origin
 
 install:
-	#@cp .spacemacs .xbindkeysrc .xinitrc .zprofile .zshenv .zshrc ~/
-	#@cp -a -r .config/. ~/.config
+	@cp .spacemacs .xbindkeysrc .xinitrc .zprofile .zshenv .zshrc ~/
+	@cp -a -r .config/. ~/.config
