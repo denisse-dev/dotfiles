@@ -2,36 +2,44 @@
 # Variables and imports #
 #########################
 include /etc/sway/config.d/*
-font pango:Mplus Code 10
+default_border pixel 5px
+
+font CaskaydiaCove Nerd Font 14px
 set $mod Mod4
-set $left j
-set $down k
-set $up l
-set $right semicolon
+set $left b
+set $down n
+set $up p
+set $right f
 set $term alacritty
-set $menu wofi --show=drun --lines=5 --prompt=""
+set $menu exec $term --class=launcher -e /usr/bin/sway-launcher-desktop
 set $gnome-schema org.gnome.desktop.interface
-default_border pixel 6
+
+for_window [app_id="^launcher$"] floating enable, sticky enable
+for_window [app_id="^pavucontrol$"] floating enable, sticky enable
+for_window [app_id="blueman-manager"] floating enable, sticky enable
+for_window [app_id="galculator"] floating enable
 
 ########################
 # Output configuration #
 ########################
-output * bg ~/Pictures/arch_dracula.png fill
+output * bg ~/Pictures/Wallpapers/dracula.png center
 exec_always kanshi
 
 ######################
 # Idle configuration #
 ######################
 exec swayidle -w \
-     timeout 900 'swaylock -f -c 000000' \
-     timeout 2100 'swaymsg "output * dpms off"' \
-             resume 'swaymsg "output * dpms on"' \
-     before-sleep 'swaylock -f -c 000000'
+     timeout 600 'swaylock -f -c 000000' \
+     timeout 605 'swaymsg "output * dpms off"' \
+     resume 'swaymsg "output * dpms on"' \
+     before-sleep 'swaylock -f -c 000000' \
+     before-sleep 'playerctl pause'
+}
 
 #######################
 # Input configuration #
 #######################
-input "*" {
+input "keyboard" {
       xkb_layout us
       xkb_variant intl
 }
@@ -105,7 +113,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # You can "split" the current object of your focus with
 # $mod+b or $mod+v, for horizontal and vertical splits
 # respectively.
-bindsym $mod+b splith
+bindsym $mod+h splith
 bindsym $mod+v splitv
 
 # Switch the current container between different layout styles
@@ -114,7 +122,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # Make the current focus fullscreen
-bindsym $mod+f fullscreen
+bindsym $mod+Alt+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+space floating toggle
@@ -143,7 +151,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86Search exec bemenu-run
 
-gaps inner 10
+# gaps inner 10
 
 # Resizing containers:
 mode "resize" {
@@ -169,13 +177,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused          #bd93f9 #bd93f9 #F8F8F2 #bd93f9   #bd93f9
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #F8F8F2 #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-client.background       #F8F8F2
+client.focused          #9580ff #9580ff #22212c #9580ff   #9580ff
+client.focused_inactive #9a9a9a #9a9a9a #f8f8f2 #9a9a9a   #9a9a9a
+client.unfocused        #22212c #22212c #f8f8f2 #22212c   #22212c
+client.urgent           #ff9580 #ff9580 #f8f8f2 #ff9580   #ff9580
+client.background       #f8f8f2
 
 # Status bar
 bar {
@@ -186,8 +192,11 @@ exec_always {
     gsettings set $gnome-schema gtk-theme 'Dracula'
     gsettings set $gnome-schema icon-theme 'Tela-pink'
     gsettings set $gnome-schema cursor-theme 'capitaine-cursors-light'
-    gsettings set $gnome-schema font-name 'Mplus Code 10'
+    gsettings set $gnome-schema font-name 'regular 10'
 }
 
 # Daemons
 exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id fcitx5 -d
+exec swaync
+bindsym $mod+Shift+i exec swaync-client -t -sw
