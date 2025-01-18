@@ -17,8 +17,7 @@ export XDG_SESSION_TYPE=wayland
 export MOZ_ENABLE_WAYLAND=1
 export MOZ_USE_XINPUT2=1
 export MOZ_DBUS_REMOTE=1
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 source ~/.zshenv_secret
 
 # PIP
@@ -26,3 +25,6 @@ export PATH=$HOME/.local/bin:$PATH
 
 export PATH="$HOME/.local/bin:$PATH"
 export npm_config_prefix="$HOME/.local"
+export LIBVA_DRIVER_NAME=iHD
+
+ssh-add ~/.ssh/*.key ~/.ssh/id_ed25519 > /dev/null 2>&1

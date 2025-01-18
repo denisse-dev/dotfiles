@@ -178,9 +178,9 @@ bindsym $mod+r mode "resize"
 
 # class                 border  bground text    indicator child_border
 client.focused          #9580ff #9580ff #22212c #9580ff   #9580ff
-client.focused_inactive #9a9a9a #9a9a9a #f8f8f2 #9a9a9a   #9a9a9a
+client.focused_inactive #9a9a9a #9a9a9a #22212c #9a9a9a   #9a9a9a
 client.unfocused        #22212c #22212c #f8f8f2 #22212c   #22212c
-client.urgent           #ff9580 #ff9580 #f8f8f2 #ff9580   #ff9580
+client.urgent           #ff9580 #ff9580 #22212c #ff9580   #ff9580
 client.background       #f8f8f2
 
 # Status bar
@@ -195,8 +195,7 @@ exec_always {
     gsettings set $gnome-schema font-name 'regular 10'
 }
 
-# Daemons
-exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# Daemonns
 exec --no-startup-id fcitx5 -d
 exec swaync
 bindsym $mod+Shift+i exec swaync-client -t -sw
