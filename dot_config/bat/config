@@ -1,0 +1,17 @@
+# 🎨 Use the Dracula theme for consistent colors
+--theme=Dracula
+
+# 🧾 Show line numbers, Git changes, and file header (no grid for a cleaner look)
+--style=numbers,changes,header
+
+# 📜 Use less as pager (supports mouse scroll + raw ANSI control)
+--pager="less -FR"
+
+# 🧠 Treat .h header files as C++ instead of C
+--map-syntax h:cpp
+
+# 🎚 Tabs are 4 spaces wide
+--tabs=4
+
+# 🔍 Fallback to plain highlighting when language is unknown
+--plain

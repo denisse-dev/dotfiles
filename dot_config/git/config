@@ -1,0 +1,62 @@
+# 🧠 Core settings
+[core]
+	editor = emacs
+	pager = bat --paging=always --plain
+	ignorecase = false
+
+# 📦 Init settings
+[init]
+	defaultBranch = main
+
+# 🌈 Color settings
+[color]
+	ui = auto
+
+# 🔍 Diff tool and pager
+[diff]
+	tool = batdiff
+
+[difftool "batdiff"]
+	cmd = batdiff "$LOCAL" "$REMOTE"
+
+[pager]
+	diff = batdiff
+
+# 🚀 Aliases
+[alias]
+	branches = for-each-ref --sort=-committerdate --format="%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:reset)%(refname:short)" refs/remotes
+	rsq = rebase -i --autosquash
+
+# 📤 Push behavior
+[push]
+	default = current
+
+# 📥 Fetch behavior
+[fetch]
+	prune = true
+
+# 📬 Pull behavior
+[pull]
+	rebase = true
+
+# 🪄 Rebase options
+[rebase]
+	autosquash = true
+
+# 🪢 Merge options
+[merge]
+	ff = only
+
+# 🛰️ Rewrite URLs to use SSH
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+
+[url "ssh://git@gitlab.com/"]
+	insteadOf = https://gitlab.com/
+
+[url "ssh://git@bitbucket.org/"]
+	insteadOf = https://bitbucket.org/
+
+# 🧩 Optional includes (e.g. user/email config)
+[include]
+	path = ~/.config/git/user_config

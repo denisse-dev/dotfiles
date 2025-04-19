@@ -1,0 +1,163 @@
+/* 🦇 Dracula Pro Theme for Waybar */
+
+* {
+  font-family: monolike;
+  font-size: 1.25rem;
+}
+
+window#waybar {
+  background-color: #22212c;
+  color: #9a9a9a;
+  border-radius: 0;
+  box-shadow: inset 0 -3px #000000;
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+#window {
+  color: #f8f8f2;
+}
+
+/* 🎛️ Buttons & Workspaces */
+
+button {
+  background-color: transparent;
+  box-shadow: inset 0 -2px transparent;
+  border: none;
+  border-radius: 0;
+  color: #9a9a9a;
+}
+
+#workspaces {
+  padding-right: 1rem;
+}
+
+#workspaces button {
+  padding: 0.25rem 0.75rem;
+}
+
+#workspaces button.focused {
+  box-shadow: inset 0 2px #9580ff;
+  color: #ffff80;
+}
+
+#workspaces button:hover {
+  color: #ffff80;
+  background-color: #454158;
+}
+
+#workspaces button.focused:hover {
+  box-shadow: none;
+  color: #9580ff;
+  background-color: #22212c;
+}
+
+#workspaces button.urgent {
+  box-shadow: inset 0 2px #ff9580;
+  color: #ff9580;
+}
+
+#workspaces button.urgent:hover {
+  background: #ff9580;
+  color: #22212c;
+}
+
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+/* 🧠 Module Styling */
+
+#battery,
+#clock,
+#cpu,
+#disk,
+#idle_inhibitor,
+#keyboard-state,
+#language,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+.custom-media,
+.custom-swaync {
+  margin: 0 0.5rem;
+}
+
+#battery,
+#idle_inhibitor,
+#tray {
+  margin: 0;
+  padding-right: 1rem;
+}
+
+#cpu,
+#temperature.cpu {
+  box-shadow: inset 0 2px #ff9580;
+  color: #ff9580;
+}
+
+#memory {
+  box-shadow: inset 0 2px #9580ff;
+  color: #9580ff;
+}
+
+#disk {
+  box-shadow: inset 0 2px #ff80bf;
+  color: #ff80bf;
+}
+
+#pulseaudio {
+  box-shadow: inset 0 2px #ffff80;
+  color: #ffff80;
+}
+
+#clock.local {
+  box-shadow: inset 0 2px #8aff80;
+  color: #8aff80;
+}
+
+#network,
+#battery,
+#keyboard-state,
+#tray,
+#custom-media,
+#custom-swaync,
+#idle_inhibitor {
+  box-shadow: inset 0 2px #80ffea;
+  color: #80ffea;
+}
+
+#custom-media {
+  margin: 0 0.5rem;
+}
+
+#cpu,
+#keyboard-state {
+  margin-right: 0;
+}
+
+#temperature.cpu {
+  margin-left: 0;
+}
+
+/* 🔔 Tray Highlights */
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+/* 💬 Tooltip Styling */
+
+.tooltip {
+  background: #22212c;
+  color: #f8f8f2;
+  border: 1px solid #9580ff;
+  border-radius: 8px;
+}

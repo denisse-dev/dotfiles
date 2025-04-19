@@ -1,0 +1,6 @@
+# ~/.config/zsh/.zprofile
+
+# 🌀 Autostart Sway if on first TTY
+if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec sway
+fi

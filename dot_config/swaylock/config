@@ -1,0 +1,40 @@
+# Dracula Pro themed swaylock config
+
+# General
+daemonize
+show-failed-attempts
+indicator
+indicator-radius=200
+indicator-thickness=10
+
+# Colors
+color=#22212C
+inside-color=#22212C
+inside-clear-color=#22212C
+inside-ver-color=#22212C
+inside-wrong-color=#22212C
+
+ring-color=#9580FF
+ring-clear-color=#80FFEA
+ring-ver-color=#8AFF80
+ring-wrong-color=#FF9580
+
+line-color=#00000000
+separator-color=#00000000
+
+text-color=#F8F8F2
+text-clear-color=#F8F8F2
+text-ver-color=#F8F8F2
+text-wrong-color=#F8F8F2
+
+key-hl-color=#FF80BF
+bs-hl-color=#FFCA80
+
+# Font
+font=monolike
+font-size=70
+
+# Clock (optional)
+clock
+timestr=%H:%M:%S
+datestr=%A, %B %d

@@ -1,0 +1,64 @@
+# 🎨 Theme (Oh My Zsh)
+ZSH_THEME="dracula-pro"
+
+# 🧩 Plugins
+plugins=(
+  aliases
+  colored-man-pages
+  colorize
+  command-not-found
+  copybuffer
+  copyfile
+  docker
+  docker-compose
+  emacs
+  extract
+  git
+  gitfast
+  golang
+  history-substring-search
+  kubectl
+  nvm
+  pip
+  pyenv
+  python
+  rust
+  safe-paste
+  tmux
+  virtualenv
+  zoxide
+  zsh-autosuggestions
+  zsh-completions
+  zsh-history-substring-search
+  zsh-syntax-highlighting  # ← Always last
+)
+
+# 📦 Source Oh My Zsh
+source "$ZSH/oh-my-zsh.sh"
+
+# 🧭 Zoxide
+eval "$(zoxide init zsh)"
+
+# ⚙️ Shell options
+setopt COMPLETE_ALIASES
+setopt HIST_FIND_NO_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE INC_APPEND_HISTORY SHARE_HISTORY APPEND_HISTORY
+setopt AUTOCd EXTENDEDGLOB NOMATCH NOTIFY
+unsetopt BEEP
+
+# 🎹 Key bindings
+bindkey -e
+
+# 🧠 Completions
+autoload -Uz compinit promptinit bashcompinit
+compinit -u
+promptinit
+bashcompinit
+
+# 🌈 Aliases
+alias ls='lsd'
+alias la='ls -a'
+alias lla='ls -la'
+alias tree='ls --tree'
+alias man='batman'
+alias rm='rm -i'
+alias mirrorUpdate='reflector --country us --latest 15 --protocol https --sort rate --save /etc/pacman.d/mirrorlist --verbose'

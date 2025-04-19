@@ -1,0 +1,49 @@
+# 📜 Locale and environment
+export LC_ALL=en_US.UTF-8
+export TERMINAL=alacritty
+export VISUAL=emacs
+export EDITOR=emacs
+
+# 🎨 Oh My Zsh root path
+export ZSH="$HOME/.oh-my-zsh"
+
+# 🧵 Paths
+export PATH="$HOME/.local/bin:$PATH"
+export ZDOTDIR="$HOME/.config/zsh"
+
+# 📖 Pager + theming
+export PAGER="bat --paging=always --plain --theme=Dracula"
+export MANPAGER="sh -c 'col -bx | bat --paging=always --style=plain --theme=Dracula'"
+export BAT_THEME=Dracula
+
+# 🗂 History
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=1000
+export SAVEHIST=1000
+
+# ⛔️ Disable Oh My Zsh auto-updates
+export DISABLE_AUTO_UPDATE="true"
+
+# 🖥️ Wayland + GPU + GNOME envs
+export LIBVA_DRIVER_NAME=iHD
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_USE_XINPUT2=1
+export MOZ_DBUS_REMOTE=1
+
+# 🔑 Set GPG_TTY for pinentry
+export GPG_TTY="$(tty)"
+
+# 🔐 Start GNOME Keyring agent via PAM and fix socket if needed
+if [[ -z "$SSH_AUTH_SOCK" ]]; then
+  for sock in "$XDG_RUNTIME_DIR/gcr/ssh" "$XDG_RUNTIME_DIR/keyring/ssh" "$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"; do
+    if [[ -S "$sock" ]]; then
+      export SSH_AUTH_SOCK="$sock"
+      break
+    fi
+  done
+fi
+
+# 🔐 Load secrets
+[ -f "$HOME/.zshenv_secret" ] && source "$HOME/.zshenv_secret"

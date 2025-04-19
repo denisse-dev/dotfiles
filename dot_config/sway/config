@@ -1,0 +1,167 @@
+# Sway Config — Dracula Pro ✨
+
+# 🧩 Includes & Defaults
+include /etc/sway/config.d/*
+default_border pixel 5px
+font monolike 14px
+
+# ⌨️  Mod + Keybindings
+set $mod Mod4
+set $left b
+set $down n
+set $up p
+set $right f
+
+set $term alacritty
+set $menu exec $term --class=launcher -e /usr/bin/sway-launcher-desktop
+set $gnome-schema org.gnome.desktop.interface
+
+# 🪟 Window Behavior Rules
+for_window [app_id="^launcher$"] floating enable, sticky enable
+for_window [app_id="^pavucontrol$"] floating enable, sticky enable
+for_window [app_id="blueman-manager"] floating enable, sticky enable
+for_window [app_id="galculator"] floating enable
+
+# 🖼️  Display & Wallpaper
+output * bg ~/Pictures/Wallpapers/dracula.png center
+exec_always kanshi
+
+# 🌙 Idle Behavior
+exec swayidle -w \
+     timeout 600 'swaylock-dracula' \
+     timeout 605 'swaymsg "output * dpms off"' \
+     resume 'swaymsg "output * dpms on"' \
+     before-sleep 'swaylock-dracula' \
+     before-sleep 'playerctl pause'
+
+# ⌨️ Input Devices
+input "keyboard" {
+  xkb_layout us
+  xkb_variant intl
+}
+
+input "type:touchpad" {
+  tap enabled
+  natural_scroll enabled
+}
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+# 🔧 Workspace Management
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# 🧠 Tiling & Layout
+bindsym $mod+h splith
+bindsym $mod+v splitv
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Alt+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+# 💻 Window Management
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec $menu
+floating_modifier $mod normal
+bindsym $mod+Shift+c reload
+
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit sway?' -b 'Yes, exit sway' 'swaymsg exit'
+
+# 🎯 Focus Navigation
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# 🔀 Move Windows
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# 📦 Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# 🎧 Media & Brightness
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# ➕ Resize Mode
+mode "resize" {
+  bindsym $left resize shrink width 2px
+  bindsym $down resize shrink height 2px
+  bindsym $up resize grow height 2px
+  bindsym $right resize grow width 2px
+  bindsym Left resize shrink width 2px
+  bindsym Down resize grow height 2px
+  bindsym Up resize shrink height 2px
+  bindsym Right resize grow width 2px
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# 🎨 Theme & Appearance
+client.focused          #9580ff #9580ff #22212c #9580ff #9580ff
+client.focused_inactive #9a9a9a #9a9a9a #22212c #9a9a9a #9a9a9a
+client.unfocused        #22212c #22212c #f8f8f2 #22212c #22212c
+client.urgent           #ff9580 #ff9580 #22212c #ff9580 #ff9580
+client.background       #f8f8f2
+
+bar {
+  swaybar_command waybar
+}
+
+exec_always {
+  gsettings set $gnome-schema gtk-theme 'Dracula'
+  gsettings set $gnome-schema icon-theme 'candy-icons'
+  gsettings set $gnome-schema cursor-theme 'capitaine-cursors-light'
+  gsettings set $gnome-schema font-name 'monolike 10'
+}
+
+# 🛠️ Services & Extras
+exec --no-startup-id fcitx5 -d
+exec_always ~/.local/bin/sway-suspend-watcher
+
+# 🔔 Notifications
+bindsym $mod+Shift+i exec swaync-client -t -sw
+bindsym $mod+i exec swaync-client -t

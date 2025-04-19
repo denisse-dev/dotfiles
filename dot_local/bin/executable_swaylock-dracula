@@ -1,0 +1,7 @@
+#!/bin/bash
+exec swaylock \
+  --config ~/.config/swaylock/config \
+  --clock \
+  --fade-in 0.2 \
+  --grace 2 \
+  --effect-blur 7x5

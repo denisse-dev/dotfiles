@@ -1,0 +1,89 @@
+/* 🧛‍♀️ Dracula Pro Theme for swaync — with Dracula Icons */
+
+@define-color background #22212C;
+@define-color foreground #F8F8F2;
+@define-color comment #9580FF;
+@define-color selection #454158;
+@define-color red #FF9580;
+@define-color orange #FFCA80;
+@define-color yellow #FFFF80;
+@define-color green #8AFF80;
+@define-color cyan #80FFEA;
+@define-color blue #9580FF;
+@define-color magenta #FF80BF;
+@define-color pink #FF99CC;
+
+@define-color border-normal #8be9fd;
+@define-color border-low #bd93f9;
+@define-color border-high #ff5555;
+@define-color highlight-bg #FFCA80;
+
+* {
+  font-family: "monolike";
+  font-size: 16px;
+  color: @foreground;
+  background-color: transparent;
+  border-radius: 8px;
+  border: none;
+}
+
+.notification-row {
+  margin: 0;
+  padding: 0;
+}
+
+.notification {
+  background-color: @background;
+  color: @foreground;
+  border: 4px solid @border-normal;
+  border-radius: 16px;
+  padding: 2px;
+}
+
+.notification.urgency-low {
+  border-color: @border-low;
+}
+
+.notification.urgency-critical {
+  border-color: @border-high;
+}
+
+.notification .summary {
+  font-weight: bold;
+  color: @highlight-bg;
+}
+
+.notification .body {
+  margin-top: 4px;
+  color: @foreground;
+}
+
+.notification .time {
+  font-size: 10px;
+  color: @comment;
+}
+
+.notification .icon {
+  margin-right: 10px;
+  background-color: transparent;
+}
+
+/* 🔲 Center and Control Center */
+
+.center,
+.control-center {
+  background-color: @background;
+  color: @foreground;
+  border: 2px solid @border-normal;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* 🧩 Widgets */
+
+.widget-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: @orange;
+  margin: 6px 0;
+}
