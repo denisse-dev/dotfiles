@@ -1,0 +1,159 @@
+---
+- name: Setup base environment and Emacs tooling
+  hosts: localhost
+  become: true
+
+  vars:
+    base_packages:
+      - git
+      - base-devel
+      - cmake
+      - gcc
+      - make
+      - pkgconf
+      - automake
+      - ripgrep
+      - fd
+      - curl
+      - zsh
+      - sway
+      - alacritty
+      - waybar
+      - fontconfig
+      - bat
+      - chezmoi
+      - nodejs
+      - npm
+      - go
+      - libvterm
+      - tree-sitter
+      - tree-sitter-cli
+      - shellcheck
+      - emacs
+      - python-lsp-server
+      - python-black
+      - go-tools
+      - clang
+      - bash-language-server
+      - yaml-language-server
+      - marksman
+      - texlive-core
+      - ghostscript
+      - rustup
+      
+    font_packages:
+      - noto-fonts
+      - noto-fonts-cjk
+      - noto-fonts-emoji
+      - otf-cascadia-code
+      - ttf-font-awesome
+      - ttf-nerd-fonts-symbols
+      - ttf-nerd-fonts-symbols-common
+      
+    aur_packages:
+      - swaylock-effects
+      - ttf-all-the-icons
+
+  tasks:
+
+    - name: Install base system packages
+      pacman:
+        name: "{{ base_packages }}"
+        state: present
+      register: base_output
+
+    - name: Show pacman base install output
+      debug:
+        var: base_output
+
+    - name: Install base system packages
+      pacman:
+        name: "{{ font_packages }}"
+        state: present
+      register: font_output
+
+    - name: Show pacman font install output
+      debug:
+        var: base_output
+
+    - name: Check if paru is installed
+      stat:
+        path: /usr/bin/paru
+      register: paru_stat
+
+    - name: Install paru if missing
+      when: not paru_stat.stat.exists
+      become: false
+      block:
+        - name: Clone paru from AUR
+          git:
+            repo: https://aur.archlinux.org/paru.git
+            dest: /tmp/paru
+            update: no
+
+        - name: Build and install paru
+          make:
+            chdir: /tmp/paru
+
+    - name: Check installed AUR packages
+      become: false
+      command: paru -Q {{ item }}
+      register: aur_check
+      changed_when: false
+      failed_when: aur_check.rc != 0 and aur_check.rc != 1
+      loop: "{{ aur_packages }}"
+      loop_control:
+        label: "{{ item }}"
+      ignore_errors: yes
+
+    - name: Install missing AUR packages with paru
+      become: false
+      command: paru -S --noconfirm --needed {{ item }}
+      when: item not in aur_check.results | selectattr('rc', 'equalto', 0) | map(attribute='item') | list
+      loop: "{{ aur_packages }}"
+      register: aur_install
+      changed_when: aur_install.rc == 0
+
+    - name: Show installed AUR results
+      debug:
+        var: aur_install
+
+    - name: Get active Rust toolchain
+      become: false
+      command: rustup show active-toolchain
+      register: rustup_toolchain
+      changed_when: false
+
+    - name: Set default toolchain to stable if needed
+      become: false
+      command: rustup default stable
+      when: "'stable' not in rustup_toolchain.stdout"
+      register: rustup_set_default
+      changed_when: "'stable' not in rustup_toolchain.stdout"
+
+    - name: List installed rustup components
+      become: false
+      command: rustup component list --installed
+      register: rustup_components
+      changed_when: false
+
+    - name: Install rustfmt via rustup if not present
+      become: false
+      command: rustup component add rustfmt
+      when: "'rustfmt' not in rustup_components.stdout"
+      register: rustup_fmt
+      changed_when: "'rustfmt' not in rustup_components.stdout"
+
+    - name: Install rust-analyzer via rustup if not present
+      become: false
+      command: rustup component add rust-analyzer
+      when: "'rust-analyzer' not in rustup_components.stdout"
+      register: rustup_ra
+      changed_when: "'rust-analyzer' not in rustup_components.stdout"
+
+    - name: Show rustup results
+      debug:
+        msg:
+          - "Default toolchain: {{ rustup_toolchain.stdout | trim }}"
+          - "Installed components:"
+          - "{{ rustup_components.stdout_lines }}"

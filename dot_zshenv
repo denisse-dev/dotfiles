@@ -11,6 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # 🧵 Paths
 export PATH="$HOME/.local/bin:$PATH"
 export ZDOTDIR="$HOME/.config/zsh"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # 📖 Pager + theming
 export PAGER="bat --paging=always --plain --theme=Dracula"
