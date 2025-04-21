@@ -3,6 +3,7 @@ export LC_ALL=en_US.UTF-8
 export TERMINAL=alacritty
 export VISUAL=emacs
 export EDITOR=emacs
+export EMACSDIR="$HOME/.config/emacs"
 
 # 🎨 Oh My Zsh root path
 export ZSH="$HOME/.oh-my-zsh"
@@ -47,3 +48,6 @@ fi
 
 # 🔐 Load secrets
 [ -f "$HOME/.zshenv_secret" ] && source "$HOME/.zshenv_secret"
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export EMACSDIR="$HOME/.config/emacs"
