@@ -4,6 +4,8 @@ export TERMINAL=alacritty
 export VISUAL=emacs
 export EDITOR=emacs
 export EMACSDIR="$HOME/.config/emacs"
+export XDG_CONFIG_HOME="$HOME/.config"
+export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
 # 🎨 Oh My Zsh root path
 export ZSH="$HOME/.oh-my-zsh"
@@ -49,6 +51,3 @@ fi
 
 # 🔐 Load secrets
 [ -f "$HOME/.zshenv_secret" ] && source "$HOME/.zshenv_secret"
-
-export XDG_CONFIG_HOME="$HOME/.config"
-export EMACSDIR="$HOME/.config/emacs"

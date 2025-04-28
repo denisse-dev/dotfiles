@@ -4,6 +4,12 @@
 	pager = bat --paging=always --plain
 	ignorecase = false
 
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = gpg
+
 # 📦 Init settings
 [init]
 	defaultBranch = main
