@@ -1,3 +1,3 @@
 <div align="center">
-  ![Desktop](dot_images/desktop.png)
+  <img alt="Desktop" src="dot_images/desktop.png">
 </div>
